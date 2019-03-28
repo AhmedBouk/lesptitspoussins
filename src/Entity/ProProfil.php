@@ -19,7 +19,7 @@ class ProProfil
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Nom_entreprise;
+    private $nom_entreprise;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -37,7 +37,7 @@ class ProProfil
     private $codepostal;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $adresse;
 
@@ -65,11 +65,6 @@ class ProProfil
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $statut_abonnement;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -106,14 +101,14 @@ class ProProfil
         return $this->id;
     }
 
-    public function getNomEntreprise(): ?string
+    public function getnomEntreprise(): ?string
     {
-        return $this->Nom_entreprise;
+        return $this->nom_entreprise;
     }
 
-    public function setNomEntreprise(string $Nom_entreprise): self
+    public function setnomEntreprise(string $nom_entreprise): self
     {
-        $this->Nom_entreprise = $Nom_entreprise;
+        $this->nom_entreprise = $nom_entreprise;
 
         return $this;
     }
@@ -222,18 +217,6 @@ class ProProfil
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    public function getStatutAbonnement(): ?string
-    {
-        return $this->statut_abonnement;
-    }
-
-    public function setStatutAbonnement(?string $statut_abonnement): self
-    {
-        $this->statut_abonnement = $statut_abonnement;
 
         return $this;
     }
