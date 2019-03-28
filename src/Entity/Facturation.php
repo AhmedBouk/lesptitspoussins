@@ -46,6 +46,16 @@ class Facturation
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parentt", inversedBy="facturation")
+     */
+    private $parentt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProProfil", inversedBy="facturation")
+     */
+    private $proProfil;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +129,30 @@ class Facturation
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getParentt(): ?Parentt
+    {
+        return $this->parentt;
+    }
+
+    public function setParentt(?Parentt $parentt): self
+    {
+        $this->parentt = $parentt;
+
+        return $this;
+    }
+
+    public function getProProfil(): ?ProProfil
+    {
+        return $this->proProfil;
+    }
+
+    public function setProProfil(?ProProfil $proProfil): self
+    {
+        $this->proProfil = $proProfil;
 
         return $this;
     }

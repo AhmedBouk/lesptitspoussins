@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -95,6 +97,46 @@ class ProProfil
      * @ORM\Column(type="integer")
      */
     private $nombredeplace;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ListeStatus", mappedBy="proProfil")
+     */
+    private $listestatus;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="proProfil")
+     */
+    private $paiement;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="proProfil")
+     */
+    private $avis;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Facturation", mappedBy="proProfil")
+     */
+    private $facturation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Tuteur", mappedBy="proProfil")
+     */
+    private $tuteur;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Plan", mappedBy="proProfil")
+     */
+    private $plan;
+
+    public function __construct()
+    {
+        $this->listestatus = new ArrayCollection();
+        $this->paiement = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->facturation = new ArrayCollection();
+        $this->tuteur = new ArrayCollection();
+        $this->plan = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -289,6 +331,192 @@ class ProProfil
     public function setNombredeplace(int $nombredeplace): self
     {
         $this->nombredeplace = $nombredeplace;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ListeStatus[]
+     */
+    public function getListestatus(): Collection
+    {
+        return $this->listestatus;
+    }
+
+    public function addListestatus(ListeStatus $listestatus): self
+    {
+        if (!$this->listestatus->contains($listestatus)) {
+            $this->listestatus[] = $listestatus;
+            $listestatus->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListestatus(ListeStatus $listestatus): self
+    {
+        if ($this->listestatus->contains($listestatus)) {
+            $this->listestatus->removeElement($listestatus);
+            // set the owning side to null (unless already changed)
+            if ($listestatus->getProProfil() === $this) {
+                $listestatus->setProProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Paiement[]
+     */
+    public function getPaiement(): Collection
+    {
+        return $this->paiement;
+    }
+
+    public function addPaiement(Paiement $paiement): self
+    {
+        if (!$this->paiement->contains($paiement)) {
+            $this->paiement[] = $paiement;
+            $paiement->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaiement(Paiement $paiement): self
+    {
+        if ($this->paiement->contains($paiement)) {
+            $this->paiement->removeElement($paiement);
+            // set the owning side to null (unless already changed)
+            if ($paiement->getProProfil() === $this) {
+                $paiement->setProProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Avis[]
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): self
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->contains($avi)) {
+            $this->avis->removeElement($avi);
+            // set the owning side to null (unless already changed)
+            if ($avi->getProProfil() === $this) {
+                $avi->setProProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Facturation[]
+     */
+    public function getFacturation(): Collection
+    {
+        return $this->facturation;
+    }
+
+    public function addFacturation(Facturation $facturation): self
+    {
+        if (!$this->facturation->contains($facturation)) {
+            $this->facturation[] = $facturation;
+            $facturation->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacturation(Facturation $facturation): self
+    {
+        if ($this->facturation->contains($facturation)) {
+            $this->facturation->removeElement($facturation);
+            // set the owning side to null (unless already changed)
+            if ($facturation->getProProfil() === $this) {
+                $facturation->setProProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tuteur[]
+     */
+    public function getTuteur(): Collection
+    {
+        return $this->tuteur;
+    }
+
+    public function addTuteur(Tuteur $tuteur): self
+    {
+        if (!$this->tuteur->contains($tuteur)) {
+            $this->tuteur[] = $tuteur;
+            $tuteur->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTuteur(Tuteur $tuteur): self
+    {
+        if ($this->tuteur->contains($tuteur)) {
+            $this->tuteur->removeElement($tuteur);
+            // set the owning side to null (unless already changed)
+            if ($tuteur->getProProfil() === $this) {
+                $tuteur->setProProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Plan[]
+     */
+    public function getPlan(): Collection
+    {
+        return $this->plan;
+    }
+
+    public function addPlan(Plan $plan): self
+    {
+        if (!$this->plan->contains($plan)) {
+            $this->plan[] = $plan;
+            $plan->setProProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlan(Plan $plan): self
+    {
+        if ($this->plan->contains($plan)) {
+            $this->plan->removeElement($plan);
+            // set the owning side to null (unless already changed)
+            if ($plan->getProProfil() === $this) {
+                $plan->setProProfil(null);
+            }
+        }
 
         return $this;
     }

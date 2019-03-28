@@ -41,6 +41,16 @@ class Avis
      */
     private $is_enabled;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parentt", inversedBy="avis")
+     */
+    private $parentt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProProfil", inversedBy="avis")
+     */
+    private $proProfil;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +112,30 @@ class Avis
     public function setIsEnabled(bool $is_enabled): self
     {
         $this->is_enabled = $is_enabled;
+
+        return $this;
+    }
+
+    public function getParentt(): ?Parentt
+    {
+        return $this->parentt;
+    }
+
+    public function setParentt(?Parentt $parentt): self
+    {
+        $this->parentt = $parentt;
+
+        return $this;
+    }
+
+    public function getProProfil(): ?ProProfil
+    {
+        return $this->proProfil;
+    }
+
+    public function setProProfil(?ProProfil $proProfil): self
+    {
+        $this->proProfil = $proProfil;
 
         return $this;
     }

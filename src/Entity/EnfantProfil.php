@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,6 +62,21 @@ class EnfantProfil
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Parentt", inversedBy="enfant")
+     */
+    private $parentt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Plan", mappedBy="enfantProfil")
+     */
+    private $plan;
+
+    public function __construct()
+    {
+        $this->plan = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,6 +187,49 @@ class EnfantProfil
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getParentt(): ?Parentt
+    {
+        return $this->parentt;
+    }
+
+    public function setParentt(?Parentt $parentt): self
+    {
+        $this->parentt = $parentt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Plan[]
+     */
+    public function getPlan(): Collection
+    {
+        return $this->plan;
+    }
+
+    public function addPlan(Plan $plan): self
+    {
+        if (!$this->plan->contains($plan)) {
+            $this->plan[] = $plan;
+            $plan->setEnfantProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlan(Plan $plan): self
+    {
+        if ($this->plan->contains($plan)) {
+            $this->plan->removeElement($plan);
+            // set the owning side to null (unless already changed)
+            if ($plan->getEnfantProfil() === $this) {
+                $plan->setEnfantProfil(null);
+            }
+        }
 
         return $this;
     }

@@ -41,6 +41,16 @@ class Plan
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\EnfantProfil", inversedBy="plan")
+     */
+    private $enfantProfil;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProProfil", inversedBy="plan")
+     */
+    private $proProfil;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +112,30 @@ class Plan
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getEnfantProfil(): ?EnfantProfil
+    {
+        return $this->enfantProfil;
+    }
+
+    public function setEnfantProfil(?EnfantProfil $enfantProfil): self
+    {
+        $this->enfantProfil = $enfantProfil;
+
+        return $this;
+    }
+
+    public function getProProfil(): ?ProProfil
+    {
+        return $this->proProfil;
+    }
+
+    public function setProProfil(?ProProfil $proProfil): self
+    {
+        $this->proProfil = $proProfil;
 
         return $this;
     }
