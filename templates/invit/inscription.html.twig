@@ -3,10 +3,37 @@
 {% block body %}
 
     {{ parent() }}
-
-
-    {#   HERE#}
-
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 offset-md-3">
+            <div class="form-group">
+                <div class="">
+                    <h1 class="h1 offset-md-3 mt-3">Inscription</h1>
+                    <div class="form-group mb-3">
+                    {{ form_start(form) }}
+                        <label for="inputEmail" class="mb-3">Email:</label>
+                        <div class="col-lg-10 mb-3">
+                            {{form_widget(form.mail)}}
+                        </div>
+                        <label for="inputEmail" class="mb-3">Mot de passe:</label>
+                        <div class="col-lg-10 mb-3">
+                            {{form_widget(form.password)}}
+                        </div>
+                        <label for="inputEmail" class="mb-3">Confirmer le mot de passe:</label>
+                        <div class="col-lg-10 mb-3">
+                            {{form_widget(form.confirmpassword)}}
+                        </div>
+                    </div>
+                    <div class="form-check m-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label " for="exampleCheck1">Conditions d'utilisations</label>
+                    </div>
+                    <input type="submit" name="submit" value="Inscription" class="btn btn-success   offset-md-4">
+                    {{ form_end(form.confirmpassword) }}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 {% endblock body %}
+

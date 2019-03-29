@@ -6,6 +6,7 @@
  */
 
 // any CSS you require will output into a single css file (app.css in this case)
+require('../css/reset.css');
 require('../css/app.css');
 require('bootstrap/dist/css/bootstrap.min.css');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
