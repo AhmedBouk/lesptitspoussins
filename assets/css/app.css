@@ -1,5 +1,16 @@
 
 
 body {
-    background-color: wheat;
+    background-color: white;
+    font-family: 'Source Sans Pro', sans-serif;
 }
+/*titre des liste couleur*/
+.hmed{
+    background-color: #DA4167;
+}
+/*chercher un pro*/
+.hmouda{
+    background-color: #083D77;
+    color: white;
+}
+/*liste des avis*/
