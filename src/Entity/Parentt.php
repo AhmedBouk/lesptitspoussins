@@ -58,6 +58,7 @@ class Parentt
      */
     private $password;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -122,6 +123,16 @@ class Parentt
      * @ORM\OneToMany(targetEntity="App\Entity\EnfantProfil", mappedBy="parentt")
      */
     private $enfant;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $confirmpassword;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statutcondition;
 
     public function __construct()
     {
@@ -500,6 +511,30 @@ class Parentt
                 $enfant->setParentt(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getConfirmpassword(): ?string
+    {
+        return $this->confirmpassword;
+    }
+
+    public function setConfirmpassword(string $confirmpassword): self
+    {
+        $this->confirmpassword = $confirmpassword;
+
+        return $this;
+    }
+
+    public function getStatutcondition(): ?bool
+    {
+        return $this->statutcondition;
+    }
+
+    public function setStatutcondition(bool $statutcondition): self
+    {
+        $this->statutcondition = $statutcondition;
 
         return $this;
     }
