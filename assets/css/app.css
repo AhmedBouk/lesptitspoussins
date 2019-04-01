@@ -36,3 +36,8 @@ body{
     background-color: #A3D2EE;
     border-radius: 10px;
 }
+
+.my-6{
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
