@@ -18,9 +18,11 @@
     <div class="container ">
         <div class="row">
             <div class="col-md-4">
-                <a href="">
-                    <button type="button" class="btn btn-dark btn-lg btn-block hmed">Profil</button>
-                </a>
+                <div class="container text-center font-weight-bold mb-2">
+                    <div class="row ">
+                        <div class="col-md hmed " style="height: 30px; border-radius: 30px">Profil</div>
+                    </div>
+                </div>
                 <ul class="list-group mb-3">
                     <li class="list-group-item"><span class="text-info font-weight-bold">Nom :</span> hmouda</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Prénom :</span> Ahmed</li>
@@ -28,15 +30,15 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone :</span> 0606060606</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span> AHmed.ahmed@gmail.com</li>
                 </ul>
-                <a href="">
+                <a href="profilparent">
                     <button type="button" class="btn hmed ">Mofidier</button>
                 </a>
             </div>
             {#profil enfant#}
             <div class="col-md-4 offset-md-4">
-                <a href="">
-                    <button type="button" class="btn btn-dark btn-lg btn-block hmed">Vos Enfants</button>
-                </a>
+
+                    <button type="button" class="btn btn-lg btn-block hmed">Vos Enfants</button>
+
                 <table class="table profil">
                     <thead class="thead-light font-weight-bold">
                     <tr>
@@ -52,6 +54,9 @@
                     </tbody>
                 </table>
                 <a href="">
+                    <button type="button" class="btn  text-right hmed  ">Ajouter</button>
+                </a>
+                <a href="">
                     <button type="button" class="btn  text-right hmed  ">Mofidier</button>
                 </a>
             </div>
@@ -61,9 +66,9 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <a href="">
-                        <button type="button" class="btn btn-dark btn-lg btn-block hmed">Liste des demandes</button>
-                    </a>
+
+                        <button type="button" class="btn  btn-lg btn-block hmed">Liste des demandes</button>
+
                 </div>
             </div>
         </div>
@@ -116,9 +121,9 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <a href="">
-                        <button type="button" class="btn btn-dark btn-lg btn-block hmed">Liste d'attente</button>
-                    </a>
+
+                        <button type="button" class="btn btn-lg btn-block hmed">Liste d'attente</button>
+
                 </div>
             </div>
         </div>
@@ -169,9 +174,9 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <a href="">
-                        <button type="button" class="btn btn-dark btn-lg btn-block hmed">Liste des avis</button>
-                    </a>
+
+                        <button type="button" class="btn  btn-lg btn-block hmed">Liste des avis</button>
+
                 </div>
             </div>
         </div>
@@ -212,6 +217,9 @@
 
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <a href="#" class="btn btn-success btn-block mt-3 ">Voir tous les avis</a>
             </div>
         </div>
     </div>

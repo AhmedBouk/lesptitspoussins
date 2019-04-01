@@ -7,14 +7,12 @@
 
     {#   HERE#}
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
 
     <div class="container">
-        <br>
-        <br>
         <div class="row" id="main">
 
 
@@ -22,66 +20,75 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form role="form">
-                            <h2>Edit your profile.<small>It's always easy</small></h2>
+                            <h2>Renseigner votre profil</h2>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+                                        <label for="prenom" id="prenom"></label>
+                                        <input type="text" name="prenom" id="prenom"
+                                               class="form-control input-lg" placeholder="Pr&eacute;nom" >
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+                                        <label for="nom" id="nom"></label>
+                                        <input type="text" name="nom" id="nom" class="form-control input-lg"
+                                               placeholder="Nom" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="codepostal" id="codepostal"></label>
+                                        <input type="text" name="codepostal" id="codepostal"
+                                               class="form-control input-lg" placeholder="Code postal" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="adresse" id="adresse"></label>
+                                        <input type="text" name="adresse" id="adresse"
+                                               class="form-control input-lg" placeholder="Adresse " >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="telephone" id="telephone"></label>
+                                        <input type="text" name="telephone" id="telephone"
+                                               class="form-control input-lg" placeholder="Telephone" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="ville" id="ville"></label>
+                                        <input type="text" name="ville" id="ville"
+                                               class="form-control input-lg" placeholder="Ville" >
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+                                <label for="mail" id="mail"></label>
+                                <input type="email" name="mail" id="mail" class="form-control input-lg"
+                                       placeholder="Email Address" >
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
-                                    </div>
-                                </div>
-                            </div>
+
+
+
                             <hr class="colorgraph">
                             <div class="row">
-                                <div class="col-xs-12 col-md-6"></div>
-                                <div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Save</a></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <a href="#" class="btn btn-success btn-block btn-lg">Retour</a>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <a href="#" class="btn btn-success btn-block btn-lg">Enregistrer</a>
+                                </div>
+
                             </div>
                         </form>
                     </div>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+
             </div>
         </div>
     </div>
