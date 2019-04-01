@@ -14,4 +14,18 @@ class IndexController extends AbstractController
     {
         return $this->render('parent/dashboard.html.twig' );
     }
+    /**
+     * @Route("/profilpro", name="profilpro")
+     */
+    public function profilpro()
+    {
+        return $this->render('parent/detail_pro.html.twig' );
+    }
+    /**
+     * @Route("/profilparent", name="profilparent")
+     */
+    public function profilparent()
+    {
+        return $this->render('parent/profil_parent.html.twig' );
+    }
 }
