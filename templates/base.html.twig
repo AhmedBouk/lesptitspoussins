@@ -6,7 +6,8 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
-
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
     {% endblock %}
@@ -16,13 +17,12 @@
 {{ include('inc/header.html.twig') }}
 {% block body %}
 
+
 {% endblock %}
 {{ include('inc/footer.html.twig') }}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
     <script src="{{ asset('build/app.js') }}"></script>
-{#    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
-
 {% endblock %}
 
 </body>
