@@ -12,9 +12,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="App\Repository\ProProfilRepository")
  * @UniqueEntity(fields={"mail", "nom_entreprise"},
  *     errorPath="mail",
- *        message="Cette adresse mail existe déjà!",
- *      errorPath="nom_entreprise",
- *          message="Cette Entreprise existe déjà!"
+ *     message="Cette adresse mail existe déjà!",
+ * )
+ * @UniqueEntity(fields={"nom_entreprise"},
+ *     errorPath="nom_entreprise",
+ *     message="Ce nom d'entreprise existe déjà"
  * )
  */
 class ProProfil implements UserInterface
@@ -27,12 +29,12 @@ class ProProfil implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nom_entreprise;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mail;
 
