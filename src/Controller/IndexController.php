@@ -12,8 +12,8 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-
-        return $this->render('parent/profil_child.html.twig');
+        return $this->render('parent/dashboard.html.twig' );
     }
+   
 }
 
