@@ -1,12 +1,14 @@
 
 
 body {
-    background-color: #EEE;
+    background-color: #ffffff;
     font-family: 'Source Sans Pro', sans-serif;
 }
 /*titre des liste couleur*/
 .hmed{
     background-color: #DA4167;
+    font-weight: bold;
+    color: black;
 }
 /*chercher un pro*/
 .hmouda{
