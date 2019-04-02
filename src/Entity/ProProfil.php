@@ -5,11 +5,21 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProProfilRepository")
+ * @UniqueEntity(fields={"mail", "nom_entreprise"},
+ *     errorPath="mail",
+ *     message="Cette adresse mail existe déjà!",
+ * )
+ * @UniqueEntity(fields={"nom_entreprise"},
+ *     errorPath="nom_entreprise",
+ *     message="Ce nom d'entreprise existe déjà"
+ * )
  */
-class ProProfil
+class ProProfil implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,12 +29,12 @@ class ProProfil
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nom_entreprise;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mail;
 
@@ -128,8 +138,15 @@ class ProProfil
      */
     private $plan;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles =[];
+
     public function __construct()
     {
+        $this->token = bin2hex(random_bytes(56));
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->listestatus = new ArrayCollection();
         $this->paiement = new ArrayCollection();
         $this->avis = new ArrayCollection();
@@ -519,5 +536,30 @@ class ProProfil
         }
 
         return $this;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->mail;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_PRO';
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
     }
 }
