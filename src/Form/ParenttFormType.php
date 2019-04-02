@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Parentt;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,13 +16,13 @@ class ParenttFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('mail')
+            ->add('mail', EmailType::class)
             ->add('ville')
             ->add('codepostal')
             ->add('adresse')
             ->add('telephone')
-            ->add('password')
-            ->add('confirmpassword')
+            ->add('password', PasswordType::class)
+            ->add('confirmpassword', PasswordType::class)
             ->add('token')
             ->add('created_at')
             ->add('updated_at')

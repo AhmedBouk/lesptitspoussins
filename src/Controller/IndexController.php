@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Parentt;
-use App\Form\ParenttFormType;
+use App\Form\RegistrationForm;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class IndexController extends AbstractController
 {
@@ -17,31 +19,45 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->render('invit/inscription.html.twig');
+        return $this->render('invit/index.html.twig');
     }
 
     /**
      * @Route("/inscription", name="app-inscription")
      */
-    public function createParentt(Request $request) : Response
+    public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
     {
         $parentt = new Parentt();
+        $submittedToken = $request->request->get('token');
 
-        $form = $this->createForm(ParenttFormType::class, $parentt);
+        $form = $this->createForm(RegistrationForm::class, $parentt)
+        ;
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($parentt);
-            $em->flush();
+        if ($this->isCsrfTokenValid('create-parentt', $submittedToken)) {
 
-            return $this->redirectToRoute('app-inscription', [
-                'form' => $form->createView()
-            ]);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $parentt->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $parentt,
+                        $form->get('password')->getData()
+                    )
+                );
 
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($parentt);
+                $em->flush();
+
+                return $guardAuthenticatorHandler->authenticateUserAndHandleSuccess(
+                    $parentt,
+                    $request,
+                    $authenticator,
+                    'parentt'
+                );
+            }
         }
 
-        return $this->render('invit/subs.html.twig', [
+        return $this->render('invit/inscription.html.twig', [
             'form' => $form->createView()
         ]);
     }
