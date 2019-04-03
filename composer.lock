@@ -6205,16 +6205,16 @@
         },
         {
             "name": "tattali/calendar-bundle",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattali/CalendarBundle.git",
-                "reference": "c9983594b957ed70c3ec09aed89cb15a8e65c3ac"
+                "reference": "10db3cc5d55052e93fab55661fa30f204308c6d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattali/CalendarBundle/zipball/c9983594b957ed70c3ec09aed89cb15a8e65c3ac",
-                "reference": "c9983594b957ed70c3ec09aed89cb15a8e65c3ac",
+                "url": "https://api.github.com/repos/tattali/CalendarBundle/zipball/10db3cc5d55052e93fab55661fa30f204308c6d4",
+                "reference": "10db3cc5d55052e93fab55661fa30f204308c6d4",
                 "shasum": ""
             },
             "require": {
@@ -6251,15 +6251,15 @@
                     "homepage": "https://theoattali.fr"
                 }
             ],
-            "description": "Provides event calendar for your Symfony 4 project. Compatible with Doctrine ORM & ODM, and custom storages.",
+            "description": "Provides event calendar for your Symfony 4 project. Compatible with Doctrine ORM & ODM, and API like Google Calendar.",
             "homepage": "https://github.com/tattali/CalendarBundle",
             "keywords": [
                 "calendar",
                 "fullcalendar",
-                "jquery calendar",
+                "symfony",
                 "symfony calendar"
             ],
-            "time": "2019-03-25T01:26:56+00:00"
+            "time": "2019-04-03T09:11:09+00:00"
         },
         {
             "name": "twig/extensions",
