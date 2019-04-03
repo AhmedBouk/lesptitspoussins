@@ -12,7 +12,7 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->render('pro/pro_occupant.html.twig' );
+        return $this->render('pro/pro_dashboard.html.twig' );
     }
    
 }
