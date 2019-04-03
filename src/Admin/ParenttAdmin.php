@@ -99,7 +99,8 @@ class ParenttAdmin extends AbstractAdmin
             ->add('is_enabled', 'boolean')
             ->add('_action', 'action', [
                 'actions' => [
-                    'edit' => []
+                    'edit' => [],
+                    'delete' => []
                 ]
             ])
         ;
