@@ -20,7 +20,7 @@ class AvisAdmin extends AbstractAdmin
                 'choices' => [
                     'j\'aime' => 'j\'aime',
                     'je n\'aime pas' => 'je n\'aime pas'
-                ]
+                ],
             ])
             ->add('texte')
             ;
@@ -30,12 +30,12 @@ class AvisAdmin extends AbstractAdmin
     {
         $list
             ->addIdentifier('id')
-            ->add('note', ChoiceType::class, [
+            ->add('note', 'choice', [
                 'multiple' => true,
                 'choices' => [
                     'j\'aime' => 'j\'aime',
                     'je n\'aime pas' => 'je n\'aime pas'
-                ]
+                ],
             ])
             ->add('text')
             ;
@@ -45,6 +45,7 @@ class AvisAdmin extends AbstractAdmin
     {
         $filter
             ->add('id')
+            ->add('note')
             ;
     }
 
