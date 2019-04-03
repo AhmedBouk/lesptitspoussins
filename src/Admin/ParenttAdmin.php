@@ -4,12 +4,14 @@
 namespace App\Admin;
 
 
+use App\Entity\EnfantProfil;
 use App\Entity\Parentt;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -31,6 +33,12 @@ class ParenttAdmin extends AbstractAdmin
             ->add('ville')
             ->add('codepostal')
             ->add('adresse')
+            ->add('enfant', EntityType::class, [
+                'class' => EnfantProfil::class,
+                'choice_label' => function($profil){
+                return $profil->getNom();
+                }
+            ])
             ->add('password', PasswordType::class)
             ->add('is_enabled')
         ;
@@ -46,6 +54,12 @@ class ParenttAdmin extends AbstractAdmin
             ->add('ville')
             ->add('codepostal')
             ->add('adresse')
+            ->add('enfants', 'entity', [
+                'class' => EnfantProfil::class,
+                'choice_label' => function($profil){
+                    return $profil->getNom();
+                }
+            ])
             ->add('created_at_abonnement')
             ->add('status_abonnement', 'boolean')
             ->add('date_duree')
@@ -71,6 +85,22 @@ class ParenttAdmin extends AbstractAdmin
         $show
             ->add('nom')
             ->add('prenom')
+            ->add('mail')
+            ->add('ville')
+            ->add('codepostal', null, [
+                'label' => 'Code Postal'
+            ])
+            ->add('adresse')
+            ->add('created_at_abonnement', null, [
+                'label' => 'Date début abonnement'
+            ])
+            ->add('status_abonnement', 'boolean', [
+                'label' => 'Abonné'
+            ])
+            ->add('date_duree', null, [
+                'label' => 'Durée abonnement'
+            ])
+            ->add('is_enabled', 'boolean')
         ;
     }
 
