@@ -39,7 +39,7 @@ class Avis
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_enabled;
+    private $is_enabled = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Parentt", inversedBy="avis")
