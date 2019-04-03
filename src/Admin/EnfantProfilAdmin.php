@@ -5,12 +5,10 @@ namespace App\Admin;
 
 
 use App\Entity\EnfantProfil;
-use App\Entity\Parentt;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class EnfantProfilAdmin extends AbstractAdmin
 {
