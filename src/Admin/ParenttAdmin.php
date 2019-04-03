@@ -10,8 +10,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -33,11 +33,12 @@ class ParenttAdmin extends AbstractAdmin
             ->add('ville')
             ->add('codepostal')
             ->add('adresse')
-            ->add('enfant', EntityType::class, [
+            ->add('enfant', ModelType::class, [
                 'class' => EnfantProfil::class,
-                'choice_label' => function($profil){
-                return $profil->getNom();
-                }
+                'property' => 'nom',
+                'mapped' => true,
+                'multiple' => true,
+                'btn_add' => 'Ajouter',
             ])
             ->add('password', PasswordType::class)
             ->add('is_enabled')
@@ -54,11 +55,10 @@ class ParenttAdmin extends AbstractAdmin
             ->add('ville')
             ->add('codepostal')
             ->add('adresse')
-            ->add('enfants', 'entity', [
+            ->add('enfants', 'model', [
                 'class' => EnfantProfil::class,
-                'choice_label' => function($profil){
-                    return $profil->getNom();
-                }
+                'property' => 'nom',
+                'mapped' => true
             ])
             ->add('created_at_abonnement')
             ->add('status_abonnement', 'boolean')

@@ -5,10 +5,12 @@ namespace App\Admin;
 
 
 use App\Entity\EnfantProfil;
+use App\Entity\Parentt;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class EnfantProfilAdmin extends AbstractAdmin
 {
@@ -41,6 +43,7 @@ class EnfantProfilAdmin extends AbstractAdmin
         $list
             ->addIdentifier('nom')
             ->add('prenom')
+            ->add('parentt', 'entity')
             ->add('date_naissance')
             ->add('allergie')
             ->add('traitement')
