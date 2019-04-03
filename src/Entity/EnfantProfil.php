@@ -75,6 +75,7 @@ class EnfantProfil
 
     public function __construct()
     {
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->plan = new ArrayCollection();
     }
 
