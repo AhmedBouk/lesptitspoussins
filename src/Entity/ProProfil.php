@@ -139,7 +139,7 @@ class ProProfil implements UserInterface
     private $plan;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles =[];
 
