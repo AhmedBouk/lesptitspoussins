@@ -53,7 +53,7 @@ class Avis
 
     public function __construct()
     {
-        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Parisu'));
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
     }
 
     public function getId(): ?int
