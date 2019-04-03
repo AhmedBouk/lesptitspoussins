@@ -43,7 +43,7 @@ class EnfantProfilAdmin extends AbstractAdmin
         $list
             ->addIdentifier('nom')
             ->add('prenom')
-            ->add('parentt', 'entity')
+            ->add('parentt', null, ['associated_property' => 'nom'])
             ->add('date_naissance')
             ->add('allergie')
             ->add('traitement')

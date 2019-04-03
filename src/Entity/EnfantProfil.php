@@ -79,6 +79,12 @@ class EnfantProfil
         $this->plan = new ArrayCollection();
     }
 
+//    public function __toString()
+//    {
+//        // TODO: Implement __toString() method.
+//        return $this->nom;
+//    }
+
     public function getId(): ?int
     {
         return $this->id;
