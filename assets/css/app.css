@@ -1,3 +1,4 @@
+ @import "reset.css";
 
 body {
     background-color: #ffffff;
@@ -116,13 +117,7 @@ body {
     background-color: #A5BE26;
 }
 
-.header3
-{
-    background: url("https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") no-repeat 50% 50%;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-}
+
 
 .header_eggy
 {
@@ -156,7 +151,9 @@ body {
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #F6AA93;
+    height: 40px;
+
 }
 
 .topnav a {
@@ -170,12 +167,12 @@ body {
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #eee;
     color: black;
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: white;
     color: white;
 }
 
@@ -204,3 +201,46 @@ body {
         text-align: left;
     }
 }
+
+/********************************************/
+
+/*.wrap {*/
+/*    width: 100%;*/
+/*}*/
+.poster2 {
+    width: 50%;
+    float: right;
+    background-color: #eee;
+    height: 500px;
+}
+ .poster3 {
+     width: 50%;
+     float: left;
+     background-color: white;
+     height: 500px;
+ }
+ .poster4 {
+     width: 50%;
+     float: right;
+     background-color: white;
+     height: 500px;
+ }
+.imgirl{
+    width: 80%;
+    height: 250px;
+
+}
+/*.poster1  {*/
+/*    width: 50%;*/
+/*    float: left;*/
+/*}*/
+ .img-fluid {
+     width: 50%;
+     height: 500px;
+     float: left;
+ }
+ .titl{
+     font-weight: bold;
+     font-size: 4em;
+     font-family: 'Handlee', cursive;
+ }
