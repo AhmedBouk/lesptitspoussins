@@ -32,10 +32,15 @@ class ParenttAdmin extends AbstractAdmin
             ->add('prenom')
             ->add('mail', EmailType::class)
             ->add('ville')
-            ->add('codepostal')
-            ->add('adresse')
+            ->add('codepostal', null, [
+                'label' => 'Code Postal'
+            ])
+            ->add('adresse', null, [
+                'label' => 'Votre Adresse Postal'
+            ])
             ->add('enfant', ModelType::class, [
                 'class' => EnfantProfil::class,
+                'label' => 'Vos Enfants',
                 'property' => 'nom',
                 'multiple' => true,
                 'sortable' =>true,
@@ -43,13 +48,18 @@ class ParenttAdmin extends AbstractAdmin
             ])
             ->add('tuteur', ModelType::class, [
                 'class' => Tuteur::class,
+                'label' => 'Vos différents tuteurs',
                 'property' => 'prenom',
                 'multiple' => true,
                 'sortable' =>true,
                 'btn_add' => 'Ajouter',
             ])
-            ->add('password', PasswordType::class)
-            ->add('is_enabled')
+            ->add('password', PasswordType::class, [
+                'label' => 'Votre Mot de Passe'
+            ])
+            ->add('is_enabled', null, [
+                'label' => 'Actif'
+            ])
         ;
     }
 
@@ -89,14 +99,30 @@ class ParenttAdmin extends AbstractAdmin
             ->add('prenom')
             ->addIdentifier('mail')
             ->add('ville')
-            ->add('codepostal')
-            ->add('adresse')
-            ->add('enfant', null, ['associated_property' => 'nom'])
-            ->add('tuteur', null, ['associated_property' => 'prenom'])
-            ->add('created_at_abonnement')
+            ->add('codepostal', null, [
+                'label' => 'Votre Code Postal'
+            ])
+            ->add('adresse', null, [
+                'label' => 'Votre Adresse Postal'
+            ])
+            ->add('enfant', null, [
+                'associated_property' => 'nom',
+                'label' => 'Vos Enfants'
+            ])
+            ->add('tuteur', null, [
+                'associated_property' => 'prenom',
+                'label' => 'Vos Tuteurs'
+            ])
+            ->add('created_at_abonnement', null, [
+                'label' => 'Date de création de votre abonnement'
+            ])
             ->add('status_abonnement', 'boolean')
-            ->add('date_duree')
-            ->add('is_enabled', 'boolean')
+            ->add('date_duree', null, [
+                'label' => 'Date de Fin de votre abonnement'
+            ])
+            ->add('is_enabled', 'boolean', [
+                'label' => 'Actif'
+            ])
             ->add('_action', 'action', [
                 'actions' => [
                     'edit' => [],
@@ -127,21 +153,35 @@ class ParenttAdmin extends AbstractAdmin
             ->add('mail')
             ->add('ville')
             ->add('codepostal', null, [
-                'label' => 'Code Postal'
+                'label' => 'Votre Code Postal'
             ])
-            ->add('adresse')
-            ->add('enfant', null, ['associated_property' => 'nom'])
-            ->add('tuteur', null, ['associated_property' => 'prenom'])
+            ->add('adresse', null, [
+                'label' => 'Votre Adresse Postal'
+            ])
+            ->add('enfant', null, [
+                'associated_property' => 'nom',
+                'label' => 'Vos Enfants'
+            ])
+            ->add('tuteur', null, [
+                'associated_property' => 'prenom',
+                'label' => 'Vos Tuteurs'
+            ])
             ->add('created_at_abonnement', null, [
-                'label' => 'Date début abonnement'
+                'label' => 'Date de création de votre abonnement'
             ])
-            ->add('status_abonnement', 'boolean', [
-                'label' => 'Abonné'
-            ])
+            ->add('status_abonnement', 'boolean')
             ->add('date_duree', null, [
-                'label' => 'Durée abonnement'
+                'label' => 'Date de Fin de votre abonnement'
             ])
-            ->add('is_enabled', 'boolean')
+            ->add('created_at', null, [
+                'label' => 'Date de Création de votre compte'
+            ])
+            ->add('updated_at', null, [
+                'label' => 'Date de dernière modification'
+            ])
+            ->add('is_enabled', 'boolean', [
+                'label' => 'Actif'
+            ])
         ;
     }
 

@@ -27,7 +27,9 @@ class EnfantProfilAdmin extends AbstractAdmin
         $form
             ->add('nom')
             ->add('prenom')
-            ->add('date_naissance')
+            ->add('date_naissance', null, [
+                'label' => 'Sa date de naissance'
+            ])
             ->add('allergie')
             ->add('traitement')
             ->add('maladies')
@@ -46,7 +48,9 @@ class EnfantProfilAdmin extends AbstractAdmin
             ])
             ->add('prenom')
             ->add('parentt', null, ['associated_property' => 'nom'])
-            ->add('date_naissance')
+            ->add('date_naissance', null, [
+                'label' => 'Sa date de naissance'
+            ])
             ->add('allergie')
             ->add('traitement')
             ->add('maladies')
@@ -78,13 +82,19 @@ class EnfantProfilAdmin extends AbstractAdmin
             ->add('nom')
             ->add('prenom')
             ->add('parentt', null, ['associated_property' => 'nom'])
-            ->add('date_naissance')
+            ->add('date_naissance', null, [
+                'label' => 'Sa date de naissance'
+            ])
             ->add('allergie')
             ->add('traitement')
             ->add('maladies')
             ->add('autres')
-            ->add('created_at')
-            ->add('updated_at')
+            ->add('created_at', null, [
+                'label' => 'Date de Création'
+            ])
+            ->add('updated_at', null, [
+                'label' => 'Date de Modification'
+            ])
             ;
     }
 

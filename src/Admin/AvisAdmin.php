@@ -32,7 +32,9 @@ class AvisAdmin extends AbstractAdmin
                     'je n\'aime pas' => 'je n\'aime pas'
                 ],
             ])
-            ->add('texte')
+            ->add('texte', null, [
+                'label' => 'Commentaire'
+            ])
             ;
     }
 
@@ -51,7 +53,9 @@ class AvisAdmin extends AbstractAdmin
                     'je n\'aime pas' => 'je n\'aime pas'
                 ],
             ])
-            ->add('texte')
+            ->add('texte', null, [
+                'label' => 'Commentaire'
+            ])
             ->add('parentt', null, ['associated_property' => 'nom', 'label' => 'Parent'])
             ->add('proProfil', null, ['associated_property' => 'nom_entreprise', 'label' => 'Entrprise'])
             ->add('actions', 'actions', [
@@ -60,7 +64,9 @@ class AvisAdmin extends AbstractAdmin
                     'delete' => []
                 ]
             ])
-            ->add('is_enabled')
+            ->add('is_enabled', null, [
+                'label' => 'Actif'
+            ])
             ;
     }
 
@@ -83,12 +89,20 @@ class AvisAdmin extends AbstractAdmin
                     'je n\'aime pas' => 'je n\'aime pas'
                 ],
             ])
-            ->add('texte')
+            ->add('texte', null, [
+                'label' => 'Commentaire'
+            ])
             ->add('parentt', null, ['associated_property' => 'nom', 'label' => 'Parent'])
             ->add('proProfil', null, ['associated_property' => 'nom_entreprise', 'label' => 'Entrprise'])
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('is_enabled')
+            ->add('created_at', null, [
+                'label' => 'Date de Création'
+            ])
+            ->add('updated_at', null, [
+                'label' => 'Date de Modification'
+            ])
+            ->add('is_enabled', null, [
+                'label' => 'Actif'
+            ])
             ;
     }
 
