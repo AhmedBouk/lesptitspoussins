@@ -151,7 +151,7 @@ body {
     margin-top: 20vh;
     margin-bottom: 20vh;}
 
-
+/*amina*/
 form h1 {
     font-size: 18px;
     background: #F6AA93 none repeat scroll 0% 0%;
@@ -292,36 +292,4 @@ i {
 #sendmessage.show,.show  {
     display:block;
 }
-
-.poster2 {
-    width: 50%;
-    float: right;
-    background-color: #eee;
-    height: 500px;
-}
-.poster3 {
-    width: 50%;
-    float: left;
-    background-color: #eee;
-    height: 500px;
-}
-.poster4 {
-    width: 50%;
-    float: right;
-    background-color: white;
-    height: 500px;
-}
-.imgirl{
-    width: 80%;
-    height: 250px;
-
-}
-/*.poster1  {*/
-/*    width: 50%;*/
-/*    float: left;*/
-/*}*/
-.img-fluid {
-    width: 50%;
-    height: 500px;
-    float: left;
-}
+/*amina*/
