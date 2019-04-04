@@ -35,7 +35,7 @@ class IndexController extends AbstractController
     /**
      * @Route("/inscription", name="app-inscription")
      */
-    public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
+    public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler, \Swift_Mailer $mailer) : Response
     {
         $parentt = new Parentt();
         $submittedToken = $request->request->get('token');
@@ -58,6 +58,16 @@ class IndexController extends AbstractController
                 $em->persist($parentt);
                 $em->flush();
 
+                $message = (new \Swift_Message('Confirmation d\'inscription'))
+                    ->setFrom('lesptitspoussinss@gmail.com')
+                    ->setTo($form->get('mail')->getData())
+                    ->setBody('<h4>Confirmation de votre Inscription</h4>
+                        <p>Bravo, vous voici inscrits sur le site lesptitspoussins! Vous êtes enregistré en tant que parent, maintenant vous pouvez découvrir
+                        notre site à cette adresse :</p><a href="127.0.0.1:3306/index">Lesptitspoussins</a>
+                    ')
+                ;
+
+                $mailer->send($message);
                 return $guardAuthenticatorHandler->authenticateUserAndHandleSuccess(
                     $parentt,
                     $request,
