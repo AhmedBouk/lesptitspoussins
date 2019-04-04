@@ -27,6 +27,7 @@ class ParenttAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $form)
     {
+
         $form
             ->add('nom')
             ->add('prenom')
@@ -43,7 +44,6 @@ class ParenttAdmin extends AbstractAdmin
                 'label' => 'Vos Enfants',
                 'property' => 'nom',
                 'multiple' => true,
-                'sortable' =>true,
                 'btn_add' => 'Ajouter',
             ])
             ->add('tuteur', ModelType::class, [
