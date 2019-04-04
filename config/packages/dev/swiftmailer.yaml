@@ -1,4 +1,7 @@
 # See https://symfony.com/doc/current/email/dev_environment.html
 swiftmailer:
+    url: '%env(MAILER_URL)%'
+    transport: smtp
+    encryption: ssl
     # send all emails to a specific address
     #delivery_addresses: ['me@example.com']

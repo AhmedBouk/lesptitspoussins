@@ -17,8 +17,18 @@ class IndexController extends AbstractController
     /**
      * @Route("/index", name="index")
      */
-    public function index()
+    public function index(\Swift_Mailer $mailer)
     {
+
+        $message = (new \Swift_Message('Bonjour'))
+            ->setFrom(['trouvestaperle@gmail.com'])
+            ->setTo('test@exemple.com')
+            ->setBody('Test')
+        ;
+
+        $mailer->send($message);
+
+
         return $this->render('invit/index.html.twig');
     }
 
