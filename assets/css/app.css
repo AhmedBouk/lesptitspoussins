@@ -285,7 +285,7 @@ i {
     display:block;
 }
 /*amina*/
-=======
+
 /*nav bar*/
 
  a {
@@ -435,9 +435,9 @@ i {
 
 /********************************************/
 
-.wrap {
+.ner {
     width: 100%;
-    padding-top: 70px;
+    padding-top: 80px;
 }
 .poster2 {
     width: 50%;
@@ -462,14 +462,12 @@ i {
     height: 250px;
 
 }
-/*.poster1  {*/
-/*    width: 50%;*/
-/*    float: left;*/
-/*}*/
+
  .img-fluid {
-     width: 50%;
-     height: 550px;
+     width: 100%;
+     height: auto;
      float: left;
+     padding-top:12%;
  }
  .titl{
      font-weight: bold;
@@ -497,3 +495,6 @@ i {
     background-color:#8181bd;
  }
 
+.button {
+    text-align: center;
+}
