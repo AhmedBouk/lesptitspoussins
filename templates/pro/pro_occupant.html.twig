@@ -3,10 +3,29 @@
 {% block body %}
 
     {{ parent() }}
+    <div class="col-md-4 offset-md-4 mt-5">
+        <div class="col-md hmed text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste des occupants</div>
 
 
-    {#   HERE#}
-
-
-
+        <table class="table profil">
+            <thead class="thead-light font-weight-bold">
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-primary">
+                <td>louis </td>
+                <td>Niort  </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="">
+            <button type="button" class="btn  text-right hmed  ">Ajouter</button>
+        </a>
+        <a href="">
+            <button type="button" class="btn  text-right hmed  ">Modifier</button>
+        </a>
+    </div>
 {% endblock body %}
