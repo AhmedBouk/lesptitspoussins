@@ -75,7 +75,14 @@ class EnfantProfil
 
     public function __construct()
     {
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->plan = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
     }
 
     public function getId(): ?int

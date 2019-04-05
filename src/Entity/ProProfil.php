@@ -101,7 +101,7 @@ class ProProfil implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $statut;
+    private $statut = 1;
 
     /**
      * @ORM\Column(type="integer")
@@ -139,7 +139,7 @@ class ProProfil implements UserInterface
     private $plan;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles =[];
 

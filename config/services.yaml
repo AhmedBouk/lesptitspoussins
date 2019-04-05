@@ -8,6 +8,59 @@ parameters:
 
 services:
     # default configuration for services in *this* file
+    admin.avis:
+        class: App\Admin\AvisAdmin
+        arguments: [ ~, App\Entity\Avis, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Professionnels, label: Avis }
+
+    admin.enfants:
+        class: App\Admin\EnfantProfilAdmin
+        arguments: [ ~, App\Entity\EnfantProfil, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Enfants }
+
+    admin.facturation:
+        class: App\Admin\FacturationAdmin
+        arguments: [ ~, App\Entity\Facturation, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Argent, label: Facturation }
+
+    admin.status:
+        class: App\Admin\ListeStatusAdmin
+        arguments: [ ~, App\Entity\ListeStatus, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Status, label: Status }
+
+    sonata.paiements:
+        class: App\Admin\PaiementAdmin
+        arguments: [ ~, App\Entity\Paiement, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Argent, label: Paiements }
+
+    sonata.parents:
+        class: App\Admin\ParenttAdmin
+        arguments: [ ~, App\Entity\Parentt, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Parents }
+
+    sonata.plan:
+        class: App\Admin\PlanAdmin
+        arguments: [ ~, App\Entity\Plan, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Planning, label: Plan }
+
+    sonata.professionnels:
+        class: App\Admin\ProProfilAdmin
+        arguments: [ ~, App\Entity\ProProfil, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Professionnels, label: Professionnels }
+
+    sonata.tuteur:
+        class: App\Admin\TuteurAdmin
+        arguments: [ ~, App\Entity\Tuteur, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Tuteur }
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

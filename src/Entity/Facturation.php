@@ -56,6 +56,11 @@ class Facturation
      */
     private $proProfil;
 
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+    }
+
     public function getId(): ?int
     {
         return $this->id;

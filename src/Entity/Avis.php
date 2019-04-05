@@ -39,7 +39,7 @@ class Avis
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_enabled;
+    private $is_enabled = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Parentt", inversedBy="avis")
@@ -50,6 +50,11 @@ class Avis
      * @ORM\ManyToOne(targetEntity="App\Entity\ProProfil", inversedBy="avis")
      */
     private $proProfil;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+    }
 
     public function getId(): ?int
     {
