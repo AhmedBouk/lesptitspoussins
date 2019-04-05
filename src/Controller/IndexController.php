@@ -24,9 +24,6 @@ class IndexController extends AbstractController
         return $this->render('invit/index.html.twig');
     }
 
-    /**
-     * @Route("/inscription", name="app-inscription")
-     */
     public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
     {
         $parentt = new Parentt();
