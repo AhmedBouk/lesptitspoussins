@@ -5,11 +5,17 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParenttRepository")
+ * @UniqueEntity(fields={"mail"},
+ *     errorPath="mail",
+ *     message="Cette adresse mail existe déjà!"
+ * )
  */
-class Parentt
+class Parentt implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -29,7 +35,7 @@ class Parentt
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mail;
 
@@ -58,6 +64,7 @@ class Parentt
      */
     private $password;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -81,7 +88,7 @@ class Parentt
     /**
      * @ORM\Column(type="boolean")
      */
-    private $statut_abonnement;
+    private $statut_abonnement = 0;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -91,7 +98,12 @@ class Parentt
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_enabled;
+    private $is_enabled = 1;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ListeStatus", mappedBy="parentt")
@@ -123,8 +135,15 @@ class Parentt
      */
     private $enfant;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $statutcondition = 1;
+
     public function __construct()
     {
+        $this->token = bin2hex(random_bytes(58));
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->listestatus = new ArrayCollection();
         $this->paiement = new ArrayCollection();
         $this->avis = new ArrayCollection();
@@ -162,7 +181,8 @@ class Parentt
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getMail(): ?string// you *may* need a real salt depending on your encoder
+        // see section on salt below
     {
         return $this->mail;
     }
@@ -192,7 +212,8 @@ class Parentt
     }
 
     public function setCodepostal(?int $codepostal): self
-    {
+    {// you *may* need a real salt depending on your encoder
+        // see section on salt below
         $this->codepostal = $codepostal;
 
         return $this;
@@ -219,7 +240,8 @@ class Parentt
     {
         $this->telephone = $telephone;
 
-        return $this;
+        return $this;// you *may* need a real salt depending on your encoder
+        // see section on salt below
     }
 
     public function getPassword(): ?string
@@ -283,7 +305,8 @@ class Parentt
     }
 
     public function getStatutAbonnement(): ?bool
-    {
+    {// you *may* need a real salt depending on your encoder
+        // see section on salt below
         return $this->statut_abonnement;
     }
 
@@ -374,7 +397,7 @@ class Parentt
             // set the owning side to null (unless already changed)
             if ($paiement->getParentt() === $this) {
                 $paiement->setParentt(null);
-            }
+            };
         }
 
         return $this;
@@ -502,5 +525,42 @@ class Parentt
         }
 
         return $this;
+    }
+
+    public function getStatutcondition(): ?bool
+    {
+        return $this->statutcondition;
+    }
+
+    public function setStatutcondition(bool $statutcondition): self
+    {
+        $this->statutcondition = $statutcondition;
+
+        return $this;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->mail;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_PARENT';
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
     }
 }

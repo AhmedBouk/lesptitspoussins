@@ -24,6 +24,9 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+
+
+
 /* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure,
@@ -48,6 +51,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 
+
 }
 :after,:before {
      -webkit-box-sizing:border-box;
@@ -57,3 +61,6 @@ table {
 .clear:before, .clear:after {content: ' ';display:table;}
 .clear:after {clear:both}
 .clear {zoom:1;}
+
+}
+
