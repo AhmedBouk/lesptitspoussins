@@ -26,6 +26,10 @@ class IndexController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/inscription")
+     */
     public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
     {
         $parentt = new Parentt();
