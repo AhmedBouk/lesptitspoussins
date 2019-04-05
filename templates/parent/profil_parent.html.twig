@@ -3,10 +3,92 @@
 {% block body %}
 
     {{ parent() }}
-
+    <div class="clear"></div>
 
     {#   HERE#}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container mt-5 ">
+        <div class="row" id="main">
+            <div class="col-md-8 offset-md-2 mt-5 well" id="rightPanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form role="form">
+                            <h2>Renseigner votre profil</h2>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="prenom" id="prenom"></label>
+                                        <input type="text" name="prenom" id="prenom"
+                                               class="form-control input-lg" placeholder="Pr&eacute;nom" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="nom" id="nom"></label>
+                                        <input type="text" name="nom" id="nom" class="form-control input-lg"
+                                               placeholder="Nom" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="codepostal" id="codepostal"></label>
+                                        <input type="text" name="codepostal" id="codepostal"
+                                               class="form-control input-lg" placeholder="Code postal" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="adresse" id="adresse"></label>
+                                        <input type="text" name="adresse" id="adresse"
+                                               class="form-control input-lg" placeholder="Adresse " >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="telephone" id="telephone"></label>
+                                        <input type="text" name="telephone" id="telephone"
+                                               class="form-control input-lg" placeholder="Telephone" >
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="ville" id="ville"></label>
+                                        <input type="text" name="ville" id="ville"
+                                               class="form-control input-lg" placeholder="Ville" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mail" id="mail"></label>
+                                <input type="email" name="mail" id="mail" class="form-control input-lg"
+                                       placeholder="Email Address" >
+                            </div>
+
+
+
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <a href="index" class="btn btn-success btn-block btn-lg">Retour</a>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <a href="#" class="btn btn-success btn-block btn-lg">Enregistrer</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
 
 
 {% endblock body %}

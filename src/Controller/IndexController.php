@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Parentt;
 use App\Form\RegistrationForm;
 use App\Security\LoginFormAuthenticator;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+
 
 class IndexController extends AbstractController
 {
@@ -62,3 +64,4 @@ class IndexController extends AbstractController
         ]);
     }
 }
+
