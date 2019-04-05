@@ -3,24 +3,40 @@
 {% block title %}Connexion{% endblock title %}
 
 {% block body %}
+    <div class="clear"></div>
 {{ parent() }}
 <form method="post">
-    {% if error %}
+    {#{% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-    <h2 class="h3 mb-3">Connexion</h2>
-    <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter.</h5>
-    <label for="inputEmail" class="">Email</label>
-    <br><input type="email" name="mail" id="mail" class="form-control" placeholder="Email" required autofocus>
-    <br><label for="password" class="">Mot de passe :</label>
-    <br><input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" required>
+    {% endif %}#}
 
+    <h1 class="text-center mt-5">Connexion</h1>
+    <div class="contentform">
+    <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter:</h5>
+
+    <div class="form-group">
+        <p>E-mail <span>*</span></p>
+        <input type="email" name="mail" id="inputEmail" data-rule="required"
+               data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' doit être renseigné."/>
+        <div class="validation"></div>
+    </div>
+
+    <div class="form-group">
+        <p>Mot de passe <span>*</span></p>
+        <input type="password" name="password" id="password" data-rule="required"
+               data-msg="Vérifiez votre saisie sur les champs : Le champ 'mot de passe' doit être renseigné."/>
+        <div class="validation"></div>
+    </div>
+
+
+
+    </div>
     <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}"
+           value="{{ csrf_token('authenticate') }}"
     >
-
-    <input type="submit" value="Se Connecter">
-
+    <input type="submit" value="Se Connecter" class="bouton-contact">
 </form>
 
+
 {% endblock body %}
+
