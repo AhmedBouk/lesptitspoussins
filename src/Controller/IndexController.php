@@ -17,18 +17,8 @@ class IndexController extends AbstractController
     /**
      * @Route("/index", name="index")
      */
-    public function index(\Swift_Mailer $mailer)
+    public function index()
     {
-
-        $message = (new \Swift_Message('Bonjour'))
-            ->setFrom(['trouvestaperle@gmail.com'])
-            ->setTo('test@exemple.com')
-            ->setBody('Test')
-        ;
-
-        $mailer->send($message);
-
-
         return $this->render('invit/index.html.twig');
     }
 
@@ -59,12 +49,11 @@ class IndexController extends AbstractController
                 $em->flush();
 
                 $message = (new \Swift_Message('Confirmation d\'inscription'))
+                    ->setContentType('text/html', 'utf8')
                     ->setFrom('lesptitspoussinss@gmail.com')
                     ->setTo($form->get('mail')->getData())
-                    ->setBody('<h4>Confirmation de votre Inscription</h4>
-                        <p>Bravo, vous voici inscrits sur le site lesptitspoussins! Vous êtes enregistré en tant que parent, maintenant vous pouvez découvrir
-                        notre site à cette adresse :</p><a href="127.0.0.1:3306/index">Lesptitspoussins</a>
-                    ')
+                    ->setBody('<h4>Confirmation de votre Inscription</h4><p>Bravo, vous voici inscrits sur le site lesptitspoussins! Vous êtes enregistré en tant que parent, maintenant vous pouvez découvrir
+                        notre site à cette adresse :</p>'.utf8_decode('<a href="127.0.0.1:8000/index">Lesptitspoussins</a>'))
                 ;
 
                 $mailer->send($message);
