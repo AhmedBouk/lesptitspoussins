@@ -498,3 +498,8 @@ i {
 .button {
     text-align: center;
 }
+.box {
+    position: relative !important;
+    margin-left: -14rem !important;
+    margin-right: -13rem !important;
+}
