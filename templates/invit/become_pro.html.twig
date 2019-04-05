@@ -3,46 +3,33 @@
 {% block body %}
 
     {{ parent() }}
-
-
-    <div class="container-index">
-
-        <div class="container mt-4">
-
-            <h1 class="text-center mb-4 h1">Les p'tits poussins, c'est quoi ?</h1>
-            <section>
-                <div class="section">
-                    <div class="wrap">
-                        <img class="img-fluid mt-4 " src={{ asset('build/images/photo.png') }} alt="image_creche"/>
-                        <div class="poster2 mt-4">
-                            <h1 class="h1 text-center mt-2 ">Les petis poussins</h1>
-                            <p class="text-center mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab
-                                architecto asperiores debitis delectus, ducimus eos esse expedita, explicabo molestiae
-                                neque nostrum omnis provident quibusdam quod repellendus rerum suscipit veritatis!</p>
-                            <br>
-                            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                                distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
-                                dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
-                            <br>
-                            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                                distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
-                                dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
-                            <br>
-                            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                                distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
-                                dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
-
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-            </section>
-
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
+<div class="clear"></div>
+    <div class="container" style="padding-top: 100px;">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid imgpro mt-4 " src={{ asset('build/images/photo.png') }} alt="image_creche"/>
             </div>
-
+            <div class="col">
+                <h1 class="h1 text-center mt-2 ">Les petis poussins</h1>
+                <p class="text-center mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab
+                    architecto asperiores debitis delectus, ducimus eos esse expedita, explicabo molestiae
+                    neque nostrum omnis provident quibusdam quod repellendus rerum suscipit veritatis!</p>
+                <br>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+                    distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
+                    dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
+                <br>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+                    distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
+                    dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
+                <br>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+                    distinctio est facilis magni maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae
+                    dolor, enim exercitationem impedit minus placeat porro quae quo quod.</p>
+            </div>
         </div>
+    </div>
+
 
         <div class="row mt-5">
             <div class="col-md-6 offset-md-3">
@@ -50,9 +37,6 @@
                     <h1>N'hésitez pas à nous contacter :</h1>
 
                     <div class="contentform">
-                        <div id="sendmessage"> Your message has been sent successfully. Thank you.</div>
-
-
                         <div class="leftcontact">
 
 

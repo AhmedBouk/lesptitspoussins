@@ -7,10 +7,12 @@ body {
 }
 /*titre des liste couleur*/
 .hmed{
-    background-color: #B0413E;
+    background-color: #1D4851;
     font-weight: bold;
-    color: black;
+    color: white;
+    font-size: 1.2em;
 }
+
 /*chercher un pro*/
 .hmouda{
     background-color: #083D77;
@@ -153,7 +155,9 @@ form h1 {
     text-shadow: none;
     text-align:left
 }
-
+.h1{
+    font-family: Handlee;
+}
 form {
     border-radius: 5px;
     max-width:700px;
@@ -469,6 +473,10 @@ i {
      float: left;
      padding-top:12%;
  }
+ .imgpro{
+     width: 100%;
+     height: 100%;
+ }
  .titl{
      font-weight: bold;
      font-size: 4em;
@@ -487,6 +495,9 @@ i {
      }
 
  }
+ .bnt{
+     margin: 1%;
+ }
  .btn{
      background-color: #81BDA4;
      color: white;
@@ -497,4 +508,9 @@ i {
 
 .button {
     text-align: center;
+}
+.box {
+    position: relative !important;
+    margin-left: -14rem !important;
+    margin-right: -13rem !important;
 }
