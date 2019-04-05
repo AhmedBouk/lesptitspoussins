@@ -3,20 +3,17 @@
 {% block body %}
 <div class="clear"></div>
     {{ parent() }}
-    <div class="container mt-5 mb-5 text-center">
-        <!-- Content here -->
-        <a href="">
-            <button type="button" class="btn  hmed">Abonnement</button>
-        </a>
+    <div class="container mt-5 mb-5 text-center" style="padding-top: 100px">
+        <a href=""><button type="button" class="btn hmed">Abonnement</button></a>
     </div>
 
     {#profil#}
     <div class="container ">
         <div class="row">
             <div class="col-md-4">
-                <div class="container text-center  mb-2">
+                <div class="container text-center mb-2">
                     <div class="row ">
-                        <div class="col-md hmed " style="border-radius: 30px; padding: 5%;">Profil</div>
+                        <div class="col-md h1" style="border-radius: 30px; padding: 5%;">Profil</div>
                     </div>
                 </div>
                 <ul class="list-group mb-3">
@@ -24,7 +21,7 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Prénom :</span> Ahmed</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Adresse :</span> 5 rue lamartin</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone :</span> 0606060606</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span> AHmed.ahmed@gmail.com</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span> Ahmed.ahmed@gmail.com</li>
                 </ul>
                 <a href="profilparent">
                     <button type="button" class="btn hmed ">Modifier</button>
@@ -32,29 +29,13 @@
             </div>
             {#profil enfant#}
             <div class="col-md-4 offset-md-4">
-                <div class="col-md hmed text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste des occupants</div>
-
-
-                <table class="table profil">
-                    <thead class="thead-light font-weight-bold">
-                    <tr>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Nom</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="table-primary">
-                        <td>louis </td>
-                        <td>Niort  </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <a href="">
-                    <button type="button" class="btn  text-right hmed  ">Ajouter</button>
-                </a>
-                <a href="">
-                    <button type="button" class="btn  text-right hmed  ">Modifier</button>
-                </a>
+                <div class="profile-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="image_entreprise" style="padding-top: 25%"/>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -62,7 +43,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <div class="col-md hmed text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste des demandes</div>
+                    <div class="col-md h1 text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste des demandes</div>
 
                 </div>
             </div>
@@ -107,16 +88,72 @@
                     </tbody>
                 </table>
                 {#   HERE#}
-
+                <div class="col-md-6 offset-md-3 mt-3">
+                    <a href="#" class="btn hmed btn-block mt-3 mb-3">Voir vos demandes</a>
+                </div>
             </div>
         </div>
 
+{#liste des membres #}
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="col-md h1 text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste des membres</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+            <div class="row">
+                <table class="table">
+                    <thead class="hmed font-weight-bold">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom du parent</th>
+                        <th scope="col">Prénom du parent</th>
+                        <th scope="col">Prénom de l'enfant</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>?;?</td>
+                        <td>10/08/1989</td>
+                        <td>Refusé</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>;?;</td>
+                        <td>10/08/1989</td>
+                        <td>Refusé</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>!:!</td>
+                        <td>10/08/1989</td>
+                        <td>Accepté</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>:!:</td>
+                        <td>10/08/1989</td>
+                        <td>Accepté</td>
+                    </tr>
+                    </tbody>
+                </table>
+                {#   HERE#}
+                <div class="col-md-6 offset-md-3 mt-3">
+                    <a href="#" class="btn hmed btn-block mt-3 mb-3">Voir vos membres</a>
+                </div>
+            </div>
+        </div>
 
         {#liste d'attente#}
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <div class="col-md hmed text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste d'attente</div>
+                    <div class="col-md h1 text-center mb-2" style="border-radius: 30px; padding: 5%;">Liste d'attente</div>
                 </div>
             </div>
         </div>
@@ -159,7 +196,9 @@
                     </tbody>
                 </table>
                 {#   HERE#}
-
+                <div class="col-md-6 offset-md-3 mt-3">
+                    <a href="#" class="btn hmed btn-block mt-3 mb-3">Voir votre liste d'attente</a>
+                </div>
             </div>
         </div>
 
@@ -167,7 +206,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <div class="col-md hmed text-center mb-4" style="border-radius: 30px; padding: 5%;">Liste des avis</div>
+                    <div class="col-md h1 text-center mb-4" style="border-radius: 30px; padding: 5%;">Liste des avis</div>
                 </div>
             </div>
         </div>

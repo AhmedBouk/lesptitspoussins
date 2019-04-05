@@ -21,7 +21,7 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->render('invit/index.html.twig');
+        return $this->render('invit/subs.html.twig');
     }
 
     public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
