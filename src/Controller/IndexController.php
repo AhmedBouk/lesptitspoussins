@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
+
 class IndexController extends AbstractController
 {
     /**
@@ -64,3 +65,4 @@ class IndexController extends AbstractController
     }
 
 }
+
