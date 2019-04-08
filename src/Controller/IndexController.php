@@ -17,12 +17,12 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/", name="indexsite")
      */
     public function index()
     {
 
-        return $this->render('invit/inscription.html.twig');
+        return $this->render('invit/index.html.twig');
 
     }
 
