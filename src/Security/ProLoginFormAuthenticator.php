@@ -91,7 +91,7 @@ class ProLoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse('/index');
+        return new RedirectResponse('/');
 
     }
 

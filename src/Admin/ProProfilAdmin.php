@@ -21,7 +21,7 @@ class ProProfilAdmin extends AbstractAdmin
     public function toString($object)
     {
         return $object instanceof ProProfil
-            ? $object->getnom_entreprise()
+            ? $object->getnomEntreprise()
             : 'Nom Entreprise';
     }
 
@@ -56,7 +56,7 @@ class ProProfilAdmin extends AbstractAdmin
             ->add('password', PasswordType::class, [
                 'label' => 'Votre Mot de Passe'
             ])
-            ->add('status', null, [
+            ->add('statut', null, [
                 'label' => 'Actif'
             ])
         ;
@@ -112,6 +112,10 @@ class ProProfilAdmin extends AbstractAdmin
                     'delete' => []
                 ]
             ])
+            ->add('statut', null, [
+                'label' => 'Actif'
+            ])
+
         ;
     }
 
@@ -156,6 +160,10 @@ class ProProfilAdmin extends AbstractAdmin
             ->add('updated_at', null, [
                 'label' => 'Date de dernière modification'
             ])
-            ;
+            ->add('statut', null, [
+                'label' => 'Actif'
+            ])
+
+        ;
     }
 }

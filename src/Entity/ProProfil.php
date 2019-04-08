@@ -86,7 +86,7 @@ class ProProfil implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $disponibilite;
+    private $disponibilite = 1;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)

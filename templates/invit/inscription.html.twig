@@ -3,21 +3,18 @@
 {% block body %}
     <div class="clear"></div>
     {{ parent() }}
-<form>
+    {{ form_start(form) }}
     <h1 class="text-center mt-5">Insription</h1>
     <div class="contentform">
         <div class="form-group">
-            {{ form_start(form) }}
             {{form_row(form.mail)}}
         </div>
 
         <div class="form-group">
-            {{ form_start(form) }}
             {{form_row(form.password.first)}}
         </div>
 
         <div class="form-group">
-            {{ form_start(form) }}
             {{form_row(form.password.second)}}
         </div>
 
@@ -32,6 +29,7 @@
 
 
     <input type="submit"  value="S'inscrire" class="bouton-contact">
+    {{ form_end(form) }}
 
 
 </form>
