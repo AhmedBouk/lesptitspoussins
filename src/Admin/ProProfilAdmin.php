@@ -54,7 +54,8 @@ class ProProfilAdmin extends AbstractAdmin
 
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Votre Mot de Passe'
+                'label' => 'Votre Mot de Passe',
+                'translation_domain' => 'FOSUserBundle'
             ])
             ->add('statut', null, [
                 'label' => 'Actif'

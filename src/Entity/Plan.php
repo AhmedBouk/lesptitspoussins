@@ -22,12 +22,12 @@ class Plan
     private $date;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $heuredebut;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $heuredefin;
 

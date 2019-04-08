@@ -64,6 +64,10 @@ class Parentt implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $passwordRequestedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -562,5 +566,21 @@ class Parentt implements UserInterface
     {
         // TODO: Implement getSalt() method.
         return null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordRequestedAt()
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    /**
+     * @param mixed $passwordRequestedAt
+     */
+    public function setPasswordRequestedAt($passwordRequestedAt): void
+    {
+        $this->passwordRequestedAt = $passwordRequestedAt;
     }
 }
