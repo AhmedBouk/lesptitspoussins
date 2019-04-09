@@ -12,24 +12,24 @@
 
     <h1 class="text-center mt-5">Connexion</h1>
     <div class="contentform">
-    <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter:</h5>
-
-    <div class="form-group">
-        <p>E-mail <span>*</span></p>
-        <input type="email" name="mail" id="inputEmail" data-rule="required"
-               data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' doit être renseigné."/>
-        <div class="validation"></div>
+        <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter:</h5>
+    
+            <div class="form-group">
+                <p>E-mail <span>*</span></p>
+                <input type="email" name="mail" id="inputEmail" data-rule="required"
+                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' doit être renseigné."/>
+                <div class="validation"></div>
+            </div>
+        
+            <div class="form-group">
+                <p>Mot de passe <span>*</span></p>
+                <input type="password" name="password" id="password" data-rule="required"
+                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'mot de passe' doit être renseigné."/>
+                <div class="validation"></div>
+            </div>
     </div>
-
-    <div class="form-group">
-        <p>Mot de passe <span>*</span></p>
-        <input type="password" name="password" id="password" data-rule="required"
-               data-msg="Vérifiez votre saisie sur les champs : Le champ 'mot de passe' doit être renseigné."/>
-        <div class="validation"></div>
-    </div>
-
-
-
+    <div>
+        <a href="{{ path('app_oublipassword') }}">Mot de passe oublié?</a>
     </div>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"

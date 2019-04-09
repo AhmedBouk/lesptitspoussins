@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock title %}
+
+{% block body %}
+
+    {{ parent() }}
+    <div class="clear">
+        <form method="post">
+            <label for="mail">Veuillez saisir votre Email : </label>
+            <br><input type="email" id="mail" name="mail" placeholder="Email">
+
+            <br><input type="submit" name="submitted" value="Valider">
+        </form>
+    </div>
+
+{% endblock body %}
