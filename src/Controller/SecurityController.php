@@ -62,12 +62,13 @@ class SecurityController extends AbstractController
             }
 
             //On définit la route à prendre si soumission validé
-            $url = $this->generateUrl('app_reset_password', ['token' => $token]);
+            $url = $this->generateUrl('app_reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Mot de passe oublié'))
+                ->setContentType('text/html', 'utf8')
                 ->setFrom('lesptitspoussinss@gmail.com')
                 ->setTo($user->getMail())
-                ->setBody('Voici le lien pour réinitialiser votre mot de passe : <a href="' . $url .'">Cliquer ici</a>', 'text/html');
+                ->setBody('Voici le lien pour réinitialiser votre mot de passe : <a href="'.$url.'">Cliquer ici</a>');
 
             $mailer->send($message);
 
