@@ -35,19 +35,19 @@ class SecurityController extends AbstractController
     /**
      * @Route("/forgot" ,name="app_oublipassword")
      */
-    public function forgotpassword(Request $request, TokenGeneratorInterface $tokenGenerator, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer)
+    public function forgotpassword(Request $request, TokenGeneratorInterface $tokenGenerator, UrlGeneratorInterface $urlGenerator, \Swift_Mailer $mailer)
     {
         if ($request->isMethod('POST')){
             $email = $request->request->get('mail');
 
             //On défnit notre variable user avec email
             $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository(Parentt::class)->findOneBy(['email' => $email]);
+            $user = $em->getRepository(Parentt::class)->findOneBy(['mail' => $email]);
 
             //Si l'utilisateurs a rentré un mauvais email
             if ($user === null){
                 $this->addFlash('danger', 'Email Inconnu');
-                return $this->redirectToRoute('indexsite');
+                return $this->redirectToRoute('app_oublipassword');
             }
             $token = $tokenGenerator->generateToken();
 
@@ -62,12 +62,12 @@ class SecurityController extends AbstractController
             }
 
             //On définit la route à prendre si soumission validé
-            $url = $this->generateUrl('app_reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_PATH);
+            $url = $this->generateUrl('app_reset_password', ['token' => $token]);
 
             $message = (new \Swift_Message('Mot de passe oublié'))
                 ->setFrom('lesptitspoussinss@gmail.com')
                 ->setTo($user->getMail())
-                ->setBody('Voici le lien pour réinitialiser votre mot de passe : ' . $url, 'text/html');
+                ->setBody('Voici le lien pour réinitialiser votre mot de passe : <a href="' . $url .'">Cliquer ici</a>', 'text/html');
 
             $mailer->send($message);
 

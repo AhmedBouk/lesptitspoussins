@@ -5,6 +5,11 @@
 {% block body %}
 
     {{ parent() }}
+    {% for message in app.flashes('danger') %}
+    <div class="danger">
+        {{ message }}
+    </div>
+    {% endfor %}
     <div class="clear">
         <form method="post">
             <label for="mail">Veuillez saisir votre Email : </label>
