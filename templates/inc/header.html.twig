@@ -5,7 +5,7 @@
     <ul class="menu">
         {% if is_granted('ROLE_PARENT') %}
             <li><a href="{{ path('indexsite') }}">Accueil</a></li>
-            <li><a href="#work">Profil Parent</a></li>
+            <li><a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">Profil Parent</a></li>
             <li><a href="/logout">Se déconnecter</a></li>
             <li><a href="#contact">Contact</a></li>
             {% else %}
@@ -15,7 +15,7 @@
         {% endif %}
         {% if is_granted('ROLE_PRO') %}
             <li><a href="{{ path('indexsite') }}">Accueil</a></li>
-            <li><a href="#about">Profil Professionnel</a></li>
+            <li><a href="{{ path('prodashboard', { 'id' : app.user.id}) }}">Profil Professionnel</a></li>
             <li><a href="/logout">Se déconnecter</a></li>
             <li><a href="#contact">Contact</a></li>
         {% endif %}
