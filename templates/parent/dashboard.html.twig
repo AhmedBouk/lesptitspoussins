@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <ul class="list-group mb-3">
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span>{{ app.user.nom }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Prénom : </span>{{ app.user.prenom }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ app.user.adresse }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ app.user.telephone }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ app.user.mail }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span>{{ parent.nom }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Prénom : </span>{{ parent.prenom }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ parent.adresse }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
-                <a href="{{ path('editparent', { 'id' : app.user.id }) }}">
+                <a href="{{ path('editparent', { 'id' : parent.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
                 </a>
             </div>
@@ -42,14 +42,16 @@
                 <table class="table profil">
                     <thead class="thead-light font-weight-bold">
                     <tr>
-                        <th scope="col">{{ enfantprenom }}</th>
-                        <th scope="col">{{ enfantnom }}</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr class="table-primary">
-                        <td>louis </td>
-                        <td>Niort  </td>
+                    {% for enfant in data %}
+                        <th>{{ enfant.prenom }}</th>
+                        <th>{{ enfant.nom }}</th>
+                    {% endfor %}
                     </tr>
                     </tbody>
                 </table>
