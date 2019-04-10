@@ -25,47 +25,5 @@ class IndexController extends AbstractController
         return $this->render('invit/index.html.twig');
 
     }
-
-
-    /**
-     * @Route("/inscription")
-     */
-    public function createParentt(Request $request, UserPasswordEncoderInterface $passwordEncoder, LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardAuthenticatorHandler) : Response
-    {
-        $parentt = new Parentt();
-        $submittedToken = $request->request->get('token');
-
-        $form = $this->createForm(RegistrationForm::class, $parentt)
-        ;
-        $form->handleRequest($request);
-
-        if ($this->isCsrfTokenValid('create-parentt', $submittedToken)) {
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                $parentt->setPassword(
-                    $passwordEncoder->encodePassword(
-                        $parentt,
-                        $form->get('password')->getData()
-                    )
-                );
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($parentt);
-                $em->flush();
-
-                return $guardAuthenticatorHandler->authenticateUserAndHandleSuccess(
-                    $parentt,
-                    $request,
-                    $authenticator,
-                    'parentt'
-                );
-            }
-        }
-
-        return $this->render('invit/inscription.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
 }
 
