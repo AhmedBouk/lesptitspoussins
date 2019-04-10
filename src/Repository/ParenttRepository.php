@@ -47,4 +47,15 @@ class ParenttRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByEnfant(Parentt $parentt)
+    {
+        return $this->createQueryBuilder('parentt')
+            ->leftJoin('parentt.enfant', 'pe')
+            ->where('pe.parentt.id = :parent')
+            ->setParameter(':parent', $parentt->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

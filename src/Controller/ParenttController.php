@@ -14,7 +14,7 @@ class ParenttController extends AbstractController
 {
 
     /**
-     * @Route("/parent/dashboard/{id}", name="dashboardparent")
+     * @Route("/parent/{id}/dashboard", name="dashboardparent")
      */
     public function dashboardparentt()
     {
