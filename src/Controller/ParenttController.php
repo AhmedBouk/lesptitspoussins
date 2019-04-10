@@ -17,12 +17,23 @@ class ParenttController extends AbstractController
     /**
      * @Route("/parent/{id}/dashboard", name="dashboardparent")
      */
-    public function dashboardparentt(ParenttRepository $parenttRepository, Parentt $parentt)
+    public function dashboardparentt(ParenttRepository $parenttRepository, $id)
     {
-        $enfant = $parenttRepository->findByEnfant($parentt->getId());
+        $enfants = $parenttRepository->findByEnfant($id);
 
-        print_r($enfant);
-        return $this->render('parent/dashboard.html.twig');
+        $data = array();
+        foreach ($enfants as $row){
+
+            $data = array(
+                'prenom' => $row['prenom'],
+                'nom' => $row['nom']
+            );
+            print_r($data);
+        }
+        return $this->render('parent/dashboard.html.twig', [
+            'enfantprenom' => $data['prenom'],
+            'enfantnom' => $data['nom']
+        ]);
     }
 
     /**
