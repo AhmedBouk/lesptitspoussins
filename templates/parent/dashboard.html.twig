@@ -46,14 +46,16 @@
                         <th scope="col">Nom</th>
                     </tr>
                     </thead>
+
+                    {% for enfant in data %}
                     <tbody>
                     <tr class="table-primary">
-                    {% for enfant in data %}
                         <th>{{ enfant.prenom }}</th>
                         <th>{{ enfant.nom }}</th>
-                    {% endfor %}
                     </tr>
                     </tbody>
+                    {% endfor %}
+
                 </table>
                 <a href="">
                     <button type="button" class="btn  text-right hmed  ">Ajouter</button>
