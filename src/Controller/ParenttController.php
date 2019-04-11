@@ -28,7 +28,6 @@ class ParenttController extends AbstractController
                 'prenom' => $row['prenom'],
                 'nom' => $row['nom']
             );
-            print_r($data);
         }
         return $this->render('parent/dashboard.html.twig', [
             'parent' => $parentt,

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+    {% extends 'base.html.twig' %}
 
 {% block body %}
     <div class="clear"></div>
@@ -8,49 +8,52 @@
         <div class="col-md-12 mb-5 well" id="rightPanel">
             <div class="row">
                 <div class="col-md-12">
-                    <form role="form">
+                    {{ form_start(form) }}
                         <h2 class="text-center">Renseigner le profil de votre enfant</h2>
                         <hr class="colorgraph">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Prénom</label>
-                                    <input type="text" name="prenom" id="prenom" class="form-control input-lg" placeholder="Prénom" tabindex="1">
+                                    {{ form_row(form.nom) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Nom</label>
-                                    <input type="text" name="nom" id="nom" class="form-control input-lg" placeholder="Nom" tabindex="2">
+                                    {{ form_row(form.prenom) }}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Date de naissance</label>
-                            <input type="text" name="date_naissance" id="date_naissance" class="form-control input-lg" placeholder="Date de naissance" tabindex="4">
+                            {{ form_row(form.dateNaissance, { 'attr': { 'class' : 'col-xs-12 col-sm-6 col-md-6'}}) }}
                         </div>
                         <div class="form-group">
-                            <label>Renseigner les maladies</label>
-                            <input type="text" name="maladies" id="maladies" class="form-control input-lg" placeholder="Maladies" tabindex="4">
+                            {{ form_row(form.allergie) }}
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Renseigner les allergies</label>
-                                    <input type="text" name="allergie" id="allergie" class="form-control input-lg" placeholder="Allergie" tabindex="5">
+                                    {{ form_row(form.maladies) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Renseigner les traitements</label>
-                                    <input type="text" name="traitement" id="password_confirmation" class="form-control input-lg" placeholder="Traitement" tabindex="6">
+                                    {{ form_row(form.traitement) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.traitement) }}
                                 </div>
                             </div>
                         </div>
                         <hr class="colorgraph">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6"></div>
-                            <div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Save</a></div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <input type="submit" class="btn btn-success btn-block btn-lg" href="" value="Retour">
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
+                            </div>
                         </div>
                     </form>
                 </div>
