@@ -24,7 +24,7 @@ La procedure étapes par étapes pour installer le projet en devellopement
 Cloner le Git
 
 ```
-https://github.com/Jonathan-Renault/lesptitpoussins.git
+https://github.com/Jonathan-Renault/lesptitspoussins.git
 ```
 
 Installation des fondations
