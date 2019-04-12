@@ -4,6 +4,9 @@ security:
         App\Entity\Parentt:
             algorithm: bcrypt
             cost: 13
+        App\Entity\ProProfil:
+            algorithm: bcrypt
+            cost: 13
 
     providers:
         parents_db:

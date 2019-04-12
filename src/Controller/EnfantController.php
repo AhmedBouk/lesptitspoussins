@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\EnfantProfil;
+use App\Entity\Parentt;
 use App\Form\EnfantFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +24,6 @@ class EnfantController extends AbstractController
     {
         $enfant = new EnfantProfil();
         $error = $authenticationUtils->getLastAuthenticationError();
-        $ses = $this->get('session');
-        print_r($ses);
 
 
         $form = $this->createForm(EnfantFormType::class, $enfant);
@@ -36,9 +35,6 @@ class EnfantController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'L\'Enfant a bien été enregistré');
-            return $this->redirectToRoute('dashboardparent', [
-//                'id' => $ses->getId()
-            ]);
         }
 
         return $this->render('parent/profil_child.html.twig', [

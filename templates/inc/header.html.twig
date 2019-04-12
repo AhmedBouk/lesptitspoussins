@@ -11,6 +11,7 @@
             {% else %}
                 <li><a href="{{ path('indexsite') }}">Accueil</a></li>
                 <li><a href="{{ path('login') }}">Connexion</a></li>
+                <li><a href="{{ path('inscription') }}">Inscription</a></li>
                 <li><a href="#contact">Contact</a></li>
         {% endif %}
         {% if is_granted('ROLE_PRO') %}

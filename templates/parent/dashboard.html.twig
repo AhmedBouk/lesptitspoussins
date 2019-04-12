@@ -30,7 +30,7 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
-                <a href="{{ path('editparent', { 'id' : parent.id }) }}">
+                <a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
                 </a>
             </div>
