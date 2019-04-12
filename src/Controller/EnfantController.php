@@ -23,7 +23,9 @@ class EnfantController extends AbstractController
     {
         $enfant = new EnfantProfil();
         $error = $authenticationUtils->getLastAuthenticationError();
-        $session = new Session();
+        $ses = $this->get('session');
+        print_r($ses);
+
 
         $form = $this->createForm(EnfantFormType::class, $enfant);
         $form->handleRequest($request);
@@ -35,7 +37,7 @@ class EnfantController extends AbstractController
 
             $this->addFlash('success', 'L\'Enfant a bien été enregistré');
             return $this->redirectToRoute('dashboardparent', [
-                'id' => $session->getId()
+//                'id' => $ses->getId()
             ]);
         }
 
