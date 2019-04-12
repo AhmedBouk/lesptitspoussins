@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProProfil{% endblock %}
+
+{% block body %}
+    <h1>ProProfil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pro_profil.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_entreprise</th>
+                <td>{{ pro_profil.nomEntreprise }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ pro_profil.mail }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ pro_profil.ville }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ pro_profil.codepostal }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ pro_profil.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ pro_profil.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ pro_profil.password }}</td>
+            </tr>
+            <tr>
+                <th>Token</th>
+                <td>{{ pro_profil.token }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ pro_profil.createdAt ? pro_profil.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ pro_profil.updatedAt ? pro_profil.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_personnel</th>
+                <td>{{ pro_profil.nombrePersonnel }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilite</th>
+                <td>{{ pro_profil.disponibilite ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ pro_profil.tarif }}</td>
+            </tr>
+            <tr>
+                <th>Horaire</th>
+                <td>{{ pro_profil.horaire ? pro_profil.horaire|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ pro_profil.statut ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Nombredeplace</th>
+                <td>{{ pro_profil.nombredeplace }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ pro_profil.roles ? pro_profil.roles|join(', ') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('pro_profil_index') }}">back to list</a>
+
+    <a href="{{ path('pro_profil_edit', {'id': pro_profil.id}) }}">edit</a>
+
+    {{ include('pro_profil/_delete_form.html.twig') }}
+{% endblock %}

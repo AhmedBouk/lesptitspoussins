@@ -7,6 +7,15 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <div class="col-md-12 mb-5 well" id="rightPanel">
             <div class="row">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled mb-0">
+                            <li><span class="initialism badge-danger badge">Error</span>
+                                <span class="error">{{ error.messageKey| trans(error.messageData, 'security') }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
                 <div class="col-md-12">
                     {{ form_start(form) }}
                         <h2 class="text-center">Renseigner le profil de votre enfant</h2>
@@ -49,7 +58,7 @@
                         <hr class="colorgraph">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <input type="submit" class="btn btn-success btn-block btn-lg" href="" value="Retour">
+                                <input type="button" class="btn btn-success btn-block btn-lg" href="" value="Retour">
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
