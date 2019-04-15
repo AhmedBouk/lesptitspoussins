@@ -537,7 +537,6 @@ class ProProfil implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
         return $this->mail;
     }
 
@@ -551,12 +550,10 @@ class ProProfil implements UserInterface
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
         return null;
     }
 }

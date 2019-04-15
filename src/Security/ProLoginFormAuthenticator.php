@@ -41,7 +41,7 @@ class ProLoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function supports(Request $request)
     {
         // TODO: Implement supports() method.
-        return 'login' === $request->attributes->get('_route')
+        return 'loginpro' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 

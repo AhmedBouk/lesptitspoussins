@@ -18,7 +18,7 @@ class SecurityProController extends AbstractController
 {
 
     /**
-     * @Route("/pro/loginpro", name="loginpro")
+     * @Route("/loginpro", name="loginpro")
      */
     public function loginpro(AuthenticationUtils $authenticationUtils) : Response
     {
@@ -33,7 +33,7 @@ class SecurityProController extends AbstractController
     }
 
     /**
-     * @Route("/pro/forgotpro", name="app_oublipasswordpro")
+     * @Route("/forgotpro", name="app_oublipasswordpro")
      */
     public function forgotpasswordpro(Request $request, TokenGeneratorInterface $tokenGenerator, \Swift_Mailer $mailer, UrlGeneratorInterface $urlGenerator)
     {
@@ -47,7 +47,7 @@ class SecurityProController extends AbstractController
             //Si l'utilisateurs a rentré un mauvais email
             if ($user === null){
                 $this->addFlash('danger', 'Email Inconnu');
-                return $this->redirectToRoute('app_oublipassword');
+                return $this->redirectToRoute('app_oublipasswordpro');
             }
             $token = $tokenGenerator->generateToken();
 
@@ -62,7 +62,7 @@ class SecurityProController extends AbstractController
             }
 
             //On définit la route à prendre si soumission validé
-            $url = $this->generateUrl('app_reset_passwordpro', ['token' => $token], \Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_URL);
+            $url = $this->generateUrl('app_reset_passwordpro', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Mot de passe oublié'))
                 ->setContentType('text/html', 'utf8')
@@ -80,7 +80,7 @@ class SecurityProController extends AbstractController
     }
 
     /**
-     * @Route("/pro/resetpasswordpro/{token}", name="app_reset_passwordpro")
+     * @Route("/resetpasswordpro/{token}", name="app_reset_passwordpro")
      */
     public function resetpasswordpro(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
     {

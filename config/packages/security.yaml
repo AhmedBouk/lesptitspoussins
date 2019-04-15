@@ -12,6 +12,9 @@ security:
             cost: 13
 
     providers:
+        chain_provider:
+            chain:
+                providers: [ parents_db, professionnels_db ]
         parents_db:
             entity: { class: App\Entity\Parentt, property: mail }
         professionnels_db:
@@ -21,35 +24,17 @@ security:
 
     firewalls:
         parentt:
-            pattern: ^/parent
             anonymous: true
-            form_login:
-                login_path: /parent/login
-                check_path: /parent/login
-                csrf_token_generator: security.csrf.token_manager
-            provider: parents_db
+            provider: chain_provider
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+                    - App\Security\ProLoginFormAuthenticator
+                entry_point: App\Security\ProLoginFormAuthenticator
             logout:
-                path: /parent/logout
+                path: /logout
                 target: /
 
-        professionnels:
-            pattern: ^/pro
-            anonymous: true
-            form_login:
-                login_path: /pro/loginpro
-                check_path: /pro/loginpro
-                csrf_token_generator: security.csrf.token_manager
-                failure_path: indexsite
-            provider: professionnels_db
-            guard:
-                authenticators:
-                    - App\Security\ProLoginFormAuthenticator
-            logout:
-                path: /pro/logout
-                target: /
 
             # activate different ways to authenticate
 
