@@ -16,23 +16,18 @@
                         <div class="col-md h1" style="border-radius: 30px; padding: 5%;">Profil</div>
                     </div>
                 </div>
-                <ul class="list-group mb-3 float-left">
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom :</span> {{ pro.nomEntreprise }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse :</span>{{ pro.adresse }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">vIlle :</span>{{ pro.ville }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Code Postal :</span>{{ pro.codepostal }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone :</span>{{ pro.telephone }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span>{{ pro.mail }}</li>
-                </ul>
                 <ul class="list-group mb-3">
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom :</span> {{ pro.nomEntreprise }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse :</span>{{ pro.adresse }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">vIlle :</span>{{ pro.ville }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Code Postal :</span>{{ pro.codepostal }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone :</span>{{ pro.telephone }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span>{{ pro.mail }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span> {{ pro.nomEntreprise }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ pro.adresse }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">vIlle : </span>{{ pro.ville }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Code Postal : </span>{{ pro.codepostal }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ pro.telephone }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ pro.mail }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Disponibilité : </span> {{ pro.disponibilite ? 'OUI' : 'NON' }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Nombre de places : </span>{{ pro.nombredeplace }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Nombre d'employés : </span>{{ pro.nombrePersonnel }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Horaires : </span>{{ pro.horaire }}</li>
                 </ul>
-                <div class="clear"></div>
                 <a href="{{ path('editproprofil', {'id': app.user.id }) }}">
                     <button type="button" class="btn hmed">Modifier</button>
                 </a>

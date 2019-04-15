@@ -10,6 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class ProProfilFormType
+ * @package App\Form
+ */
 class ProProfilFormType extends AbstractType
 {
 
@@ -24,7 +28,6 @@ class ProProfilFormType extends AbstractType
             ->add('nombredeplace')
             ->add('mail')
             ->add('disponibilite', ChoiceType::class, [
-                'placeholder' => 'Choisissez si vous êtes disponible',
                 'choices' => [
                     'Oui' => true,
                     'Non' => false
