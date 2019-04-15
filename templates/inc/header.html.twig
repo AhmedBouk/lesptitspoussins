@@ -8,16 +8,16 @@
             <li><a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">Profil Parent</a></li>
             <li><a href="/logout">Se déconnecter</a></li>
             <li><a href="#contact">Contact</a></li>
-            {% else %}
-                <li><a href="{{ path('indexsite') }}">Accueil</a></li>
-                <li><a href="{{ path('inscription') }}">Inscription</a></li>
-                <li><a href="#contact">Contact</a></li>
-        {% endif %}
         {% if is_granted('ROLE_PRO') %}
             <li><a href="{{ path('indexsite') }}">Accueil</a></li>
             <li><a href="{{ path('prodashboard', { 'id' : app.user.id}) }}">Profil Professionnel</a></li>
             <li><a href="/logout">Se déconnecter</a></li>
             <li><a href="#contact">Contact</a></li>
+        {% endif %}
+        {% else %}
+                <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+                <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                <li><a href="#contact">Contact</a></li>
         {% endif %}
     </ul>
 </header>
