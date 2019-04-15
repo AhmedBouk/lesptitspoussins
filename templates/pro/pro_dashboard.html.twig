@@ -26,7 +26,6 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Disponibilité : </span> {{ pro.disponibilite ? 'OUI' : 'NON' }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Nombre de places : </span>{{ pro.nombredeplace }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Nombre d'employés : </span>{{ pro.nombrePersonnel }}</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Horaires : </span>{{ pro.horaire }}</li>
                 </ul>
                 <a href="{{ path('editproprofil', {'id': app.user.id }) }}">
                     <button type="button" class="btn hmed">Modifier</button>
