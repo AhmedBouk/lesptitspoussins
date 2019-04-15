@@ -64,7 +64,7 @@ class ProProfil implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
 
@@ -143,9 +143,18 @@ class ProProfil implements UserInterface
      */
     private $roles =[];
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     */
+    private $latitude;
+
     public function __construct()
     {
-        $this->token = bin2hex(random_bytes(56));
         $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->listestatus = new ArrayCollection();
         $this->paiement = new ArrayCollection();
@@ -249,11 +258,9 @@ class ProProfil implements UserInterface
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken(?string $token): void
     {
         $this->token = $token;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -540,7 +547,6 @@ class ProProfil implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
         return $this->mail;
     }
 
@@ -554,12 +560,34 @@ class ProProfil implements UserInterface
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
         return null;
+    }
+
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude($longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude($latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
     }
 }

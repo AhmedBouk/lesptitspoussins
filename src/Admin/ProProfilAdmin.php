@@ -33,7 +33,7 @@ class ProProfilAdmin extends AbstractAdmin
                 'label' => 'Votre Nom d\'Entreprise'
             ])
             ->add('mail', EmailType::class, [
-                'label' => 'Votre adresse mail'
+                'label' => 'Votre adresse mail',
             ])
             ->add('adresse', null, [
                 'label' => 'Votre Adresse Postal'
@@ -54,7 +54,8 @@ class ProProfilAdmin extends AbstractAdmin
 
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Votre Mot de Passe'
+                'label' => 'Votre Mot de Passe',
+                'translation_domain' => 'FOSUserBundle'
             ])
             ->add('statut', null, [
                 'label' => 'Actif'

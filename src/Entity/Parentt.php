@@ -64,9 +64,13 @@ class Parentt implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $passwordRequestedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
 
@@ -142,7 +146,6 @@ class Parentt implements UserInterface
 
     public function __construct()
     {
-        $this->token = bin2hex(random_bytes(58));
         $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->listestatus = new ArrayCollection();
         $this->paiement = new ArrayCollection();
@@ -261,11 +264,9 @@ class Parentt implements UserInterface
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken(?string $token): void
     {
         $this->token = $token;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -562,5 +563,21 @@ class Parentt implements UserInterface
     {
         // TODO: Implement getSalt() method.
         return null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordRequestedAt()
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    /**
+     * @param mixed $passwordRequestedAt
+     */
+    public function setPasswordRequestedAt($passwordRequestedAt): void
+    {
+        $this->passwordRequestedAt = $passwordRequestedAt;
     }
 }

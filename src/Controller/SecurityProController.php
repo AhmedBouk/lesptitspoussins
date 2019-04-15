@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Parentt;
+use App\Entity\ProProfil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,40 +14,40 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class SecurityController extends AbstractController
+class SecurityProController extends AbstractController
 {
+
     /**
-     * @Route("/login", name="login")
+     * @Route("/loginpro", name="loginpro")
      */
-    public function loginAction(AuthenticationUtils $authenticationUtils) : Response
+    public function loginpro(AuthenticationUtils $authenticationUtils) : Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('invit/connexion.html.twig', [
+        return $this->render('security/pro/connexionpro.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error
         ]);
-
     }
 
     /**
-     * @Route("/forgot" ,name="app_oublipassword")
+     * @Route("/forgotpro", name="app_oublipasswordpro")
      */
-    public function forgotpassword(Request $request, TokenGeneratorInterface $tokenGenerator, UrlGeneratorInterface $urlGenerator, \Swift_Mailer $mailer)
+    public function forgotpasswordpro(Request $request, TokenGeneratorInterface $tokenGenerator, \Swift_Mailer $mailer, UrlGeneratorInterface $urlGenerator)
     {
         if ($request->isMethod('POST')){
             $email = $request->request->get('mail');
 
             //On défnit notre variable user avec email
             $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository(Parentt::class)->findOneBy(['mail' => $email]);
+            $user = $em->getRepository(ProProfil::class)->findOneBy(['mail' => $email]);
 
             //Si l'utilisateurs a rentré un mauvais email
             if ($user === null){
                 $this->addFlash('danger', 'Email Inconnu');
-                return $this->redirectToRoute('app_oublipassword');
+                return $this->redirectToRoute('app_oublipasswordpro');
             }
             $token = $tokenGenerator->generateToken();
 
@@ -62,7 +62,7 @@ class SecurityController extends AbstractController
             }
 
             //On définit la route à prendre si soumission validé
-            $url = $this->generateUrl('app_reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+            $url = $this->generateUrl('app_reset_passwordpro', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Mot de passe oublié'))
                 ->setContentType('text/html', 'utf8')
@@ -76,19 +76,19 @@ class SecurityController extends AbstractController
 
             return $this->redirectToRoute('indexsite');
         }
-        return $this->render('security/emailmotdepasse.html.twig');
+        return $this->render('security/pro/emailmotdepassepro.html.twig');
     }
 
     /**
-     * @Route("/resetpassword/{token}", name="app_reset_password")
+     * @Route("/resetpasswordpro/{token}", name="app_reset_passwordpro")
      */
-    public function resetpassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetpasswordpro(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
     {
         if ($request->isMethod('POST')){
             $em = $this->getDoctrine()->getManager();
 
             //on va cherche l'utilisateur selon le token
-            $user = $em->getRepository(Parentt::class)->findOneBy(['token' => $token]);
+            $user = $em->getRepository(ProProfil::class)->findOneBy(['token' => $token]);
 
             //si le token est faux
             if ($user === null){
@@ -104,17 +104,7 @@ class SecurityController extends AbstractController
 
             return $this->redirectToRoute('indexsite');
         }else{
-            return $this->render('security/resetpassword.html.twig', ['token' => $token]);
+            return $this->render('security/pro/resetpasswordpro.html.twig', ['token' => $token]);
         }
-
     }
-
-    /**
-     * @Route("/parent/logout")
-     */
-    public function logout()
-    {
-        return $this->redirectToRoute('indexsite');
-    }
-
 }
