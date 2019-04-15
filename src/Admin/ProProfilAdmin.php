@@ -33,7 +33,7 @@ class ProProfilAdmin extends AbstractAdmin
                 'label' => 'Votre Nom d\'Entreprise'
             ])
             ->add('mail', EmailType::class, [
-                'label' => 'Votre adresse mail'
+                'label' => 'Votre adresse mail',
             ])
             ->add('adresse', null, [
                 'label' => 'Votre Adresse Postal'
