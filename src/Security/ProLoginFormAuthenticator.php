@@ -98,7 +98,7 @@ class ProLoginFormAuthenticator extends AbstractFormLoginAuthenticator
     protected function getLoginUrl()
     {
         // TODO: Implement getLoginUrl() method.
-        return $this->router->generate('login');
+        return $this->router->generate('loginpro');
     }
 
 }

@@ -4,38 +4,38 @@
 
 {% block body %}
     <div class="clear"></div>
-{{ parent() }}
-<form method="post" action="{{ path('login') }}">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    {{ parent() }}
+    <form method="post" action="{{ path('loginpro') }}">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    <h1 class="text-center mt-5">Connexion</h1>
-    <div class="contentform">
-        <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter:</h5>
-    
+        <h1 class="text-center mt-5">Connexion</h1>
+        <div class="contentform">
+            <h5 class="pb-3 pt-3 espaceligne">Veuillez remplir le formulaire juste en dessous pour vous connecter:</h5>
+
             <div class="form-group">
                 <p>E-mail <span>*</span></p>
                 <input type="email" name="mail" id="inputEmail" data-rule="required"
                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' doit être renseigné."/>
                 <div class="validation"></div>
             </div>
-        
+
             <div class="form-group">
                 <p>Mot de passe <span>*</span></p>
                 <input type="password" name="password" id="password" data-rule="required"
                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'mot de passe' doit être renseigné."/>
                 <div class="validation"></div>
             </div>
-    </div>
-    <div>
-        <a href="{{ path('app_oublipassword') }}">Mot de passe oublié?</a>
-    </div>
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-    <input type="submit" value="Se Connecter" class="bouton-contact">
-</form>
+        </div>
+        <div>
+            <a href="{{ path('app_oublipasswordpro') }}">Mot de passe oublié?</a>
+        </div>
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+        <input type="submit" value="Se Connecter" class="bouton-contact">
+    </form>
 
 
 {% endblock body %}

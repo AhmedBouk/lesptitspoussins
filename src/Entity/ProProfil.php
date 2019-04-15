@@ -64,7 +64,7 @@ class ProProfil implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
 
@@ -145,7 +145,6 @@ class ProProfil implements UserInterface
 
     public function __construct()
     {
-        $this->token = bin2hex(random_bytes(56));
         $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $this->listestatus = new ArrayCollection();
         $this->paiement = new ArrayCollection();
@@ -249,11 +248,9 @@ class ProProfil implements UserInterface
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken(?string $token): void
     {
         $this->token = $token;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

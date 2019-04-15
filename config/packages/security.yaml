@@ -20,27 +20,35 @@ security:
 
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         parentt:
+            pattern: ^/parent
             anonymous: true
+            form_login:
+                login_path: /parent/login
+                check_path: /parent/login
+                csrf_token_generator: security.csrf.token_manager
             provider: parents_db
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
             logout:
-                path: /logout
+                path: /parent/logout
                 target: /
 
         professionnels:
+            pattern: ^/pro
             anonymous: true
+            form_login:
+                login_path: /pro/loginpro
+                check_path: /pro/loginpro
+                csrf_token_generator: security.csrf.token_manager
+                failure_path: indexsite
             provider: professionnels_db
             guard:
                 authenticators:
                     - App\Security\ProLoginFormAuthenticator
             logout:
-                path: /logout
+                path: /pro/logout
                 target: /
 
             # activate different ways to authenticate
