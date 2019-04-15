@@ -33,7 +33,6 @@ class ProProfilFormType extends AbstractType
                     'Non' => false
                 ]
             ])
-            ->add('horaire')
             ->add('nombrePersonnel')
             ->add('telephone')
             ;
