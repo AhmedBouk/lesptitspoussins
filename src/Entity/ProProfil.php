@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProProfilRepository")
- * @UniqueEntity(fields={"mail", "nom_entreprise"},
+ * @UniqueEntity(fields={"mail"},
  *     errorPath="mail",
  *     message="Cette adresse mail existe déjà!",
  * )
