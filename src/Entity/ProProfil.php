@@ -143,6 +143,16 @@ class ProProfil implements UserInterface
      */
     private $roles =[];
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     */
+    private $latitude;
+
     public function __construct()
     {
         $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
@@ -555,5 +565,29 @@ class ProProfil implements UserInterface
     public function getSalt()
     {
         return null;
+    }
+
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude($longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude($latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
     }
 }
