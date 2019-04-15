@@ -12,71 +12,72 @@
             <div class="col-md-12 well" id="rightPanel">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form ">
+                        {{ form_start(form) }}
                             <h2 class="text-center">Renseigner votre profil</h2>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="nom_entreprise" id="nom_entreprise"> Nom de l'entreprise</label>
-                                        <input type="text" name="nom_entreprise" id="nom_entreprise"
-                                               class="form-control input-lg" placeholder="Nom de l'entreprise" >
+                                        {{ form_row(form.nomEntreprise, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="mail" id="mail"> Email</label>
-                                        <input type="text" name="mail" id="mail" class="form-control input-lg"
-                                               placeholder="Email" >
+                                        {{ form_row(form.mail, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="ville" id="ville"> Ville</label>
-                                        <input type="text" name="ville" id="ville"
-                                               class="form-control input-lg" placeholder="Ville" >
+                                        {{ form_row(form.adresse, {'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="codepostal" id="codepostal"> Code postal</label>
-                                        <input type="text" name="codepostal" id="codepostal"
-                                               class="form-control input-lg" placeholder="Code postal " >
+                                        {{ form_row(form.ville, {'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="adresse" id="adresse"> Adresse</label>
-                                        <input type="text" name="adresse" id="adresse"
-                                               class="form-control input-lg" placeholder="Adresse" >
+                                        {{ form_row(form.codepostal, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="telephone" id="telephone"> Téléphone</label>
-                                        <input type="text" name="telephone" id="telephone"
-                                               class="form-control input-lg" placeholder="Telephone" >
+                                        {{ form_row(form.telephone, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="nombre_personnel" id="nombre_personnel"> Nombres de salariés</label>
-                                        <input type="number" name="nombre_personnel" id="nombre_personnel"
-                                               class="form-control input-lg" placeholder="Nombres de salariés" >
+                                        {{ form_row(form.nombrePersonnel, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.horaire, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.nombredeplace, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.disponibilite, { 'attr': { 'class': 'form-control input-lg' }}) }}
                                     </div>
                                 </div>
                             </div>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <a href="index" class="btn btn-success btn-block btn-lg">Retour</a>
+                                    <a href="{{ path('prodashboard', {'id': app.user.id }) }}" class="btn btn-success btn-block btn-lg">Retour</a>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <a href="#" class="btn btn-success btn-block btn-lg">Enregistrer</a>
+                                    <input type="submit" value="Enregistrer" class="btn btn-success btn-block btn-lg">
                                 </div>
 
                             </div>
-                        </form>
+                        {{ form_end(form) }}
                     </div>
                 </div>
 

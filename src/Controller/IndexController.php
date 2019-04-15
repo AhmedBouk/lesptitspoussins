@@ -21,11 +21,7 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-//        echo '<pre>';
-//        var_dump($_SESSION);
-//        echo '</pre>';
         return $this->render('invit/index.html.twig');
-
     }
 }
 
