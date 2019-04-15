@@ -56,4 +56,12 @@ class ParenttController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+
+    }
+
 }

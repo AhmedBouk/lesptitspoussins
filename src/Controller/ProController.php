@@ -48,4 +48,12 @@ class ProController extends AbstractController
 
     }
 
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+
+    }
+
 }
