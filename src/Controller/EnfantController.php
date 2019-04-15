@@ -35,6 +35,10 @@ class EnfantController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'L\'Enfant a bien été enregistré');
+
+            return $this->redirectToRoute('dashboardparent', [
+                'id' => $request->getSession('id')
+            ]);
         }
 
         return $this->render('parent/profil_child.html.twig', [
