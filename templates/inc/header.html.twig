@@ -3,10 +3,21 @@
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
-        <li><a href="#work">Parent</a></li>
-        <li><a href="#about">Professionnel</a></li>
-        <li><a href="#careers">Connexion</a></li>
-        <li><a href="#contact">Contact</a></li>
+        {% if is_granted('ROLE_PARENT') %}
+            <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+            <li><a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">Profil Parent</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+            <li><a href="#contact">Contact</a></li>
+        {% elseif is_granted('ROLE_PRO') %}
+            <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+            <li><a href="{{ path('prodashboard', { 'id' : app.user.id}) }}">Profil Professionnel</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+            <li><a href="#contact">Contact</a></li>
+        {% else %}
+                <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+                <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                <li><a href="#contact">Contact</a></li>
+        {% endif %}
     </ul>
 </header>
 

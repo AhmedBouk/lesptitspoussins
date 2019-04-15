@@ -15,58 +15,44 @@
             <div class="col-md-12 mb-5 well" id="rightPanel">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form">
+                        {{ form_start(form) }}
                             <h2>Renseigner votre profil</h2>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="prenom" id="prenom">Prénom</label>
-                                        <input type="text" name="prenom" id="prenom"
-                                               class="form-control input-lg" placeholder="Pr&eacute;nom" >
+                                        {{ form_row(form.nom, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="nom" id="nom">Nom</label>
-                                        <input type="text" name="nom" id="nom" class="form-control input-lg"
-                                               placeholder="Nom" >
+                                        {{ form_row(form.prenom, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="codepostal" id="codepostal">Code postal</label>
-                                        <input type="text" name="codepostal" id="codepostal"
-                                               class="form-control input-lg" placeholder="Code postal" >
+                                        {{ form_row(form.codepostal, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="adresse" id="adresse">Adresse</label>
-                                        <input type="text" name="adresse" id="adresse"
-                                               class="form-control input-lg" placeholder="Adresse " >
+                                        {{ form_row(form.adresse, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="telephone" id="telephone">Téléphone</label>
-                                        <input type="text" name="telephone" id="telephone"
-                                               class="form-control input-lg" placeholder="Telephone" >
+                                        {{ form_row(form.ville, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="ville" id="ville">Ville</label>
-                                        <input type="text" name="ville" id="ville"
-                                               class="form-control input-lg" placeholder="Ville" >
+                                        {{ form_row(form.telephone, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="mail" id="mail">Email</label>
-                                <input type="email" name="mail" id="mail" class="form-control input-lg"
-                                       placeholder="Email" >
+                                {{ form_row(form.mail, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                             </div>
 
 
@@ -74,14 +60,14 @@
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <a href="index" class="btn btn-success btn-block btn-lg">Retour</a>
+                                    <a href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" class="btn btn-success btn-block btn-lg">Retour</a>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <a href="#" class="btn btn-success btn-block btn-lg">Enregistrer</a>
+                                    <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
                                 </div>
 
                             </div>
-                        </form>
+                        {{ form_end(form) }}
                     </div>
                 </div>
 

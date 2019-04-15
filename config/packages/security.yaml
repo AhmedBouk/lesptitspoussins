@@ -7,9 +7,6 @@ security:
         App\Entity\ProProfil:
             algorithm: bcrypt
             cost: 13
-        App\Admin\ProProfilAdmin:
-            algorithm: bcrypt
-            cost: 13
 
     providers:
         chain_provider:
@@ -48,4 +45,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/pro, roles: ROLE_PRO }
+         - { path: ^/parent, roles: ROLE_PARENT }

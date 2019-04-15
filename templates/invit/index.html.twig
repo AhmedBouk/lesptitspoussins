@@ -31,10 +31,13 @@
         <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad distinctio est facilis magni
             maiores nemo nesciunt nulla quisquam, reprehenderit! Beatae dolor, enim exercitationem impedit minus placeat
             porro quae quo quod.</p>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% else %}
         <div class="button">
-            <a href="#" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis parents</a>
-            <a href="#" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis un pro</a>
+            <a href="{{ path('login') }}" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis parents</a>
+{#            <a href="{{ path('loginpro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis un pro</a>#}
         </div>
+        {% endif %}
 
     </div>
 
