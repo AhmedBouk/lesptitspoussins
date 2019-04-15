@@ -4,8 +4,14 @@ security:
         App\Entity\Parentt:
             algorithm: bcrypt
             cost: 13
+        App\Entity\ProProfil:
+            algorithm: bcrypt
+            cost: 13
 
     providers:
+        chain_provider:
+            chain:
+                providers: [ parents_db, professionnels_db ]
         parents_db:
             entity: { class: App\Entity\Parentt, property: mail }
         professionnels_db:
@@ -14,28 +20,18 @@ security:
 
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         parentt:
             anonymous: true
-            provider: parents_db
+            provider: chain_provider
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+                    - App\Security\ProLoginFormAuthenticator
+                entry_point: App\Security\ProLoginFormAuthenticator
             logout:
                 path: /logout
                 target: /
 
-        professionnels:
-            anonymous: true
-            provider: professionnels_db
-            guard:
-                authenticators:
-                    - App\Security\ProLoginFormAuthenticator
-            logout:
-                path: /logout
-                target: /
 
             # activate different ways to authenticate
 
@@ -49,4 +45,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/pro, roles: ROLE_PRO }
+         - { path: ^/parent, roles: ROLE_PARENT }

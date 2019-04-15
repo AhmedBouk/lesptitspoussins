@@ -47,4 +47,16 @@ class EnfantProfilRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByparent($id)
+    {
+        return $this->createQueryBuilder('ep')
+            ->leftJoin('ep.parentt', 'parentt')
+            ->select('parentt.id')
+            ->where('parentt.id = :val')
+            ->setParameter('val', $id)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

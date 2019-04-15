@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <ul class="list-group mb-3">
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom :</span> hmouda</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Prénom :</span> Ahmed</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse :</span> 5 rue lamartin</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone :</span> 0606060606</li>
-                    <li class="list-group-item"><span class="text-info font-weight-bold">Email :</span> AHmed.ahmed@gmail.com</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span>{{ parent.nom }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Prénom : </span>{{ parent.prenom }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ parent.adresse }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
+                    <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
-                <a href="profilparent">
+                <a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
                 </a>
             </div>
@@ -46,15 +46,19 @@
                         <th scope="col">Nom</th>
                     </tr>
                     </thead>
+
+                    {% for enfant in data %}
                     <tbody>
                     <tr class="table-primary">
-                        <td>louis </td>
-                        <td>Niort  </td>
+                        <th>{{ enfant.prenom }}</th>
+                        <th>{{ enfant.nom }}</th>
                     </tr>
                     </tbody>
+                    {% endfor %}
+
                 </table>
                 <a href="">
-                    <button type="button" class="btn  text-right hmed  ">Ajouter</button>
+                    <a href="{{ path('créerenfant') }}"><button type="button" class="btn  text-right hmed  ">Ajouter</button></a>
                 </a>
                 <a href="">
                     <button type="button" class="btn  text-right hmed  ">Modifier</button>
