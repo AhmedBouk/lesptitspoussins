@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Parentt;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,6 +21,10 @@ class ParenttFormType extends AbstractType
             ->add('codepostal')
             ->add('adresse')
             ->add('telephone')
+            ->add('revenu', FileType::class, [
+                'label' => 'Veuillez mettre vos trois derniers revenus',
+                'multiple' => true
+            ])
         ;
     }
 

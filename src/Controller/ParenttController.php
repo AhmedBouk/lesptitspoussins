@@ -7,6 +7,8 @@ namespace App\Controller;
 use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,6 +46,24 @@ class ParenttController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //On définit notre variable revenu qui récupère le fichier mis dans le formulaire
+            /** @var UploadedFile $revenu */
+            $revenu = $form->get('revenu')->getData();
+
+            $revenuName = $this->generateUniqueFileName().'.'.$revenu->guessExtension();
+
+            try{
+                $revenu->move(
+                    $this->getParameter('fichiersmedicaux_directory'),
+                    $revenuName
+                );
+            } catch (FileException $exception){
+
+            }
+
+            $parentt->setRevenu($revenuName);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('dashboardparent', [
@@ -54,6 +74,11 @@ class ParenttController extends AbstractController
         return $this->render('parent/profil_parent.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    private function generateUniqueFileName()
+    {
+        md5(uniqid());
     }
 
     /**
