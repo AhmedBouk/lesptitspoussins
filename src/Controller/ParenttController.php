@@ -48,8 +48,8 @@ class ParenttController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             //On définit notre variable revenu qui récupère le fichier mis dans le formulaire
-            /** @var UploadedFile $revenu */
-            $revenus = $form->get('revenu')->getData();
+            /** @var UploadedFile $revenus */
+            $revenus = $parentt->getRevenu();
 
             $revenusName = $this->generateUniqueFileName().'.'.$revenus->guessExtension();
 
@@ -64,7 +64,10 @@ class ParenttController extends AbstractController
 
             $parentt->setRevenu($revenusName);
 
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($parentt);
+            $em->flush();
+
 
             return $this->redirectToRoute('dashboardparent', [
                 'id' => $parentt->getId(),
