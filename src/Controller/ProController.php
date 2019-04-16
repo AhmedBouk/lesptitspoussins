@@ -38,7 +38,7 @@ class ProController extends AbstractController
 
             //On créer notre variable file pour utiliser les propriétes
             /** @var UploadedFile $file */
-            $file = $proProfil->getAvatar();
+            $file = $form->get('avatar')->getData();
 
             //On créer notre chaîne de caractère pour notre image upload
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
