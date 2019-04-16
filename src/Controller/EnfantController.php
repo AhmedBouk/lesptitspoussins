@@ -8,6 +8,7 @@ use App\Entity\EnfantProfil;
 use App\Entity\Parentt;
 use App\Form\EnfantFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -29,7 +30,23 @@ class EnfantController extends AbstractController
         $form = $this->createForm(EnfantFormType::class, $enfant);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()){
+
+            $file = $form->get('acteDeNaissance')->getData();
+            //On créer notre chaîne de caractère pour notre image upload
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+            try{
+                $file->move(
+                    $this->getParameter('enfant_actedenaissance'),
+                    $fileName
+                );
+            } catch (FileException $exception) {
+            }
+
+            $enfant->setActeDeNaissance($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($enfant);
             $em->flush();

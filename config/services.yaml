@@ -5,6 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    enfant_actedenaissance: '%kernel.project_dir%/public/images/enfant/actedenaissance'
+    enfant_certificatdegrossesse: '%kernel.project_dir%/public/images/enfant/certificatdegrossesse'
+    enfant_livretdefamille: '%kernel.project_dir%/public/images/enfant/livretdefamille'
 
 services:
     # default configuration for services in *this* file
