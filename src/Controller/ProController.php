@@ -22,7 +22,8 @@ class ProController extends AbstractController
     public function dashboard(ProProfil $proProfil)
     {
         return $this->render('pro/pro_dashboard.html.twig', [
-            'pro' => $proProfil
+            'pro' => $proProfil,
+            'avatar' => $proProfil->getAvatar()
         ]);
     }
 

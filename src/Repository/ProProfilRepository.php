@@ -47,4 +47,13 @@ class ProProfilRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByAvatar($id)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a.avatar')
+            ->andWhere('a.id = :val')
+            ->getParameter('val')
+
+    }
 }
