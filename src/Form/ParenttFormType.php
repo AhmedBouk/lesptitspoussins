@@ -23,7 +23,6 @@ class ParenttFormType extends AbstractType
             ->add('telephone')
             ->add('revenu', FileType::class, [
                 'label' => 'Veuillez mettre vos trois derniers revenus',
-                'multiple' => true
             ])
         ;
     }

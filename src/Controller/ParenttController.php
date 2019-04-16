@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
+use App\Services\FileUploader;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,7 +41,7 @@ class ParenttController extends AbstractController
     /**
      * @Route("/parent/profil/{id}/edit", name="editparent")
      */
-    public function editparentt(Request $request, Parentt $parentt)
+    public function editparentt(Request $request, Parentt $parentt, FileUploader $fileUploader)
     {
         $form = $this->createForm(ParenttFormType::class, $parentt);
         $form->handleRequest($request);
@@ -49,20 +50,12 @@ class ParenttController extends AbstractController
 
             //On définit notre variable revenu qui récupère le fichier mis dans le formulaire
             /** @var UploadedFile $revenus */
-            $revenus = $parentt->getRevenu();
+            $revenus = $form->get('revenu')->getData();
 
-            $revenusName = $this->generateUniqueFileName().'.'.$revenus->guessExtension();
-
-            try{
-                $revenus->move(
-                    $this->getParameter('fichiersmedicaux_directory'),
-                    $revenusName
-                );
-            } catch (FileException $exception){
-
-            }
+            $revenusName = $fileUploader->uploaed($revenus);
 
             $parentt->setRevenu($revenusName);
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($parentt);

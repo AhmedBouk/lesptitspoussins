@@ -9,6 +9,10 @@ parameters:
 
 services:
     # default configuration for services in *this* file
+    App\Services\FileUploader:
+        arguments:
+            $targetDirectory: '%fichiersmedicaux_directory%'
+
     admin.avis:
         class: App\Admin\AvisAdmin
         arguments: [ ~, App\Entity\Avis, ~ ]
