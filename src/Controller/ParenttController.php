@@ -49,20 +49,20 @@ class ParenttController extends AbstractController
 
             //On définit notre variable revenu qui récupère le fichier mis dans le formulaire
             /** @var UploadedFile $revenu */
-            $revenu = $form->get('revenu')->getData();
+            $revenus = $form->get('revenu')->getData();
 
-            $revenuName = $this->generateUniqueFileName().'.'.$revenu->guessExtension();
+            $revenusName = $this->generateUniqueFileName().'.'.$revenus->guessExtension();
 
             try{
-                $revenu->move(
+                $revenus->move(
                     $this->getParameter('fichiersmedicaux_directory'),
-                    $revenuName
+                    $revenusName
                 );
             } catch (FileException $exception){
 
             }
 
-            $parentt->setRevenu($revenuName);
+            $parentt->setRevenu($revenusName);
 
             $this->getDoctrine()->getManager()->flush();
 
