@@ -31,6 +31,13 @@ services:
         arguments:
             $targetDirectory: '%fichiersmedicaux_directory%'
 
+#    doctrine.listener.parents_upload:
+#        class: App\EventListener\ParentsUploadListener
+#        arguments: ['%fichiersmedicaux_directory%']
+#        tags:
+#            - { name: doctrine.event_listener, event: prePersist }
+#            - { name: doctrine.event_listener, event: preUpdate }
+
     admin.avis:
         class: App\Admin\AvisAdmin
         arguments: [ ~, App\Entity\Avis, ~ ]

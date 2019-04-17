@@ -22,7 +22,7 @@ class FileUploader
     public function upload(UploadedFile $file)
     {
         //On nomme notre fichier pour la bdd
-        $fileName = md5(uniqid().'.'.$file->guessExtension());
+        $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
         //On effectue le déplacement du fichier
         try{
@@ -44,6 +44,11 @@ class FileUploader
     public function getTargertDirectory()
     {
         return $this->targetDirectory;
+    }
+
+    public function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 
 }
