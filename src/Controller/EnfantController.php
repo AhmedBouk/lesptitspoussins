@@ -9,11 +9,9 @@ use App\Entity\Parentt;
 use App\Form\EnfantFormType;
 use App\Services\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -21,11 +19,14 @@ class EnfantController extends AbstractController
 {
 
     /**
-     * @Route("/parent/enfant/créer", name="créerenfant")
+     * @Route("/parent/{id}/enfant/créer", name="créerenfant")
      */
-    public function nouvelEnfant(Request $request, AuthenticationUtils $authenticationUtils, FileUploader $fileUploader) : Response
+    public function nouvelEnfant(Request $request, AuthenticationUtils $authenticationUtils, FileUploader $fileUploader, Parentt $parentt) : Response
     {
+
+        $id = $parentt->getId();
         $enfant = new EnfantProfil();
+
         $error = $authenticationUtils->getLastAuthenticationError();
 
 
@@ -35,6 +36,7 @@ class EnfantController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()){
+
 
             /**
              *@var UploadedFile $actedenaissance
@@ -61,6 +63,7 @@ class EnfantController extends AbstractController
                 $livretDeFamilleEnfant->setLivretDeFamilleEnfant($fileName);
             }
 
+            $this->prePersist($parentt);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($enfant);
@@ -68,13 +71,8 @@ class EnfantController extends AbstractController
 
             $this->addFlash('success', 'L\'Enfant a bien été enregistré');
 
-
-
-
-
-
             return $this->redirectToRoute('dashboardparent', [
-                'id' => $request->getSession('id')
+                'id' => $id
             ]);
         }
 
@@ -84,6 +82,20 @@ class EnfantController extends AbstractController
         ]);
 
 
+    }
+
+    private function prePersist($object)
+    {
+        foreach ($object->getEnfant() as $reponse){
+            $reponse->setParentt($object);
+        }
+    }
+
+    private function preUpdate($object)
+    {
+        foreach ($object->getEnfant() as $reponse){
+            $reponse->setParentt($object);
+        }
     }
 
 }

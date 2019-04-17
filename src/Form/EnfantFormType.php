@@ -29,8 +29,8 @@ class EnfantFormType extends AbstractType
                 'required' => false,
                 'data_class' => null
                 ])
-            ->add('certificatDeGrossesse', FileType::class, ['
-            label' => 'Certificat de grossesse (PDF)',
+            ->add('certificatDeGrossesse', FileType::class, [
+                'label' => 'Certificat de grossesse (PDF)',
                 'required' => false,
                 'data_class' => null
             ])

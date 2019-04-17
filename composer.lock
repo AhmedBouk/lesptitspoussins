@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d8b4d9346074fac7663810ed658babe",
+    "content-hash": "4d8b2f505e34a82e41db68f947288a98",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -6208,64 +6208,6 @@
             "time": "2019-03-30T15:58:42+00:00"
         },
         {
-            "name": "tattali/calendar-bundle",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattali/CalendarBundle.git",
-                "reference": "10db3cc5d55052e93fab55661fa30f204308c6d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattali/CalendarBundle/zipball/10db3cc5d55052e93fab55661fa30f204308c6d4",
-                "reference": "10db3cc5d55052e93fab55661fa30f204308c6d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "symfony/dependency-injection": "^3.4 || ^4.0",
-                "symfony/event-dispatcher": "^3.4 || ^4.0",
-                "symfony/framework-bundle": "^3.4 || ^4.0"
-            },
-            "require-dev": {
-                "phpspec/prophecy": "^1.8",
-                "phpunit/phpunit": "^7.5",
-                "symfony/dotenv": "^4.2",
-                "symfony/phpunit-bridge": "^4.2",
-                "symfony/yaml": "^4.2"
-            },
-            "suggest": {
-                "doctrine/mongodb-odm-bundle": "To support MongoDB.",
-                "symfony/orm-pack": "To support Doctrine ORM and Migration."
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "CalendarBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Théo Attali",
-                    "email": "theoattali@gmail.com",
-                    "homepage": "https://theoattali.fr"
-                }
-            ],
-            "description": "Provides event calendar for your Symfony 4 project. Compatible with Doctrine ORM & ODM, and API like Google Calendar.",
-            "homepage": "https://github.com/tattali/CalendarBundle",
-            "keywords": [
-                "calendar",
-                "fullcalendar",
-                "symfony",
-                "symfony calendar"
-            ],
-            "time": "2019-04-03T09:11:09+00:00"
-        },
-        {
             "name": "twig/extensions",
             "version": "v1.5.4",
             "source": {
@@ -6322,16 +6264,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "26517b0e879865ee0d8a9748144be0875d838f5a"
+                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/26517b0e879865ee0d8a9748144be0875d838f5a",
-                "reference": "26517b0e879865ee0d8a9748144be0875d838f5a",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/91cc2594d3143761ce0399c1caffd0b500ffe5b9",
+                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9",
                 "shasum": ""
             },
             "require": {
@@ -6385,7 +6327,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-04-16T12:36:25+00:00"
+            "time": "2019-04-16T17:14:24+00:00"
         },
         {
             "name": "webmozart/assert",
