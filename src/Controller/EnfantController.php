@@ -25,6 +25,8 @@ class EnfantController extends AbstractController
     {
 
         $id = $parentt->getId();
+
+
         $enfant = new EnfantProfil();
 
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -63,7 +65,7 @@ class EnfantController extends AbstractController
                 $livretDeFamilleEnfant->setLivretDeFamilleEnfant($fileName);
             }
 
-            $this->prePersist($parentt);
+            $enfant->setParentt($parentt);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($enfant);
@@ -84,18 +86,5 @@ class EnfantController extends AbstractController
 
     }
 
-    private function prePersist($object)
-    {
-        foreach ($object->getEnfant() as $reponse){
-            $reponse->setParentt($object);
-        }
-    }
-
-    private function preUpdate($object)
-    {
-        foreach ($object->getEnfant() as $reponse){
-            $reponse->setParentt($object);
-        }
-    }
 
 }
