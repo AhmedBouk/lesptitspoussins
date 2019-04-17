@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProProfilRepository")
@@ -30,11 +31,15 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Range(max=150)
      */
     private $nom_entreprise;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     *@Assert\Email(
+     *   checkMX = true
+     *)
      */
     private $mail;
 
@@ -45,6 +50,7 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Regex("\^[0-9]{5}$/")
      */
     private $codepostal;
 
@@ -80,6 +86,7 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Range(min=1,max=150)
      */
     private $nombre_personnel;
 
