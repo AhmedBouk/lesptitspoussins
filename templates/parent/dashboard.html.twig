@@ -30,7 +30,12 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
-                <a href="{{ path('editparent', { 'id' : app.user.id }) }}">
+                <a href="{{ asset('fichiers/parents/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.impots }}">Fiche d'impôts</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.attestationcaf }}">CAF</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.livretdefamille }}">Livret de Famille</a>
+                <br><a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
                 </a>
             </div>

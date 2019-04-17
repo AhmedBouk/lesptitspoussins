@@ -7,29 +7,28 @@ namespace App\Services;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FileUploader
+class ImpotsUpload
 {
     /**
      * @var string
      */
-    private $targetDirectory;
+    private $impotsDirectory;
 
-    public function __construct($targetDirectory)
+    public function __construct($impotsDirectory)
     {
-        $this->targetDirectory = $targetDirectory;
+        $this->impotsDirectory = $impotsDirectory;
     }
 
     public function upload(UploadedFile $file)
     {
-
         //On nomme notre fichier pour la bdd
         $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
         //On effectue le déplacement du fichier
         try{
             $file->move(
-                $this->getTargertDirectory(),
-                    $fileName
+                $this->getImpotsDirectory(),
+                $fileName
             );
         } catch (FileException $exception){
 
@@ -40,11 +39,11 @@ class FileUploader
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getTargertDirectory()
+    public function getImpotsDirectory(): string
     {
-        return $this->targetDirectory;
+        return $this->impotsDirectory;
     }
 
     public function generateUniqueFileName()
