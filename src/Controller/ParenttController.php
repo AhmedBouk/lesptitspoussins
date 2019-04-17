@@ -9,6 +9,7 @@ use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
 use App\Services\FileUploader;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,9 +53,9 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $revenus */
             $revenus = $form->get('revenu')->getData();
 
-            $revenusName = $fileUploader->uploaed($revenus);
+            $revenusName = $fileUploader->upload($revenus);
 
-            $parentt->setRevenu($revenusName);
+            $parentt->setRevenu(new File($revenusName));
 
 
             $em = $this->getDoctrine()->getManager();

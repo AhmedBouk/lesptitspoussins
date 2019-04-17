@@ -9,14 +9,17 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileUploader
 {
-    private $targerDirectory;
+    /**
+     * @var string
+     */
+    private $targetDirectory;
 
-    public function __construct($targerDirectory)
+    public function __construct($targetDirectory)
     {
-        $this->targerDirectory = $targerDirectory;
+        $this->targetDirectory = $targetDirectory;
     }
 
-    public function uploaed(UploadedFile $file)
+    public function upload(UploadedFile $file)
     {
         //On nomme notre fichier pour la bdd
         $fileName = md5(uniqid().'.'.$file->guessExtension());
@@ -24,7 +27,7 @@ class FileUploader
         //On effectue le déplacement du fichier
         try{
             $file->move(
-                $this->getTargerDirectory(),
+                $this->getTargertDirectory(),
                     $fileName
             );
         } catch (FileException $exception){
@@ -38,9 +41,9 @@ class FileUploader
     /**
      * @return mixed
      */
-    public function getTargerDirectory()
+    public function getTargertDirectory()
     {
-        return $this->targerDirectory;
+        return $this->targetDirectory;
     }
 
 }

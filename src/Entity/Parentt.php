@@ -618,12 +618,12 @@ class Parentt implements UserInterface
         $this->passwordRequestedAt = $passwordRequestedAt;
     }
 
-    public function getRevenu(): ?string
+    public function getRevenu()
     {
         return $this->revenu;
     }
 
-    public function setRevenu(?string $revenu): self
+    public function setRevenu(?string $revenu)
     {
         $this->revenu = $revenu;
 
