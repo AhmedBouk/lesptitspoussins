@@ -46,23 +46,25 @@ class EnfantController extends AbstractController
             $actedenaissance = $form->get('acteDeNaissance')->getData();
             if (isset($actedenaissance)){
                 $fileName = $fileUploader->upload($actedenaissance);
-                $actedenaissance->setActeDeNaissance($fileName);
+                $enfant->setActeDeNaissance($fileName);
             }
+
             /**
              *@var UploadedFile $certificatDeGrossesse
              */
             $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
             if (isset($certificatDeGrossesse)){
                 $fileName = $fileUploader->upload($certificatDeGrossesse);
-                $certificatDeGrossesse->setCertificatDeGrossesse($fileName);
+                $enfant->setCertificatDeGrossesse($fileName);
             }
+
             /**
              *@var UploadedFile $livretDeFamilleEnfant
              */
             $livretDeFamilleEnfant = $form->get('livretDeFamilleEnfant')->getData();
             if (isset($livretDeFamilleEnfant)){
                 $fileName = $fileUploader->upload($livretDeFamilleEnfant);
-                $livretDeFamilleEnfant->setLivretDeFamilleEnfant($fileName);
+                $enfant->setLivretDeFamilleEnfant($fileName);
             }
 
             $enfant->setParentt($parentt);
@@ -83,6 +85,70 @@ class EnfantController extends AbstractController
             'form' => $form->createView()
         ]);
 
+
+    }
+
+    /**
+     * @Route("/parent/{id}/edit/enfant", name="editenfant")
+     */
+    public function editEnfant(EnfantProfil $enfantProfil, Request $request, AuthenticationUtils $authenticationUtils, FileUploader $fileUploader, Parentt $parentt)
+    {
+        $id = $parentt->getId();
+
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+
+        $form = $this->createForm(EnfantFormType::class, $enfantProfil);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+
+            /**
+             *@var UploadedFile $actedenaissance
+             */
+            $actedenaissance = $form->get('acteDeNaissance')->getData();
+            if (isset($actedenaissance)){
+                $fileName = $fileUploader->upload($actedenaissance);
+                $enfantProfil->setActeDeNaissance($fileName);
+            }
+
+            /**
+             *@var UploadedFile $certificatDeGrossesse
+             */
+            $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
+            if (isset($certificatDeGrossesse)){
+                $fileName = $fileUploader->upload($certificatDeGrossesse);
+                $enfantProfil->setCertificatDeGrossesse($fileName);
+            }
+
+            /**
+             *@var UploadedFile $livretDeFamilleEnfant
+             */
+            $livretDeFamilleEnfant = $form->get('livretDeFamilleEnfant')->getData();
+            if (isset($livretDeFamilleEnfant)){
+                $fileName = $fileUploader->upload($livretDeFamilleEnfant);
+                $enfantProfil->setLivretDeFamilleEnfant($fileName);
+            }
+
+            $enfantProfil->setParentt($parentt);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($enfantProfil);
+            $em->flush();
+
+            $this->addFlash('success', 'L\'Enfant a bien été enregistré');
+
+            return $this->redirectToRoute('dashboardparent', [
+                'id' => $id
+            ]);
+        }
+
+        return $this->render('parent/edit_child.html.twig', [
+            'error' => $error,
+            'form' => $form->createView()
+        ]);
 
     }
 
