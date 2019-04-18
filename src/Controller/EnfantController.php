@@ -8,6 +8,7 @@ use App\Entity\EnfantProfil;
 use App\Entity\Parentt;
 use App\Form\EnfantFormType;
 use App\Services\FileUploader;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,28 +90,68 @@ class EnfantController extends AbstractController
     }
 
     /**
-     * @Route("/parent/{id}/enfant/{prenom}/edit", name="editsenfant")
+     * @Route("/parent/{id}/enfant/edit/{enfant_id}", name="editsenfant")
+     * @ParamConverter("enfantProfil", options={"id" = "enfant_id"})
      */
-    public function editEnfant(Request $request, EnfantProfil $enfantProfil)
+    public function editEnfant(Request $request, EnfantProfil $enfantProfil, Parentt $parentt, FileUploader $fileUploader, AuthenticationUtils $authenticationUtils)
     {
+
+        $id = $parentt->getId();
+
+        $error = $authenticationUtils->getLastAuthenticationError();
 
 
         $form = $this->createForm(EnfantFormType::class, $enfantProfil);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            /**
+             * @var UploadedFile $actedenaissance
+             */
+            $actedenaissance = $form->get('acteDeNaissance')->getData();
+            if (isset($actedenaissance)) {
+                $fileName = $fileUploader->upload($actedenaissance);
+                $enfantProfil->setActeDeNaissance($fileName);
+            }
+
+            /**
+             * @var UploadedFile $certificatDeGrossesse
+             */
+            $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
+            if (isset($certificatDeGrossesse)) {
+                $fileName = $fileUploader->upload($certificatDeGrossesse);
+                $enfantProfil->setCertificatDeGrossesse($fileName);
+            }
+
+            /**
+             * @var UploadedFile $livretDeFamilleEnfant
+             */
+            $livretDeFamilleEnfant = $form->get('livretDeFamilleEnfant')->getData();
+            if (isset($livretDeFamilleEnfant)) {
+                $fileName = $fileUploader->upload($livretDeFamilleEnfant);
+                $enfantProfil->setLivretDeFamilleEnfant($fileName);
+            }
+
+            $enfantProfil->setParentt($parentt);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($enfantProfil);
             $em->flush();
 
+            $this->addFlash('success', 'L\'Enfant a bien été enregistré');
+
             return $this->redirectToRoute('dashboardparent', [
+                'id' => $id
             ]);
         }
 
-        return $this->render('parent/edit_child.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('parent/profil_child.html.twig', [
+            'error' => $error,
+            'form' => $form->createView()
         ]);
-
     }
 
 
