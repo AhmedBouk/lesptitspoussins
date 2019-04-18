@@ -52,7 +52,7 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $revenus */
             $revenus = $form->get('revenu')->getData();
             if (isset($revenus)){
-                $revenusName = $fileUploader->upload($revenus);
+                $revenusName = $fileUploader->upload($revenus, $parentt);
                 $parentt->setRevenu($revenusName);
             }
 

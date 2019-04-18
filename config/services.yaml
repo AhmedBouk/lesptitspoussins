@@ -6,7 +6,6 @@
 parameters:
     locale: 'en'
     fichiersmedicaux_directory: '%kernel.project_dir%/public/fichiers/parents/revenus'
-    caf_directory: '%kernel.project_dir%/public/fichiers/parents/caf'
 
 services:
     # default configuration for services in *this* file
