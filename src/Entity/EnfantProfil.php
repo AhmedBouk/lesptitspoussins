@@ -33,7 +33,7 @@ class EnfantProfil
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\Range(min="now -3 year",max="now +1 year")
+     * @Assert\Range(min="now -1 year",max="now +6 year")
      */
     private $date_naissance;
 
