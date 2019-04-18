@@ -52,7 +52,8 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $revenus */
             $revenus = $form->get('revenu')->getData();
             if (isset($revenus)){
-                $revenusName = $fileUploader->upload($revenus, $parentt);
+                $test = '/fichiers/parents/revenus';
+                $revenusName = $fileUploader->upload($revenus, $test);
                 $parentt->setRevenu($revenusName);
             }
 
@@ -60,7 +61,8 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $caf */
             $caf = $form->get('attestationcaf')->getData();
             if (isset($caf)){
-                $cafName = $fileUploader->upload($caf);
+                $pathcaf = '/fichiers/parents/caf';
+                $cafName = $fileUploader->upload($caf, $pathcaf);
                 $parentt->setAttestationcaf($cafName);
             }
 
@@ -68,7 +70,8 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $livret */
             $livret = $form->get('livretdefamille')->getData();
             if (isset($livret)){
-                $livretName = $fileUploader->upload($livret);
+                $pathlivret = '/fichiers/parents/impots';
+                $livretName = $fileUploader->upload($livret, $pathlivret);
                 $parentt->setLivretdefamille($livretName);
             }
 
@@ -76,7 +79,8 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $domicile */
             $domicile = $form->get('justificatifdomicile')->getData();
             if (isset($domicile)){
-                $domicileName = $fileUploader->upload($domicile);
+                $pathdomicile = '/fichiers/parents/jutificatifdomicile';
+                $domicileName = $fileUploader->upload($domicile, $pathdomicile);
                 $parentt->setJustificatifdomicile($domicileName);
             }
 
@@ -84,7 +88,8 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $impots */
             $impots = $form->get('impots')->getData();
             if (isset($impots)){
-                $impotsName = $fileUploader->upload($impots);
+                $pathimpots = '/fichiers/parents/impots';
+                $impotsName = $fileUploader->upload($impots, $pathimpots);
                 $parentt->setImpots($impotsName);
             }
 

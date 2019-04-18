@@ -4,7 +4,6 @@
 namespace App\Services;
 
 
-use App\Entity\Parentt;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,22 +11,25 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class FileUploader extends AbstractController
 {
 
-    public function __construct()
+    private $targetDirectory;
+
+    public function __construct($targetDirectory)
     {
+        $this->targetDirectory = $targetDirectory;
     }
 
-    public function upload(UploadedFile $file, Parentt $parentt)
+    public function upload(UploadedFile $file, $test)
     {
 
 
-        if ($file === $parentt->getRevenu()){
+
             //On nomme notre fichier pour la bdd
             $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
 
             //On effectue le déplacement du fichier
             try {
                 $file->move(
-                    $this->getParameter('fichiersmedicaux_directory'),
+                    $this->getTargetDirectory().$test,
                     $fileName
                 );
             } catch (FileException $exception) {
@@ -35,10 +37,15 @@ class FileUploader extends AbstractController
             }
 
             return $fileName;
-        }else{
 
-        }
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getTargetDirectory()
+    {
+        return $this->targetDirectory;
     }
 
     public function generateUniqueFileName()
