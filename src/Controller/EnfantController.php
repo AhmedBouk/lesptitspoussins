@@ -45,24 +45,27 @@ class EnfantController extends AbstractController
              */
             $actedenaissance = $form->get('acteDeNaissance')->getData();
             if (isset($actedenaissance)){
-                $fileName = $fileUploader->upload($actedenaissance);
-                $actedenaissance->setActeDeNaissance($fileName);
+                $pathActeDeNaissance = "/fichiers/enfants/acte_de_naissance";
+                $fileName = $fileUploader->upload($actedenaissance,$pathActeDeNaissance);
+                $enfant->setActeDeNaissance($fileName);
             }
             /**
              *@var UploadedFile $certificatDeGrossesse
              */
             $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
             if (isset($certificatDeGrossesse)){
-                $fileName = $fileUploader->upload($certificatDeGrossesse);
-                $certificatDeGrossesse->setCertificatDeGrossesse($fileName);
+                $pathCertificatDeGrossesse = "/fichiers/enfants/certificat_de_grossesse";
+                $fileName = $fileUploader->upload($certificatDeGrossesse,$pathCertificatDeGrossesse);
+                $enfant->setCertificatDeGrossesse($fileName);
             }
             /**
              *@var UploadedFile $livretDeFamilleEnfant
              */
             $livretDeFamilleEnfant = $form->get('livretDeFamilleEnfant')->getData();
             if (isset($livretDeFamilleEnfant)){
-                $fileName = $fileUploader->upload($livretDeFamilleEnfant);
-                $livretDeFamilleEnfant->setLivretDeFamilleEnfant($fileName);
+                $pathLivretDeFamilleEnfant = "/fichiers/enfants/livret_de_famille";
+                $fileName = $fileUploader->upload($livretDeFamilleEnfant,$pathLivretDeFamilleEnfant);
+                $enfant->setLivretDeFamilleEnfant($fileName);
             }
 
             $enfant->setParentt($parentt);

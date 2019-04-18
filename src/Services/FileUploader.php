@@ -21,7 +21,7 @@ class FileUploader
         $this->targetDirectory = $targetDirectory;
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file,$test)
     {
         //On nomme notre fichier pour la bdd
         $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
@@ -29,7 +29,7 @@ class FileUploader
         //On effectue le déplacement du fichier
         try{
             $file->move(
-                $this->getTargertDirectory(),
+                $this->getTargertDirectory().$test,
                 $fileName
             );
         } catch (FileException $exception){
