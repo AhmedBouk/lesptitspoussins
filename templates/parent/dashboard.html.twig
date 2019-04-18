@@ -53,7 +53,7 @@
                     <tr class="table-primary">
                         <th>{{ enfant.prenom }}</th>
                         <th>{{ enfant.nom }}</th>
-                        <th><a href="{{ path('editenfant', { 'id' : app.user.id }) }}">Modifier</a></th>
+                        <th><a href="{{ path('editsenfant', { 'id' : app.user.id, 'prenom' : enfant.prenom }) }}">Modifier</a></th>
                     </tr>
                     </tbody>
                     {% endfor %}

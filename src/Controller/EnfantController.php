@@ -89,65 +89,26 @@ class EnfantController extends AbstractController
     }
 
     /**
-     * @Route("/parent/{id}/edit/enfant", name="editenfant")
+     * @Route("/parent/{id}/enfant/{prenom}/edit", name="editsenfant")
      */
-    public function editEnfant(EnfantProfil $enfantProfil, Request $request, AuthenticationUtils $authenticationUtils, FileUploader $fileUploader, Parentt $parentt)
+    public function editEnfant(Request $request, EnfantProfil $enfantProfil)
     {
-        $id = $parentt->getId();
-
-        $error = $authenticationUtils->getLastAuthenticationError();
 
 
         $form = $this->createForm(EnfantFormType::class, $enfantProfil);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()){
-
-
-            /**
-             *@var UploadedFile $actedenaissance
-             */
-            $actedenaissance = $form->get('acteDeNaissance')->getData();
-            if (isset($actedenaissance)){
-                $fileName = $fileUploader->upload($actedenaissance);
-                $enfantProfil->setActeDeNaissance($fileName);
-            }
-
-            /**
-             *@var UploadedFile $certificatDeGrossesse
-             */
-            $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
-            if (isset($certificatDeGrossesse)){
-                $fileName = $fileUploader->upload($certificatDeGrossesse);
-                $enfantProfil->setCertificatDeGrossesse($fileName);
-            }
-
-            /**
-             *@var UploadedFile $livretDeFamilleEnfant
-             */
-            $livretDeFamilleEnfant = $form->get('livretDeFamilleEnfant')->getData();
-            if (isset($livretDeFamilleEnfant)){
-                $fileName = $fileUploader->upload($livretDeFamilleEnfant);
-                $enfantProfil->setLivretDeFamilleEnfant($fileName);
-            }
-
-            $enfantProfil->setParentt($parentt);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($enfantProfil);
             $em->flush();
 
-            $this->addFlash('success', 'L\'Enfant a bien été enregistré');
-
             return $this->redirectToRoute('dashboardparent', [
-                'id' => $id
             ]);
         }
 
         return $this->render('parent/edit_child.html.twig', [
-            'error' => $error,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
 
     }
