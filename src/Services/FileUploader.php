@@ -4,47 +4,35 @@
 namespace App\Services;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FileUploader
+class FileUploader extends AbstractController
 {
-    /**
-     * @var string
-     */
-    private $targetDirectory;
 
-    public function __construct($targetDirectory)
+    public function __construct()
     {
-        $this->targetDirectory = $targetDirectory;
     }
 
     public function upload(UploadedFile $file)
     {
 
         //On nomme notre fichier pour la bdd
-        $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+        $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
 
         //On effectue le déplacement du fichier
-        try{
+        try {
             $file->move(
-                $this->getTargertDirectory(),
-                    $fileName
+                $this->getParameter('fichiersmedicaux_directory'),
+                $fileName
             );
-        } catch (FileException $exception){
+        } catch (FileException $exception) {
 
         }
 
         return $fileName;
 
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTargertDirectory()
-    {
-        return $this->targetDirectory;
     }
 
     public function generateUniqueFileName()

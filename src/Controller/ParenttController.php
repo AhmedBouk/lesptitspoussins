@@ -8,7 +8,6 @@ use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
 use App\Services\FileUploader;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
