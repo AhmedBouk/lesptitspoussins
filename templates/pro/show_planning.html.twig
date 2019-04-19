@@ -10,9 +10,11 @@
             <li class="list-group-item"><span class="text-info font-weight-bold">Prénom : </span>{{ planning.prenom }}</li>
             <li class="list-group-item"><span class="text-info font-weight-bold">Heure de début : </span>{{ planning.heuredebut.date|date('d/m/Y H:m') }}</li>
             <li class="list-group-item"><span class="text-info font-weight-bold">Heure de fin : </span>{{ planning.heuredefin.date|date('d/m/Y H:m') }}</li>
+            <li class="list-group-item"><span class="text-info font-weight-bold">Actions : </span><a href="{{ path('modifplanning', { 'id' : app.user.id, 'planning_id' : planning.id }) }}">Modifier</a></li>
         </ul>
-        <a href="">Modifier</a>
     {% endfor %}
     <div class="clear"></div>
+    <a href="{{ path('prodashboard', { 'id' : app.user.id }) }}"><button type="submit" class="bouton-contact">Retour</button></a>
+
 
 {% endblock body %}

@@ -18,7 +18,7 @@ class PlanController extends AbstractController
     /**
      * @Route("/pro/{id}/planning/{planning_id}/modif", name="modifplanning")
      *
-     * @ParamConverter("Plan", options={"id" = "planning_id"})
+     * @ParamConverter("plan", options={"id" = "planning_id"})
      */
     public function editPlanning(Request $request, Plan $plan, ProProfil $proProfil)
     {
@@ -40,7 +40,15 @@ class PlanController extends AbstractController
             ]);
         }
 
+        return $this->render('plan/modifplanning.html.twig', [
+            'form' => $form->createView()
+        ]);
 
+    }
+
+
+    public function deletePlanning()
+    {
 
     }
 
