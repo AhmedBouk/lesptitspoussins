@@ -6,7 +6,9 @@ namespace App\Controller;
 
 use App\Entity\ProProfil;
 use App\Form\ProProfilFormType;
+use App\Repository\PlanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,6 +47,33 @@ class ProController extends AbstractController
         return $this->render('pro/pro_profil.html.twig', [
             'form' => $form->createView()
         ]);
+
+    }
+
+    /**
+     * @Route("/indexpro/calendar/{id}", name="loadcalendar")
+     * @return JsonResponse
+     */
+    public function LoadEvent(PlanRepository $test, $id)
+    {
+
+
+        $evenements = $test->findByPro($id);
+
+
+
+        foreach ($evenements as $row){
+
+            $data[] = array(
+                'id' => $row['id'],
+                'title' => utf8_encode($row['nom'] .' '. $row['prenom']),
+                'start' => $row['heuredebut']->format('Y-m-d H:i'),
+                'end' => $row['heuredefin']->format('Y-m-d H:i')
+            );
+
+        }
+
+        return new JsonResponse($data);
 
     }
 
