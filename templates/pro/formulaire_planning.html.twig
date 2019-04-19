@@ -19,8 +19,17 @@
         </div>
 
 
-    <input type="submit"  value="Enregistrer" class="bouton-contact">
-    {{ form_end(form) }}
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <button type="submit" class="bouton-contact">Enregistrer</button>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <a href="{{ path('prodashboard', { 'id' : app.user.id }) }}">
+                    <button type="button" class="bouton-contact">Retour</button>
+                </a>
+            </div>
+        </div>
+                {{ form_end(form) }}
 
 
     </div>

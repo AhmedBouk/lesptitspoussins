@@ -10,7 +10,6 @@ use App\Form\PlanFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PlanController extends AbstractController
@@ -36,8 +35,11 @@ class PlanController extends AbstractController
             $em->persist($plan);
             $em->flush();
 
+            $test = $this->addFlash('success', 'Votre planning a bien été modifié!');
+
             return $this->redirectToRoute('voirplanning', [
-                'id' => $id
+                'id' => $id,
+                'test' => $test
             ]);
         }
 
@@ -62,7 +64,7 @@ class PlanController extends AbstractController
         $em->remove($plan);
         $em->flush();
 
-        $test = $this->addFlash('succes', 'Votre planning a bien été supprimé!');
+        $test = $this->addFlash('success', 'Votre planning a bien été supprimé!');
 
         return $this->redirectToRoute('voirplanning', [
             'id' => $id,

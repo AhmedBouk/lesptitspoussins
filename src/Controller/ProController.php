@@ -84,8 +84,11 @@ class ProController extends AbstractController
             $em->persist($plan);
             $em->flush();
 
+            $test = $this->addFlash('success', 'Votre planning a bien été ajouté!');
+
             return $this->redirectToRoute('prodashboard', [
-                'id' => $id
+                'id' => $id,
+                'test' => $test
             ]);
         }
 

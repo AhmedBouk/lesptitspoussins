@@ -25,7 +25,11 @@
         </ul>
     {% endfor %}
     <div class="clear"></div>
-    <a href="{{ path('prodashboard', { 'id' : app.user.id }) }}"><button type="submit" class="bouton-contact">Retour</button></a>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3 mx-auto">
+            <a href="{{ path('prodashboard', { 'id' : app.user.id }) }}"><button type="submit" class="bouton-contact">Retour</button></a>
+        </div>
+    </div>
 
 
 {% endblock body %}
