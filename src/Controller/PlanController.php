@@ -53,13 +53,20 @@ class PlanController extends AbstractController
      *
      * @ParamConverter("plan", options={"id" = "planning_id"})
      */
-    public function deletePlanning(Plan $plan)
+    public function deletePlanning(Plan $plan, ProProfil $proProfil)
     {
+
+        $id = $proProfil->getId();
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($plan);
         $em->flush();
 
-        return new Response('Votre planning a bien été supprimé');
+        $this->addFlash('succes', 'Votre planning a bien été supprimé!');
+
+        return $this->redirectToRoute('voirplanning', [
+            'id' => $id
+        ]);
 
     }
 
