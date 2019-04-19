@@ -27,7 +27,7 @@ var CheminComplet = document.location.href;
 var CheminRepertoire  = CheminComplet.substring( 0 ,CheminComplet.lastIndexOf( "/" ) );
 
 
-if (CheminRepertoire == 'http://127.0.0.1:8000/indexpro'){
+if (CheminRepertoire == 'http://127.0.0.1:8000/pro/dashboard'){
 
 
 
