@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+    <h4 class="text-center text-uppercase m-5">Voici vos différents plannings qui sont effectués au sein de votre établissement</h4>
+    {% for planning in test %}
+        <ul class="list-group m-5 col-2 float-left">
+            <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span> {{ planning.nom }}</li>
+            <li class="list-group-item"><span class="text-info font-weight-bold">Prénom : </span>{{ planning.prenom }}</li>
+            <li class="list-group-item"><span class="text-info font-weight-bold">Heure de début : </span>{{ planning.heuredebut.date|date('d/m/Y H:m') }}</li>
+            <li class="list-group-item"><span class="text-info font-weight-bold">Heure de fin : </span>{{ planning.heuredefin.date|date('d/m/Y H:m') }}</li>
+        </ul>
+        <a href="">Modifier</a>
+    {% endfor %}
+    <div class="clear"></div>
+
+{% endblock body %}

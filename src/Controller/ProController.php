@@ -21,17 +21,25 @@ class ProController extends AbstractController
     /**
      * @Route("/pro/dashboard/{id}", name="prodashboard")
      */
-    public function dashboard(ProProfil $proProfil, PlanRepository $planRepository)
+    public function dashboard(ProProfil $proProfil)
     {
-        $test = $planRepository->findByPro($proProfil->getId());
-        echo '<pre>';
-        print_r($test);
-        echo '</pre>';
 
         return $this->render('pro/pro_dashboard.html.twig', [
-            'test' => $test,
             'pro' => $proProfil
         ]);
+    }
+
+    /**
+     * @Route("/pro/{id}/show/planning", name="voirplanning")
+     */
+    public function showPlanning(ProProfil $proProfil, PlanRepository $planRepository)
+    {
+        $test = $planRepository->findByPro($proProfil->getId());
+
+        return $this->render('pro/show_planning.html.twig', [
+            'test' => $test,
+        ]);
+
     }
 
     /**

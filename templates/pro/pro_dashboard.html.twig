@@ -33,10 +33,10 @@
                 <a href="{{ path('creerplanning', { 'id' : app.user.id}) }}">
                     <button type="submit" class="btn hmed">Ajouter planning</button>
                 </a>
+                <a href="{{ path('voirplanning', { 'id' : app.user.id }) }}">
+                    <button type="submit" class="btn hmed">Voir les plannings</button>
+                </a>
             </div>
-            {% for planning in test %}
-                
-            {% endfor %}
             {#profil enfant#}
             <div class="col-md-4 offset-md-4">
                 <div class="profile-img">
