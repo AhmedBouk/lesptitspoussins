@@ -30,6 +30,9 @@
                 <a href="{{ path('editproprofil', {'id': app.user.id }) }}">
                     <button type="button" class="btn hmed">Modifier</button>
                 </a>
+                <a href="{{ path('creerplanning', { 'id' : app.user.id}) }}">
+                    <button type="submit" class="btn hmed">Ajouter planning</button>
+                </a>
             </div>
             {#profil enfant#}
             <div class="col-md-4 offset-md-4">

@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
+use App\Entity\Plan;
 use App\Entity\ProProfil;
+use App\Form\PlanFormType;
 use App\Form\ProProfilFormType;
 use App\Repository\PlanRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,6 +49,37 @@ class ProController extends AbstractController
         return $this->render('pro/pro_profil.html.twig', [
             'form' => $form->createView()
         ]);
+
+    }
+
+    /**
+     * @Route("/pro/{id}/planning/create", name="creerplanning")
+     */
+    public function ajoutPlanning(Request $request, ProProfil $proProfil)
+    {
+        $plan = new Plan();
+        $id = $proProfil->getId();
+        $form = $this->createForm(PlanFormType::class, $plan);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $plan->setProProfil($proProfil);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($plan);
+            $em->flush();
+
+            return $this->redirectToRoute('prodashboard', [
+                'id' => $id
+            ]);
+        }
+
+        return $this->render('pro/formulaire_planning.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+
 
     }
 
