@@ -10,6 +10,7 @@ use App\Form\PlanFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PlanController extends AbstractController
@@ -47,8 +48,18 @@ class PlanController extends AbstractController
     }
 
 
-    public function deletePlanning()
+    /**
+     * @Route("/pro/{id}/planning/{planning_id}/delete", name="supprimerplanning")
+     *
+     * @ParamConverter("plan", options={"id" = "planning_id"})
+     */
+    public function deletePlanning(Plan $plan)
     {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($plan);
+        $em->flush();
+
+        return new Response('Votre planning a bien été supprimé');
 
     }
 
