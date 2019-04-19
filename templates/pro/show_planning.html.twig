@@ -3,7 +3,17 @@
 {% block body %}
     <div class="clear"></div>
     {{ parent() }}
+
     <h4 class="text-center text-uppercase m-5">Voici vos différents plannings qui sont effectués au sein de votre établissement</h4>
+
+    <div class="row">
+        {% for flash_message in app.session.flashBag.get('success') %}
+            <div class="alert alert-success text-center">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+    </div>
+
     {% for planning in test %}
         <ul class="list-group m-5 col-2 float-left">
             <li class="list-group-item"><span class="text-info font-weight-bold">Nom : </span> {{ planning.nom }}</li>

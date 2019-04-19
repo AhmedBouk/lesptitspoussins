@@ -62,10 +62,11 @@ class PlanController extends AbstractController
         $em->remove($plan);
         $em->flush();
 
-        $this->addFlash('succes', 'Votre planning a bien été supprimé!');
+        $test = $this->addFlash('succes', 'Votre planning a bien été supprimé!');
 
         return $this->redirectToRoute('voirplanning', [
-            'id' => $id
+            'id' => $id,
+            'test' => $test
         ]);
 
     }
