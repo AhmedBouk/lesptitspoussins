@@ -10,6 +10,7 @@
     {#profil#}
     <div class="container ">
         <div class="row">
+
             {% for flash_message in app.session.flashBag.get('success') %}
                 <div class="alert alert-success text-center">
                     {{ flash_message }}
@@ -17,6 +18,9 @@
             {% endfor %}
         </div>
         <div class="row">
+        
+          <div class="col-md-4"></div>
+            
             <div class="col-md-5">
                 <div class="container text-center mb-2">
                     <div class="row ">
@@ -37,11 +41,14 @@
                 <a href="{{ path('editproprofil', {'id': app.user.id }) }}">
                     <button type="button" class="btn hmed">Modifier</button>
                 </a>
+                <a href="{{ path('modifpasswordpro', { 'id' : app.user.id }) }}">
+                    <button type="button" class="btn hmed ">Modifier mot de passe</button>
                 <a href="{{ path('creerplanning', { 'id' : app.user.id}) }}">
                     <button type="submit" class="btn hmed">Ajouter planning</button>
                 </a>
                 <a href="{{ path('voirplanning', { 'id' : app.user.id }) }}">
                     <button type="submit" class="btn hmed">Voir les plannings</button>
+
                 </a>
             </div>
             {#profil enfant#}
