@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+    {{ form_start(form) }}
+    <h1 class="text-center mt-5">Planning</h1>
+    <div class="contentform">
+        <div class="form-group">
+            {{form_row(form.enfantProfil)}}
+        </div>
+
+        <div class="form-group">
+            {{form_row(form.heuredebut)}}
+        </div>
+
+        <div class="form-group">
+            {{form_row(form.heuredefin)}}
+        </div>
+
+        <a href="{{ path('voirplanning', { 'id' : app.user.id }) }}"><button type="submit" class="bouton-contact">Retour</button></a>
+        <input type="submit"  value="Enregistrer" class="bouton-contact">
+        {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock body %}
+

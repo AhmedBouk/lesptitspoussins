@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TuteurRepository")
@@ -18,11 +19,13 @@ class Tuteur
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Range(min=5,max=150)
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Range(min=5,max=150)
      */
     private $prenom;
 

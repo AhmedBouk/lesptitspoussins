@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -26,16 +27,22 @@ class Parentt implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(
+     *     checkMX = true
+     * )
      */
     private $mail;
 
@@ -45,7 +52,8 @@ class Parentt implements UserInterface
     private $ville;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Regex("/^[0-9]{5}$/")
      */
     private $codepostal;
 
@@ -55,7 +63,8 @@ class Parentt implements UserInterface
     private $adresse;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
     private $telephone;
 
@@ -63,11 +72,6 @@ class Parentt implements UserInterface
      * @ORM\Column(type="string", length=150)
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $passwordRequestedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
