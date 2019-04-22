@@ -2898,6 +2898,7 @@
         {
             "name": "symfony/asset",
             "version": "v4.2.7",
+
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset.git",
@@ -2953,6 +2954,7 @@
         },
         {
             "name": "symfony/cache",
+
             "version": "v4.2.7",
             "source": {
                 "type": "git",
@@ -2963,6 +2965,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/cache/zipball/9e64db924324700e19ef4f21c2c279a35ff9bdff",
                 "reference": "9e64db924324700e19ef4f21c2c279a35ff9bdff",
+
                 "shasum": ""
             },
             "require": {
@@ -3026,6 +3029,7 @@
                 "caching",
                 "psr6"
             ],
+
             "time": "2019-04-16T09:36:45+00:00"
         },
         {

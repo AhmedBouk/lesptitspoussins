@@ -51,6 +51,21 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
+                                    {{ form_row(form.acteDeNaissance) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.certificatDeGrossesse) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.livretDeFamilleEnfant) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
                                     {{ form_row(form.traitement) }}
                                 </div>
                             </div>
@@ -58,7 +73,7 @@
                         <hr class="colorgraph">
                             <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <input type="button" class="btn btn-success btn-block btn-lg" href="" value="Retour">
+                                <input type="submit" class="btn btn-success btn-block btn-lg" href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" value="Retour">
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
