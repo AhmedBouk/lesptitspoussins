@@ -111,6 +111,8 @@ class ProController extends AbstractController
 
         }
         return $this->render("parent/modifmdp_parent.html.twig");
+    }
+    
    /**
      * @Route("/pro/{id}/planning/create", name="creerplanning")
      */
