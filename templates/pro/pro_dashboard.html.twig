@@ -10,7 +10,14 @@
     {#profil#}
     <div class="container ">
         <div class="row">
-            <div class="col-md-4">
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success text-center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-5">
                 <div class="container text-center mb-2">
                     <div class="row ">
                         <div class="col-md h1" style="border-radius: 30px; padding: 5%;">Profil</div>
@@ -30,9 +37,15 @@
                 <a href="{{ path('editproprofil', {'id': app.user.id }) }}">
                     <button type="button" class="btn hmed">Modifier</button>
                 </a>
+                <a href="{{ path('creerplanning', { 'id' : app.user.id}) }}">
+                    <button type="submit" class="btn hmed">Ajouter planning</button>
+                </a>
+                <a href="{{ path('voirplanning', { 'id' : app.user.id }) }}">
+                    <button type="submit" class="btn hmed">Voir les plannings</button>
+                </a>
             </div>
             {#profil enfant#}
-            <div class="col-md-4 offset-md-4">
+            <div class="col-md-3 offset-md-4">
                 <div class="profile-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="image_entreprise" style="padding-top: 25%"/>
                     <div class="file btn btn-lg btn-primary">
@@ -42,7 +55,8 @@
                 </div>
             </div>
         </div>
-
+        <h1 class="text-uppercase text font-weight-bold">Voici le calendrier visuel pour avoir un visuel direct sur vos journées qui sont occupées</h1>
+        <div id="calendar" class="mt-5"></div>
         {#liste des demande de creche#}
         <div class="container mt-5">
             <div class="row">
