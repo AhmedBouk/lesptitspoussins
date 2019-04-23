@@ -52,6 +52,17 @@ class EnfantController extends AbstractController
             }
 
             /**
+             * @var UploadedFile $carnetdesante
+             */
+            $actedenaissance = $form->get('carnetDeSante')->getData();
+            if (isset($actedenaissance)) {
+                $patchcarnetdesante = "/fichiers/enfants/carnet_de_sante";
+                $fileName = $fileUploader->upload($carnetdesante,$patchcarnetdesante);
+                $enfant->setActeDeNaissance($fileName);
+            }
+
+
+            /**
              *@var UploadedFile $certificatDeGrossesse
              */
             $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
@@ -124,6 +135,16 @@ class EnfantController extends AbstractController
             }
 
             /**
+             * @var UploadedFile $carnetdesante
+             */
+            $actedenaissance = $form->get('carnetDeSante')->getData();
+            if (isset($actedenaissance)) {
+                $patchcarnetdesante = "/fichiers/enfants/carnet_de_sante";
+                $fileName = $fileUploader->upload($carnetdesante,$patchcarnetdesante);
+                $enfantProfil->setActeDeNaissance($fileName);
+            }
+
+            /**
              * @var UploadedFile $certificatDeGrossesse
              */
             $certificatDeGrossesse = $form->get('certificatDeGrossesse')->getData();
@@ -156,9 +177,20 @@ class EnfantController extends AbstractController
             ]);
         }
 
-        return $this->render('parent/profil_child.html.twig', [
+        return $this->render('parent/edit_child.html.twig', [
             'error' => $error,
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/parent/{id}/enfant/show/{enfant_id}", name="showenfant")
+     * @ParamConverter("enfantProfil", options={"id" = "enfant_id"})
+     */
+    public function showEnfant(EnfantProfil $enfantProfil)
+    {
+        return $this->render('enfant/show_enfant.html.twig', [
+            'enfants' => $enfantProfil
         ]);
     }
 

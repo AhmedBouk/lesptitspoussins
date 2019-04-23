@@ -35,9 +35,6 @@
                         <div class="form-group">
                             {{ form_row(form.dateNaissance, { 'attr': { 'class' : 'col-xs-12 col-sm-6 col-md-6'}}) }}
                         </div>
-                        <div class="form-group">
-                            {{ form_row(form.allergie) }}
-                        </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -51,12 +48,27 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
+                                    {{ form_row(form.allergie) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.autres) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
                                     {{ form_row(form.acteDeNaissance) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     {{ form_row(form.certificatDeGrossesse) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.carnetDeSante) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -73,7 +85,9 @@
                         <hr class="colorgraph">
                             <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <input type="submit" class="btn btn-success btn-block btn-lg" href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" value="Retour">
+                                <a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">
+                                    <button type="button" class="btn btn-success btn-block btn-lg">Retour</button>
+                                </a>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
