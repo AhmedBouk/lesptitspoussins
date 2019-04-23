@@ -20,11 +20,9 @@ class FileUploader extends AbstractController
         $this->targetDirectory = $targetDirectory;
     }
 
+
     public function upload(UploadedFile $file, $test)
     {
-
-
-
             //On nomme notre fichier pour la bdd
             $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
 

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190416134546 extends AbstractMigration
+final class Version20190418122827 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -33,12 +33,12 @@ final class Version20190416134546 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_5641226837955E80 ON tuteur (pro_profil_id)');
         $this->addSql('DROP INDEX UNIQ_40D43EC0C567A17');
         $this->addSql('DROP INDEX UNIQ_40D43EC05126AC48');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__pro_profil AS SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, horaire FROM pro_profil');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__pro_profil AS SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, token, longitude, latitude, horaire FROM pro_profil');
         $this->addSql('DROP TABLE pro_profil');
         $this->addSql('CREATE TABLE pro_profil (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom_entreprise VARCHAR(255) NOT NULL COLLATE BINARY, mail VARCHAR(255) NOT NULL COLLATE BINARY, ville VARCHAR(255) DEFAULT NULL COLLATE BINARY, codepostal INTEGER DEFAULT NULL, adresse CLOB DEFAULT NULL COLLATE BINARY, telephone INTEGER DEFAULT NULL, password VARCHAR(255) NOT NULL COLLATE BINARY, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, nombre_personnel INTEGER DEFAULT NULL, disponibilite BOOLEAN NOT NULL, tarif NUMERIC(10, 10) DEFAULT NULL, statut BOOLEAN NOT NULL, nombredeplace INTEGER NOT NULL, roles CLOB NOT NULL COLLATE BINARY --(DC2Type:array)
-        , token VARCHAR(255) DEFAULT NULL, horaire CLOB DEFAULT NULL --(DC2Type:json)
-        , longitude NUMERIC(10, 10) DEFAULT NULL, latitude NUMERIC(10, 10) DEFAULT NULL)');
-        $this->addSql('INSERT INTO pro_profil (id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, horaire) SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, horaire FROM __temp__pro_profil');
+        , token VARCHAR(255) DEFAULT NULL COLLATE BINARY, longitude NUMERIC(10, 10) DEFAULT NULL, latitude NUMERIC(10, 10) DEFAULT NULL, horaire CLOB DEFAULT NULL --(DC2Type:json)
+        )');
+        $this->addSql('INSERT INTO pro_profil (id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, token, longitude, latitude, horaire) SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, created_at, updated_at, nombre_personnel, disponibilite, tarif, statut, nombredeplace, roles, token, longitude, latitude, horaire FROM __temp__pro_profil');
         $this->addSql('DROP TABLE __temp__pro_profil');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_40D43EC0C567A17 ON pro_profil (nom_entreprise)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_40D43EC05126AC48 ON pro_profil (mail)');
@@ -69,11 +69,11 @@ final class Version20190416134546 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_DD5A5B7DA1440662 ON "plan" (enfant_profil_id)');
         $this->addSql('CREATE INDEX IDX_DD5A5B7D37955E80 ON "plan" (pro_profil_id)');
         $this->addSql('DROP INDEX UNIQ_633488C95126AC48');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__parentt AS SELECT id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition FROM parentt');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__parentt AS SELECT id, nom, prenom, mail, ville, adresse, password, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition, token, telephone, codepostal, password_requested_at FROM parentt');
         $this->addSql('DROP TABLE parentt');
-        $this->addSql('CREATE TABLE parentt (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom VARCHAR(255) DEFAULT NULL COLLATE BINARY, prenom VARCHAR(255) DEFAULT NULL COLLATE BINARY, mail VARCHAR(255) NOT NULL COLLATE BINARY, ville VARCHAR(255) DEFAULT NULL COLLATE BINARY, codepostal INTEGER DEFAULT NULL, adresse CLOB DEFAULT NULL COLLATE BINARY, telephone INTEGER DEFAULT NULL, password VARCHAR(150) NOT NULL COLLATE BINARY, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, created_at_abonnement DATETIME DEFAULT NULL, statut_abonnement BOOLEAN NOT NULL, date_duree DATE DEFAULT NULL, is_enabled BOOLEAN NOT NULL, roles CLOB NOT NULL COLLATE BINARY --(DC2Type:array)
-        , statutcondition BOOLEAN NOT NULL, token VARCHAR(255) DEFAULT NULL, password_requested_at DATETIME DEFAULT NULL)');
-        $this->addSql('INSERT INTO parentt (id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition) SELECT id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition FROM __temp__parentt');
+        $this->addSql('CREATE TABLE parentt (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom VARCHAR(255) DEFAULT NULL COLLATE BINARY, prenom VARCHAR(255) DEFAULT NULL COLLATE BINARY, mail VARCHAR(255) NOT NULL COLLATE BINARY, ville VARCHAR(255) DEFAULT NULL COLLATE BINARY, adresse CLOB DEFAULT NULL COLLATE BINARY, password VARCHAR(150) NOT NULL COLLATE BINARY, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, created_at_abonnement DATETIME DEFAULT NULL, statut_abonnement BOOLEAN NOT NULL, date_duree DATE DEFAULT NULL, is_enabled BOOLEAN NOT NULL, roles CLOB NOT NULL COLLATE BINARY --(DC2Type:array)
+        , statutcondition BOOLEAN NOT NULL, token VARCHAR(255) DEFAULT NULL COLLATE BINARY, telephone INTEGER DEFAULT NULL, codepostal INTEGER DEFAULT NULL, password_requested_at DATETIME DEFAULT NULL)');
+        $this->addSql('INSERT INTO parentt (id, nom, prenom, mail, ville, adresse, password, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition, token, telephone, codepostal, password_requested_at) SELECT id, nom, prenom, mail, ville, adresse, password, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition, token, telephone, codepostal, password_requested_at FROM __temp__parentt');
         $this->addSql('DROP TABLE __temp__parentt');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_633488C95126AC48 ON parentt (mail)');
         $this->addSql('DROP INDEX IDX_B1DC7A1E2AD18E6A');
@@ -158,31 +158,28 @@ final class Version20190416134546 extends AbstractMigration
         $this->addSql('DROP TABLE __temp__paiement');
         $this->addSql('CREATE INDEX IDX_B1DC7A1E2AD18E6A ON paiement (parentt_id)');
         $this->addSql('CREATE INDEX IDX_B1DC7A1E37955E80 ON paiement (pro_profil_id)');
-        $this->addSql('DROP INDEX UNIQ_633488C95126AC48');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__parentt AS SELECT id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition FROM parentt');
-        $this->addSql('DROP TABLE parentt');
-        $this->addSql('CREATE TABLE parentt (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom VARCHAR(255) DEFAULT NULL, prenom VARCHAR(255) DEFAULT NULL, mail VARCHAR(255) NOT NULL, ville VARCHAR(255) DEFAULT NULL, codepostal INTEGER DEFAULT NULL, adresse CLOB DEFAULT NULL, telephone INTEGER DEFAULT NULL, password VARCHAR(150) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, created_at_abonnement DATETIME DEFAULT NULL, statut_abonnement BOOLEAN NOT NULL, date_duree DATE DEFAULT NULL, is_enabled BOOLEAN NOT NULL, roles CLOB NOT NULL --(DC2Type:array)
-        , statutcondition BOOLEAN NOT NULL, token VARCHAR(255) NOT NULL COLLATE BINARY)');
-        $this->addSql('INSERT INTO parentt (id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition) SELECT id, nom, prenom, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, created_at_abonnement, statut_abonnement, date_duree, is_enabled, roles, statutcondition FROM __temp__parentt');
-        $this->addSql('DROP TABLE __temp__parentt');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_633488C95126AC48 ON parentt (mail)');
+        $this->addSql('ALTER TABLE parentt ADD COLUMN revenu VARCHAR(255) DEFAULT NULL COLLATE BINARY');
+        $this->addSql('ALTER TABLE parentt ADD COLUMN attestationcaf VARCHAR(255) DEFAULT NULL COLLATE BINARY');
+        $this->addSql('ALTER TABLE parentt ADD COLUMN justificatifdomicile VARCHAR(255) DEFAULT NULL COLLATE BINARY');
+        $this->addSql('ALTER TABLE parentt ADD COLUMN impots VARCHAR(255) DEFAULT NULL COLLATE BINARY');
+        $this->addSql('ALTER TABLE parentt ADD COLUMN livretdefamille VARCHAR(255) DEFAULT NULL COLLATE BINARY');
         $this->addSql('DROP INDEX IDX_DD5A5B7DA1440662');
         $this->addSql('DROP INDEX IDX_DD5A5B7D37955E80');
         $this->addSql('CREATE TEMPORARY TABLE __temp__plan AS SELECT id, enfant_profil_id, pro_profil_id, heuredebut, heuredefin, created_at, updated_at FROM "plan"');
         $this->addSql('DROP TABLE "plan"');
-        $this->addSql('CREATE TABLE "plan" (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, enfant_profil_id INTEGER DEFAULT NULL, pro_profil_id INTEGER DEFAULT NULL, heuredebut DATETIME DEFAULT NULL, heuredefin DATETIME DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, date DATE NOT NULL)');
+        $this->addSql('CREATE TABLE "plan" (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, enfant_profil_id INTEGER DEFAULT NULL, pro_profil_id INTEGER DEFAULT NULL, heuredebut DATETIME DEFAULT NULL, heuredefin DATETIME DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL)');
         $this->addSql('INSERT INTO "plan" (id, enfant_profil_id, pro_profil_id, heuredebut, heuredefin, created_at, updated_at) SELECT id, enfant_profil_id, pro_profil_id, heuredebut, heuredefin, created_at, updated_at FROM __temp__plan');
         $this->addSql('DROP TABLE __temp__plan');
         $this->addSql('CREATE INDEX IDX_DD5A5B7DA1440662 ON "plan" (enfant_profil_id)');
         $this->addSql('CREATE INDEX IDX_DD5A5B7D37955E80 ON "plan" (pro_profil_id)');
         $this->addSql('DROP INDEX UNIQ_40D43EC0C567A17');
         $this->addSql('DROP INDEX UNIQ_40D43EC05126AC48');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__pro_profil AS SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles FROM pro_profil');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__pro_profil AS SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles, longitude, latitude FROM pro_profil');
         $this->addSql('DROP TABLE pro_profil');
-        $this->addSql('CREATE TABLE pro_profil (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom_entreprise VARCHAR(255) NOT NULL, mail VARCHAR(255) NOT NULL, ville VARCHAR(255) DEFAULT NULL, codepostal INTEGER DEFAULT NULL, adresse CLOB DEFAULT NULL, telephone INTEGER DEFAULT NULL, password VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, nombre_personnel INTEGER DEFAULT NULL, disponibilite BOOLEAN NOT NULL, tarif NUMERIC(10, 10) DEFAULT NULL, statut BOOLEAN NOT NULL, nombredeplace INTEGER NOT NULL, roles CLOB NOT NULL --(DC2Type:array)
-        , token VARCHAR(255) NOT NULL COLLATE BINARY, horaire CLOB DEFAULT \'NULL --(DC2Type:json)\' COLLATE BINARY --(DC2Type:json)
+        $this->addSql('CREATE TABLE pro_profil (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nom_entreprise VARCHAR(255) NOT NULL, mail VARCHAR(255) NOT NULL, ville VARCHAR(255) DEFAULT NULL, codepostal INTEGER DEFAULT NULL, adresse CLOB DEFAULT NULL, telephone INTEGER DEFAULT NULL, password VARCHAR(255) NOT NULL, token VARCHAR(255) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, nombre_personnel INTEGER DEFAULT NULL, disponibilite BOOLEAN NOT NULL, tarif NUMERIC(10, 10) DEFAULT NULL, statut BOOLEAN NOT NULL, nombredeplace INTEGER NOT NULL, roles CLOB NOT NULL --(DC2Type:array)
+        , longitude NUMERIC(10, 10) DEFAULT NULL, latitude NUMERIC(10, 10) DEFAULT NULL, horaire CLOB DEFAULT \'NULL --(DC2Type:json)\' COLLATE BINARY --(DC2Type:json)
         )');
-        $this->addSql('INSERT INTO pro_profil (id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles) SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles FROM __temp__pro_profil');
+        $this->addSql('INSERT INTO pro_profil (id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles, longitude, latitude) SELECT id, nom_entreprise, mail, ville, codepostal, adresse, telephone, password, token, created_at, updated_at, nombre_personnel, disponibilite, tarif, horaire, statut, nombredeplace, roles, longitude, latitude FROM __temp__pro_profil');
         $this->addSql('DROP TABLE __temp__pro_profil');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_40D43EC0C567A17 ON pro_profil (nom_entreprise)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_40D43EC05126AC48 ON pro_profil (mail)');

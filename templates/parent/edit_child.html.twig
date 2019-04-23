@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+    <div class="container mt-5"style="padding-top: 100px;">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <div class="col-md-12 mb-5 well" id="rightPanel">
+            <div class="row">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled mb-0">
+                            <li><span class="initialism badge-danger badge">Error</span>
+                                <span class="error">{{ error.messageKey| trans(error.messageData, 'security') }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="col-md-12">
+                    {{ form_start(form) }}
+                    <h2 class="text-center">Renseigner le profil de votre enfant</h2>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.nom) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.prenom) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.dateNaissance, { 'attr': { 'class' : 'col-xs-12 col-sm-6 col-md-6'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.allergie) }}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.maladies) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.traitement) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.acteDeNaissance) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.certificatDeGrossesse) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.livretDeFamilleEnfant) }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.traitement) }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-success btn-block btn-lg" href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" value="Retour">
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+{% endblock body %}

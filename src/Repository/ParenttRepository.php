@@ -53,7 +53,7 @@ class ParenttRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('parentt')
             ->leftJoin('parentt.enfant','ep')
             ->where('parentt.id = :val')
-            ->select('ep.nom', 'ep.prenom')
+            ->select('ep.nom', 'ep.prenom', 'ep.id')
             ->setParameter(':val',$id)
             ->getQuery()
         ;
