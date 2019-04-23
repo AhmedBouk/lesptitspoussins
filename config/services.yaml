@@ -5,6 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    enfant_actedenaissance: '%kernel.project_dir%/public/enfant/actedenaissance'
+    enfant_certificatdegrossesse: '%kernel.project_dir%/public/enfant/certificatdegrossesse'
+    enfant_livretdefamille: '%kernel.project_dir%/public/enfant/livretdefamille'
 
 services:
     # default configuration for services in *this* file
@@ -79,3 +82,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Services\FileUploader:
+        arguments:
+            $targetDirectory: '%enfant_actedenaissance%'
