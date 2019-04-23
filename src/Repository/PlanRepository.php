@@ -47,4 +47,23 @@ class PlanRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param $proProfil
+     * @return array
+     */
+    public function findByPro($proProfil)
+    {
+
+        $query = $this->createQueryBuilder('p')
+            ->leftJoin('p.enfantProfil','ep')
+            ->leftJoin('p.proProfil','pp')
+            ->where('pp.id = :val')
+            ->select(['p.id','p.heuredebut','p.heuredefin','ep.nom','ep.prenom'])
+            ->setParameter(':val',$proProfil)
+            ->getQuery()
+        ;
+        return $query->getArrayResult();
+
+    }
 }
