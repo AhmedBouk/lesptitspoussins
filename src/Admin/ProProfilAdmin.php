@@ -46,14 +46,6 @@ class ProProfilAdmin extends AbstractAdmin
             ->add('nombredeplace', null, [
                 'label' => 'Le nombre de places total dans votre établissement'
             ])
-            ->add('tuteur', ModelType::class, [
-                'class' => Tuteur::class,
-                'label' => 'Vos Tuteurs',
-                'property' => 'nom',
-                'multiple' => true,
-                'btn_add' => false,
-
-            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => array('label' => 'Password'),
@@ -159,7 +151,6 @@ class ProProfilAdmin extends AbstractAdmin
             ->add('nombredeplace', null, [
                 'label' => 'Le nombre de places total dans votre établissement'
             ])
-            ->add('tuteur', null, ['associated_property' => 'nom'])
             ->add('status', null, [
                 'label' => 'Actif'
             ])

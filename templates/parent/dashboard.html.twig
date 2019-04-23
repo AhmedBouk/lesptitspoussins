@@ -39,10 +39,10 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
                 <a href="{{ asset('fichiers/parents/revenus/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a>
-                <br><a href="{{ asset('/fichiers/parents/impots/') }}{{ parent.impots }}">Fiche d'impôts</a>
+                <br><a href="{{ asset('fichiers/parents/impots/') }}{{ parent.impots }}">Fiche d'impôts</a>
                 <br><a href="{{ asset('fichiers/parents/caf/') }}{{ parent.attestationcaf }}">CAF</a>
                 <br><a href="{{ asset('fichiers/parents/justificatifdomicile/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a>
-                <br><a href="{{ asset('fichiers/parents/livretdefamille') }}{{ parent.livretdefamille }}">Livret de Famille</a>
+                <br><a href="{{ asset('fichiers/parents/livretdefamille/') }}{{ parent.livretdefamille }}">Livret de Famille</a>
                 <br><a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
                 </a>
@@ -77,6 +77,9 @@
                 </table>
                 <a href="">
                     <a href="{{ path('créerenfant', { 'id' : app.user.id }) }}"><button type="button" class="btn  text-right hmed  ">Ajouter</button></a>
+                </a>
+                <a href="">
+                    <button type="button" class="btn  text-right hmed  ">Modifier</button>
                 </a>
             </div>
         </div>
