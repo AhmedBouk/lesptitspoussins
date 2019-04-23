@@ -64,6 +64,7 @@
                     </tr>
                     </thead>
 
+                    {% if data is defined %}
                     {% for enfant in data %}
                     <tbody>
                     <tr class="table-primary">
@@ -76,6 +77,8 @@
                     </tr>
                     </tbody>
                     {% endfor %}
+                    {% endif %}
+
 
                 </table>
                 <a href="">
