@@ -37,7 +37,9 @@ class ProProfilFormType extends AbstractType
             ->add('nombrePersonnel')
             ->add('telephone')
             ->add('avatar', FileType::class, [
-                'label' => 'Veuillez ajouter une photo pour votre avatar'
+                'label' => 'Veuillez ajouter une photo pour votre avatar',
+                'data_class' => null,
+                'required' => false
             ])
             ;
     }
