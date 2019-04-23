@@ -9,7 +9,7 @@ class MapController extends AbstractController
     /**
      * @Route("/map/{cp}", name="map")
      */
-    public function index(ProProfilRepository $proProfilRepository, $cp)
+    public function index(ProProfilRepository $proProfilRepository, string  $cp)
     {
         $request = $proProfilRepository->findcoord($cp);
 
@@ -17,10 +17,9 @@ class MapController extends AbstractController
 
         return $this->render('parent/search.html.twig', [
             'controller_name' => 'MapController',
-            'lat' => $json_data[0]['lat'],
-            'lon' => $json_data[0]['lon'],
-            'infra' => $infra,
-            'description' => $description,
+            'lat' => $request['latitude'],
+            'lon' => $request['longitude']
+
         ]);
     }
     /**

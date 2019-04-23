@@ -4,10 +4,13 @@
     <div class="clear"></div>
     {{ parent() }}
     <div class="container mt-5 mb-5 text-center" style="padding-top: 100px;">
-        <label for="">
-            <input type="number" id="cp">
-            <button class="btn  btn-md  hmed" href="{{ path('map', {'cp': 'cp'}) }}">Chercher un Professionnel</button>
-        </label>
+        <div class="row">
+            <div class="col">
+                <input type="number" id="cp">
+                <button class="btn  btn-md  hmed" href="{{ path('map', {'cp': 'tet'}) }}">Chercher un Professionnel</button>
+            </div>
+        </div>
+
 
         <!-- Content here -->
         <a href="">
