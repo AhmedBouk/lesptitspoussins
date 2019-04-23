@@ -110,7 +110,9 @@ class ProController extends AbstractController
 
 
         }
-        return $this->render("parent/modifmdp_parent.html.twig");
+
+        return $this->render("pro/modifmotdepasse_pro.html.twig");
+
     }
     
    /**
