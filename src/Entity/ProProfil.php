@@ -160,6 +160,13 @@ class ProProfil implements UserInterface
      */
     private $latitude;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png"})
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
@@ -594,6 +601,18 @@ class ProProfil implements UserInterface
     public function setLatitude($latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
