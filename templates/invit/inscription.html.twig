@@ -7,19 +7,28 @@
     <h1 class="text-center mt-5">Insription</h1>
     <div class="contentform">
         <div class="form-group">
-            {{form_row(form.mail)}}
+            {{ form_label(form.password.first, 'Mail', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.mail)}}
         </div>
 
         <div class="form-group">
-            {{form_row(form.password.first)}}
+            {{ form_label(form.password.first, 'Mot de passe', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.password.first)}}
         </div>
 
         <div class="form-group">
-            {{form_row(form.password.second)}}
+            {{ form_label(form.password.second, 'Confirmez votre mot de passe', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.password.second)}}
         </div>
 
         <div class="form-group">
-            {{ form_row(form.Conditionsdutilisations,{'attr':{'class':'box'}, 'label' : 'Pour lire les conditions d\'utilisations c\'est <a href="#">ici</a>' }) }}
+            {{ form_widget(form.Conditionsdutilisations,{'attr':{'class':'box'}, 'label' : 'Pour lire les conditions d\'utilisations c\'est ' }) }}<a href="#" class="condi">ici</a>
         </div>
 
     </div>
@@ -27,7 +36,7 @@
     <input type="hidden" name="token"  value="{{ csrf_token('create-parentt') }}">
 
 
-    <input type="submit"  value="S'inscrire" class="bouton-contact mb-2">
+    <input type="submit"  value="S'inscrire" class="bouton-contact text-center mt-5">
     {{ form_end(form) }}
 
 

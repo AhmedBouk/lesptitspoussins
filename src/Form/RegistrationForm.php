@@ -22,11 +22,8 @@ class RegistrationForm extends AbstractType
             ->add('mail', EmailType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => array('label' => 'Mot de passe'),
-                'second_options' => array('label' => 'Confirmer votre Mot de Passe')
             ])
             ->add('Conditionsdutilisations', CheckboxType::class, [
-                'label' => 'Pour lire les conditions d\'utilisations c\'est <a href="#">ici</a>',
                 'mapped' => false,
                 'constraints' => new IsTrue()
             ])
