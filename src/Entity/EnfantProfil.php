@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,16 +21,19 @@ class EnfantProfil
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\Range(min="now -1 year",max="now +6 year")
      */
     private $date_naissance;
 
@@ -75,21 +79,25 @@ class EnfantProfil
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
      */
     private $acte_de_naissance;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
      */
     private $certificat_de_grossesse;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
      */
     private $carnet_de_sante;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
      */
     private $livret_de_famille_enfant;
 

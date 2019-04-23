@@ -7,6 +7,7 @@ namespace App\Form;
 use App\Entity\ProProfil;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -35,6 +36,9 @@ class ProProfilFormType extends AbstractType
             ])
             ->add('nombrePersonnel')
             ->add('telephone')
+            ->add('avatar', FileType::class, [
+                'label' => 'Veuillez ajouter une photo pour votre avatar'
+            ])
             ;
     }
 

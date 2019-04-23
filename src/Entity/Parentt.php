@@ -6,7 +6,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParenttRepository")
@@ -26,16 +28,22 @@ class Parentt implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(
+     *     checkMX = true
+     * )
      */
     private $mail;
 
@@ -45,7 +53,8 @@ class Parentt implements UserInterface
     private $ville;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Regex("/^[0-9]{5}$/")
      */
     private $codepostal;
 
@@ -55,7 +64,8 @@ class Parentt implements UserInterface
     private $adresse;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
     private $telephone;
 
@@ -63,11 +73,6 @@ class Parentt implements UserInterface
      * @ORM\Column(type="string", length=150)
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $passwordRequestedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -83,6 +88,41 @@ class Parentt implements UserInterface
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $revenu;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $attestationcaf;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $justificatifdomicile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $impots;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $livretdefamille;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -143,6 +183,7 @@ class Parentt implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $statutcondition = 1;
+
 
     public function __construct()
     {
@@ -579,5 +620,65 @@ class Parentt implements UserInterface
     public function setPasswordRequestedAt($passwordRequestedAt): void
     {
         $this->passwordRequestedAt = $passwordRequestedAt;
+    }
+
+    public function getRevenu()
+    {
+        return $this->revenu;
+    }
+
+    public function setRevenu(?string $revenu)
+    {
+        $this->revenu = $revenu;
+
+        return $this;
+    }
+
+    public function getAttestationcaf(): ?string
+    {
+        return $this->attestationcaf;
+    }
+
+    public function setAttestationcaf(?string $attestationcaf): self
+    {
+        $this->attestationcaf = $attestationcaf;
+
+        return $this;
+    }
+
+    public function getJustificatifdomicile(): ?string
+    {
+        return $this->justificatifdomicile;
+    }
+
+    public function setJustificatifdomicile(?string $justificatifdomicile): self
+    {
+        $this->justificatifdomicile = $justificatifdomicile;
+
+        return $this;
+    }
+
+    public function getImpots(): ?string
+    {
+        return $this->impots;
+    }
+
+    public function setImpots(?string $impots): self
+    {
+        $this->impots = $impots;
+
+        return $this;
+    }
+
+    public function getLivretdefamille(): ?string
+    {
+        return $this->livretdefamille;
+    }
+
+    public function setLivretdefamille(?string $livretdefamille): self
+    {
+        $this->livretdefamille = $livretdefamille;
+
+        return $this;
     }
 }

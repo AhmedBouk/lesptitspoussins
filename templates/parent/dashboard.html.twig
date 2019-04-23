@@ -17,6 +17,14 @@
     {#profil#}
     <div class="container ">
         <div class="row">
+
+            {% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success text-center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="container text-center  mb-2">
                     <div class="row ">
@@ -30,8 +38,16 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
                 </ul>
-                <a href="{{ path('editparent', { 'id' : app.user.id }) }}">
+                <a href="{{ asset('fichiers/parents/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.impots }}">Fiche d'impôts</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.attestationcaf }}">CAF</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a>
+                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.livretdefamille }}">Livret de Famille</a>
+                <br><a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
+                </a>
+                <a href="{{ path('modifpassword', { 'id' : app.user.id }) }}">
+                    <button type="button" class="btn hmed ">Modifier mot de passe</button>
                 </a>
             </div>
             {#profil enfant#}
