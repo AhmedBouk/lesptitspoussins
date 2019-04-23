@@ -51,7 +51,7 @@ class ProProfilAdmin extends AbstractAdmin
                 'label' => 'Vos Tuteurs',
                 'property' => 'nom',
                 'multiple' => true,
-                'btn_add' => true,
+                'btn_add' => false,
 
             ])
             ->add('password', RepeatedType::class, [
