@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ParenttRepository")
@@ -89,6 +90,41 @@ class Parentt implements UserInterface
     private $updated_at;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $revenu;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $attestationcaf;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $justificatifdomicile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $impots;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $livretdefamille;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at_abonnement;
@@ -147,6 +183,7 @@ class Parentt implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $statutcondition = 1;
+
 
     public function __construct()
     {
@@ -583,5 +620,65 @@ class Parentt implements UserInterface
     public function setPasswordRequestedAt($passwordRequestedAt): void
     {
         $this->passwordRequestedAt = $passwordRequestedAt;
+    }
+
+    public function getRevenu()
+    {
+        return $this->revenu;
+    }
+
+    public function setRevenu(?string $revenu)
+    {
+        $this->revenu = $revenu;
+
+        return $this;
+    }
+
+    public function getAttestationcaf(): ?string
+    {
+        return $this->attestationcaf;
+    }
+
+    public function setAttestationcaf(?string $attestationcaf): self
+    {
+        $this->attestationcaf = $attestationcaf;
+
+        return $this;
+    }
+
+    public function getJustificatifdomicile(): ?string
+    {
+        return $this->justificatifdomicile;
+    }
+
+    public function setJustificatifdomicile(?string $justificatifdomicile): self
+    {
+        $this->justificatifdomicile = $justificatifdomicile;
+
+        return $this;
+    }
+
+    public function getImpots(): ?string
+    {
+        return $this->impots;
+    }
+
+    public function setImpots(?string $impots): self
+    {
+        $this->impots = $impots;
+
+        return $this;
+    }
+
+    public function getLivretdefamille(): ?string
+    {
+        return $this->livretdefamille;
+    }
+
+    public function setLivretdefamille(?string $livretdefamille): self
+    {
+        $this->livretdefamille = $livretdefamille;
+
+        return $this;
     }
 }

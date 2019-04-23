@@ -7,6 +7,8 @@ namespace App\Controller;
 use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
+use App\Services\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,13 +41,68 @@ class ParenttController extends AbstractController
     /**
      * @Route("/parent/{id}/edit", name="editparent")
      */
-    public function editparentt(Request $request, Parentt $parentt)
+    public function editparentt(Request $request, Parentt $parentt, FileUploader $fileUploader)
     {
         $form = $this->createForm(ParenttFormType::class, $parentt);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            //Upload de fichier pour le revenu
+            //On définit notre variable revenu qui récupère le fichier mis dans le formulaire
+            /** @var UploadedFile $revenus */
+            $revenus = $form->get('revenu')->getData();
+            if (isset($revenus)){
+                $test = '/fichiers/parents/revenus';
+                $revenusName = $fileUploader->upload($revenus, $test);
+                $parentt->setRevenu($revenusName);
+            }
+
+            //Upload de la déclaration de la caf
+            /** @var UploadedFile $caf */
+            $caf = $form->get('attestationcaf')->getData();
+            if (isset($caf)){
+                $pathcaf = '/fichiers/parents/caf';
+                $cafName = $fileUploader->upload($caf, $pathcaf);
+                $parentt->setAttestationcaf($cafName);
+            }
+
+            //Upload du livret de famille
+            /** @var UploadedFile $livret */
+            $livret = $form->get('livretdefamille')->getData();
+            if (isset($livret)){
+                $pathlivret = '/fichiers/parents/impots';
+                $livretName = $fileUploader->upload($livret, $pathlivret);
+                $parentt->setLivretdefamille($livretName);
+            }
+
+            //Upload du justificatif de domicile
+            /** @var UploadedFile $domicile */
+            $domicile = $form->get('justificatifdomicile')->getData();
+            if (isset($domicile)){
+                $pathdomicile = '/fichiers/parents/jutificatifdomicile';
+                $domicileName = $fileUploader->upload($domicile, $pathdomicile);
+                $parentt->setJustificatifdomicile($domicileName);
+            }
+
+            //Upload de la déclaration d'impôts
+            /** @var UploadedFile $impots */
+            $impots = $form->get('impots')->getData();
+            if (isset($impots)){
+                $pathimpots = '/fichiers/parents/impots';
+                $impotsName = $fileUploader->upload($impots, $pathimpots);
+                $parentt->setImpots($impotsName);
+            }
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($parentt);
+            $em->flush();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($parentt);
+            $em->flush();
+
 
             return $this->redirectToRoute('dashboardparent', [
                 'id' => $parentt->getId(),
@@ -55,6 +112,11 @@ class ParenttController extends AbstractController
         return $this->render('parent/profil_parent.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    private function generateUniqueFileName()
+    {
+        md5(uniqid());
     }
 
     /**
