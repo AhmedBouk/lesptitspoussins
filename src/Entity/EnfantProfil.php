@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,16 +21,19 @@ class EnfantProfil
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\Range(min="now -1 year",max="now +6 year")
      */
     private $date_naissance;
 
@@ -72,6 +76,30 @@ class EnfantProfil
      * @ORM\OneToMany(targetEntity="App\Entity\Plan", mappedBy="enfantProfil")
      */
     private $plan;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
+     */
+    private $acte_de_naissance;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
+     */
+    private $certificat_de_grossesse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
+     */
+    private $carnet_de_sante;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes = {"application/jpeg"})
+     */
+    private $livret_de_famille_enfant;
 
     public function __construct()
     {
@@ -237,6 +265,54 @@ class EnfantProfil
                 $plan->setEnfantProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActeDeNaissance(): ?string
+    {
+        return $this->acte_de_naissance;
+    }
+
+    public function setActeDeNaissance(?string $acte_de_naissance): self
+    {
+        $this->acte_de_naissance = $acte_de_naissance;
+
+        return $this;
+    }
+
+    public function getCertificatDeGrossesse(): ?string
+    {
+        return $this->certificat_de_grossesse;
+    }
+
+    public function setCertificatDeGrossesse(?string $certificat_de_grossesse): self
+    {
+        $this->certificat_de_grossesse = $certificat_de_grossesse;
+
+        return $this;
+    }
+
+    public function getCarnetDeSante(): ?string
+    {
+        return $this->carnet_de_sante;
+    }
+
+    public function setCarnetDeSante(?string $carnet_de_sante): self
+    {
+        $this->carnet_de_sante = $carnet_de_sante;
+
+        return $this;
+    }
+
+    public function getLivretDeFamilleEnfant(): ?string
+    {
+        return $this->livret_de_famille_enfant;
+    }
+
+    public function setLivretDeFamilleEnfant(?string $livret_de_famille_enfant): self
+    {
+        $this->livret_de_famille_enfant = $livret_de_famille_enfant;
 
         return $this;
     }

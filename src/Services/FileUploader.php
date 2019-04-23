@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,6 +13,7 @@ class FileUploader extends AbstractController
 {
 
     private $targetDirectory;
+
 
     public function __construct($targetDirectory)
     {
@@ -38,12 +40,14 @@ class FileUploader extends AbstractController
 
             return $fileName;
 
+
     }
 
     /**
      * @return mixed
      */
     public function getTargetDirectory()
+
     {
         return $this->targetDirectory;
     }
