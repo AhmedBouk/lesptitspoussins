@@ -26,7 +26,7 @@ class RegistrationForm extends AbstractType
                 'second_options' => array('label' => 'Confirmer votre Mot de Passe')
             ])
             ->add('Conditionsdutilisations', CheckboxType::class, [
-                'label' => 'Conditions d\'utilisations',
+                'label' => 'Pour lire les conditions d\'utilisations c\'est <a href="#">ici</a>',
                 'mapped' => false,
                 'constraints' => new IsTrue()
             ])

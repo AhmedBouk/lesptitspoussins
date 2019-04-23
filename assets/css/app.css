@@ -511,6 +511,7 @@ i {
 }
 .box {
     position: relative !important;
-    margin-left: -14rem !important;
     margin-right: -13rem !important;
-}
+    width: 20px !important;
+    height: 20px !important;
+    }
