@@ -47,4 +47,15 @@ class ProProfilRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findcoord($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.adress','p.codepostal','p.ville')
+            ->andWhere('p.codepostal = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

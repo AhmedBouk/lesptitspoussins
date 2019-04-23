@@ -18,6 +18,11 @@ body {
     background-color: #083D77;
     color: white;
 }
+#mapid{
+    width: 400px;
+    height: 400px;
+}
+
 /*liste des avis*/
 
 .emp-profile{

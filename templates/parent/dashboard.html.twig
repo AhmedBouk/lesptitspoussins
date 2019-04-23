@@ -5,7 +5,8 @@
     {{ parent() }}
     <div class="container mt-5 mb-5 text-center" style="padding-top: 100px;">
         <label for="">
-            <button class="btn  btn-md  hmed">Chercher un Professionnel</button>
+            <input type="number" id="cp">
+            <button class="btn  btn-md  hmed" href="{{ path('map', {'cp': 'cp'}) }}">Chercher un Professionnel</button>
         </label>
 
         <!-- Content here -->
@@ -63,16 +64,17 @@
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
-
-                    {% for enfant in data %}
-                    <tbody>
-                    <tr class="table-primary">
-                        <th>{{ enfant.prenom }}</th>
-                        <th>{{ enfant.nom }}</th>
-                        <th><a href="{{ path('editsenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Modifier</a></th>
-                    </tr>
-                    </tbody>
-                    {% endfor %}
+                    {% if data is defined %}
+                        {% for enfant in data %}
+                        <tbody>
+                        <tr class="table-primary">
+                            <th>{{ enfant.prenom }}</th>
+                            <th>{{ enfant.nom }}</th>
+                            <th><a href="{{ path('editsenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Modifier</a></th>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    {% endif %}
 
                 </table>
                 <a href="">

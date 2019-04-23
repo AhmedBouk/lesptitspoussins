@@ -24,19 +24,33 @@ class ParenttController extends AbstractController
     {
         $enfants = $parenttRepository->findByEnfant($id);
 
-        $data = array();
-        foreach ($enfants as $row){
 
-            $data[] = array(
-                'prenom' => $row['prenom'],
-                'nom' => $row['nom'],
-                'id' => $row['id']
-            );
+
+
+        if ($enfants[0]['nom'] != null)
+        {
+            $data = array();
+            foreach ($enfants as $row){
+
+                $data[] = array(
+                    'prenom' => $row['prenom'],
+                    'nom' => $row['nom'],
+                    'id' => $row['id']
+                );
+            }
+
+            return $this->render('parent/dashboard.html.twig', [
+                'parent' => $parentt,
+                'data' => $data,
+            ]);
+        }else{
+
+            return $this->render('parent/dashboard.html.twig', [
+                'parent' => $parentt
+            ]);
         }
-        return $this->render('parent/dashboard.html.twig', [
-            'parent' => $parentt,
-            'data' => $data,
-        ]);
+
+
     }
 
     /**

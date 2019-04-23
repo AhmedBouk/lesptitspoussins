@@ -7,29 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class MapController extends AbstractController
 {
     /**
-     * @Route("/map", name="map")
+     * @Route("/map/{cp}", name="map")
      */
-    public function index()
+    public function index(ProProfilRepository $proProfilRepository, $cp)
     {
-        $adress = array(
-            'street'    => '24 place st marc',
-            'city'      => 'Rouen',
-            'postalcode'=>  '76000',
-            'country'   =>  'France',
-            'format'    =>  'json'
-        );
-        $infra = "Nom de l'infrastructure";
-        $description = "C'est ici qu'il faut mettre la description !";
-// Création d'une nouvelle ressource cURL
-        $ch = curl_init("https://nominatim.openstreetmap.org/?". http_build_query($adress));
-// Configuration de l'URL et d'autres options
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mettre ici un user-agent adéquat');
-// Récupération de l'URL et affichage sur le navigateur
-        $g = curl_exec($ch);
-// Fermeture de la session cURL
-        curl_close($ch);
-        $json_data = json_decode($g,true);
+        $request = $proProfilRepository->findcoord($cp);
+
+
+
         return $this->render('parent/search.html.twig', [
             'controller_name' => 'MapController',
             'lat' => $json_data[0]['lat'],
