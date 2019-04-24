@@ -12,6 +12,6 @@ class ConditionsController extends AbstractController
      */
     public function index()
     {
-        return $this->render('invit/conditiongit add .html.twig');
+        return $this->render('invit/condition.html.twig');
     }
 }
