@@ -3,8 +3,7 @@
 {% block body %}
     <div class="clear"></div>
     {{ parent() }}
-    <div class="container mt-5"style="padding-top: 100px;">
-        <div class="col-md-12 mb-5 well" id="rightPanel">
+        <div class="contentform">
             <div class="row">
                 {% if error %}
                     <div class="alert alert-danger">
@@ -17,17 +16,17 @@
                 {% endif %}
                 <div class="col-md-12">
                     {{ form_start(form) }}
-                        <h2 class="text-center">Renseigner le profil de votre enfant</h2>
+                        <h1 class="text-center">Renseigner le profil de votre enfant</h1>
                         <hr class="colorgraph">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.nom) }}
+                                    {{ form_row(form.nom,{'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.prenom) }}
+                                    {{ form_row(form.prenom, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                 </div>
                             </div>
                         </div>
@@ -35,32 +34,41 @@
                             {{ form_row(form.dateNaissance, { 'attr': { 'class' : 'col-xs-12 col-sm-6 col-md-6'}}) }}
                         </div>
                         <div class="form-group">
-                            {{ form_row(form.allergie) }}
+                            {{ form_row(form.allergie, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.maladies) }}
+                                    {{ form_row(form.maladies, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.traitement) }}
+                                    {{ form_row(form.traitement, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.acteDeNaissance) }}
+                                    {{ form_label(form.acteDeNaissance, 'Acte de naissance (PDF)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.acteDeNaissance, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.certificatDeGrossesse) }}
+                                    {{ form_label(form.certificatDeGrossesse, 'Certificat de grossesse (PDF)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.certificatDeGrossesse) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.livretDeFamilleEnfant) }}
+                                    {{ form_label(form.livretDeFamilleEnfant, 'Livret de famille de l\'enfant (PDF)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.livretDeFamilleEnfant) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -69,41 +77,20 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="colorgraph">
-                            <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <input type="submit" class="btn btn-success btn-block btn-lg" href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" value="Retour">
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
-                            </div>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input class="btn btn-success btn-block pb-lg-4" type="button" onclick="location.href='{{ path('dashboardparent', {'id' : app.user.id}) }}';" value="Retour" />
                         </div>
-                    </form>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-success btn-block pb-lg-4" value="Enregistrer">
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+
         </div>
-    </div>
+
 {% endblock body %}
