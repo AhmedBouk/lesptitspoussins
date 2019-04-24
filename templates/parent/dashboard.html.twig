@@ -9,7 +9,7 @@
         </label>
 
         <!-- Content here -->
-        <a href="">
+       <a href="{{ path('subs') }}" class="condi">
             <button type="button" class="btn  hmed">Abonnement</button>
         </a>
     </div>
@@ -37,18 +37,20 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ parent.adresse }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.impots }}">Fiche d'impôts</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.attestationcaf }}">CAF</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.livretdefamille }}">Livret de Famille</a></li>
                 </ul>
-                <a href="{{ asset('fichiers/parents/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a>
-                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.impots }}">Fiche d'impôts</a>
-                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.attestationcaf }}">CAF</a>
-                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a>
-                <br><a href="{{ asset('fichiers/parents/') }}{{ parent.livretdefamille }}">Livret de Famille</a>
+                <div class="text-center">
                 <br><a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
-                </a>
-                <a href="{{ path('modifpassword', { 'id' : app.user.id }) }}">
-                    <button type="button" class="btn hmed ">Modifier mot de passe</button>
-                </a>
+                     </a>
+                     <a href="{{ path('modifpassword', { 'id' : app.user.id }) }}">
+                         <button type="button" class="btn hmed ">Modifier mot de passe</button>
+                     </a>
+                </div>
             </div>
             {#profil enfant#}
             <div class="col-md-4 offset-md-4">
@@ -75,12 +77,14 @@
                     {% endfor %}
 
                 </table>
-                <a href="">
-                    <a href="{{ path('créerenfant', { 'id' : app.user.id }) }}"><button type="button" class="btn  text-right hmed  ">Ajouter</button></a>
-                </a>
-                <a href="">
-                    <button type="button" class="btn  text-right hmed  ">Modifier</button>
-                </a>
+                <div class="text-center">
+                    <a href="">
+                        <a href="{{ path('créerenfant', { 'id' : app.user.id }) }}"><button type="button" class="btn  text-right hmed  ">Ajouter</button></a>
+                    </a>
+                    <a href="">
+                        <button type="button" class="btn  text-right hmed  ">Modifier</button>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -203,7 +207,7 @@
 
                 <div class="panel panel-default p-2 panel-index-color" style="background-color: #eee;">
                     <div class="panel-heading text-sm-center mb-2" ><h3>Avis 1</h3></div>
-                    <div class="panel-body">Mes enfants ont était gardé par la crêche du nord je remerci super nany pour son travail c'est un endroit que je conseil
+                    <div class="panel-body">Mes enfants ont était gardé par la crêche du nord je remercie super nany pour son travail c'est un endroit que je conseille
 
                     </div>
                 </div>
@@ -212,7 +216,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default p-2 panel-index-color" style="background-color: #eee;">
                     <div class="panel-heading text-sm-center mb-2"><h3>Avis 2</h3></div>
-                    <div class="panel-body">Mes enfants ont était gardé par la crêche du nord je remerci super nany pour son travail c'est un endroit que je conseil
+                    <div class="panel-body">Mes enfants ont était gardé par la crêche du sud je remercie super nany pour son travail c'est un endroit que je conseille
 
                     </div>
                 </div>
@@ -221,7 +225,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default p-2 panel-index-color " style="background-color: #eee;">
                     <div class="panel-heading text-sm-center mb-2"><h3>Avis 3</h3></div>
-                    <div class="panel-body">Mes enfants ont était gardé par la crêche du nord je remerci super nany pour son travail c'est un endroit que je conseil
+                    <div class="panel-body">Mes enfants ont était gardé par la crêche de l'ouest je remercie super nany pour son travail c'est un endroit que je conseille
 
                     </div>
                 </div>
