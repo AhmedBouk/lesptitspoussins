@@ -58,4 +58,15 @@ class ProProfilRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+    public function findinfo($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->select(['p.nom_entreprise','p.mail','p.adresse','p.codepostal','p.ville','p.telephone','p.disponibilite','p.tarif','p.horaire'])
+            ->andWhere('p.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
+
