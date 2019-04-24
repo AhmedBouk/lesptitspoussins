@@ -51,7 +51,7 @@ class ProProfilRepository extends ServiceEntityRepository
     public function findcoord($value)
     {
         return $this->createQueryBuilder('p')
-            ->select(['p.latitude', 'p.longitude'])
+            ->select(['p.latitude', 'p.longitude', 'p.nom_entreprise'])
             ->andWhere('p.codepostal = :val')
             ->setParameter('val', $value)
             ->getQuery()

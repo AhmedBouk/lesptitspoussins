@@ -6,8 +6,14 @@
     <div class="container mt-5 mb-5 text-center" style="padding-top: 100px;">
         <div class="row">
             <div class="col">
-                <input type="number" id="cp">
-                <button class="btn  btn-md  hmed" href="{{ path('map', {'cp': 'tet'}) }}">Chercher un Professionnel</button>
+
+                {% if not parent.codepostal %}
+                    <button class="btn  btn-md  hmed" href="">Veuillez rentrer votre adresse complète</button>
+                {% else %}
+                    <a href="{{ path('map', {'cp': parent.codepostal}) }}">
+                        <button class="btn  btn-md  hmed">Chercher un Professionnel</button>
+                    </a>
+                {% endif %}
             </div>
         </div>
 
