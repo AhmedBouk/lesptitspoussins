@@ -34,7 +34,7 @@ if (CheminRepertoire == 'http://127.0.0.1:8000/pro/dashboard'){
     // actuellement BOUCLE INFINI !
     // while ( typeof test != null) {
 
-    var url = 'http://127.0.0.1:8000/indexpro/calendar/4';
+    var url = 'http://127.0.0.1:8000/indexpro/calendar/1';
 
     var request = new XMLHttpRequest();
     request.open('GET', url);
