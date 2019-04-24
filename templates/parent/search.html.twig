@@ -4,7 +4,21 @@
 
     {{ parent() }}
     {% if data is defined %}
-    <div id="mapid"></div>
+
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6 mt-xl-5">
+                    <p class="mt-xl-3">a</p>
+                    <h2 class="mt-xl-5 text-center">Tous les proffessionels du {{ cp }}</h2>
+                    <div id="mapid" class="mt-xl-5 mx-auto mb-5"></div>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+
 
 
 
@@ -30,7 +44,8 @@
                     },
                     "type": "Feature",
                     "properties": {
-                        "popupContent": "{{ request.infra }}"
+                        "popupContent": "{{ request.infra }}",
+                        "id" : {{ request.id }}
                     }
 
 
@@ -56,9 +71,15 @@
 
 
 
-        function onEachFeature(feature, layer) {
-            var popupContent = "<p> </p>";
+        tab.forEach(function (element) {
 
+        function onEachFeature(feature, layer) {
+
+            var test = feature.properties.id;
+            console.log(test);
+            var popupContent = "<a href='http://127.0.0.1:8000/detail_pro/";
+            popupContent += test;
+            popupContent += "'>Detail </a>";
             if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
             }
@@ -67,8 +88,6 @@
         }
 
 
-
-        tab.forEach(function (element) {
 
             L.geoJSON([element], {
 

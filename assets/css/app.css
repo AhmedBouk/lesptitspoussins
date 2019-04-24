@@ -6,8 +6,8 @@ body {
     font-size: 14px;
 }
  #mapid{
-     width: 400px;
-     height: 400px;
+     width: auto;
+     height: auto;
  }
 /*titre des liste couleur*/
 .hmed{
