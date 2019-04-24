@@ -57,9 +57,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    
-
-                                    {{ form_label(form.acteDeNaissance, 'Acte de naissance (PDF)', {
+                                    {{ form_label(form.acteDeNaissance, 'Acte de naissance (PDF/JPEG)', {
                                         'label_attr': {'class': 'lab'}
                                     }) }}
                                     {{ form_widget(form.acteDeNaissance, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
@@ -68,7 +66,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_label(form.certificatDeGrossesse, 'Certificat de grossesse (PDF)', {
+                                    {{ form_label(form.certificatDeGrossesse, 'Certificat de grossesse (PDF/JPEG)', {
                                         'label_attr': {'class': 'lab'}
                                     }) }}
                                     {{ form_widget(form.certificatDeGrossesse) }}
@@ -76,22 +74,19 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ form_row(form.carnetDeSante) }}
+                                    {{ form_label(form.carnetDeSante, 'Carnet de santé (PDF/JPEG)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.carnetDeSante) }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-
-                                    {{ form_label(form.livretDeFamilleEnfant, 'Livret de famille de l\'enfant (PDF)', {
+                                    {{ form_label(form.livretDeFamilleEnfant, 'Livret de famille de l\'enfant (PDF/JPEG)', {
                                         'label_attr': {'class': 'lab'}
                                     }) }}
                                     {{ form_widget(form.livretDeFamilleEnfant) }}
 
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    {{ form_row(form.traitement) }}
                                 </div>
                             </div>
                         </div>

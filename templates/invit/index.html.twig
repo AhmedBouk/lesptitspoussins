@@ -21,8 +21,8 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% else %}
         <div class="button">
-            <a href="{{ path('login') }}" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis parents</a>
-            <a href="{{ path('loginpro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis un pro</a>
+            <a href="{{ path('login') }}" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis un parent</a>
+            <a href="{{ path('loginpro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis une crèche</a>
         </div>
         {% endif %}
 
@@ -34,8 +34,8 @@
     <div class="container">
         <div class="row">
             <div class="col mt-5">
-                <h2 class="h2 text-center">Cher parents</h2>
-                <p class="text-center des"> Rechercher des crèches et, ou une nounou en un click</p>
+                <h2 class="h2 text-center">Chers parents</h2>
+                <p class="text-center des"> Rechercher des crèches et, ou une nounou en un clic</p>
                 <p class="text-center des">Gagné du temps pour l'inscription de vos enfants en crèche</p>
                 <p class="text-center des">Inscrivez vous et profitez de notre application qui vous fera gagner du temps en vous indiquant toutes les crèches ou particuliers près de vous.</p>
                 <p class="text-center des">Abonnez vous et recevez un bracelet connecté qui assurera une meilleure sécurité pendant la garde de votre enfant.</p>
@@ -44,9 +44,9 @@
             </div>
             <div class="col">
                 <img style="border-radius: 15px;" class="mt-3 imgirl " src={{ asset('build/images/crechh.jpg') }} alt="image_creche"/>
-                <h5 class="h2 text-center">Cher professionnel</h5>
+                <h5 class="h2 text-center">Chers professionnels</h5>
                 <br>
-                <p class="text-center des">Inscrivez vous en tant qu'entreprise afin d'aider les parents à vous localiser.Devenez partenaire et profitez de notre bracelet connecté</p>
+                <p class="text-center des">Inscrivez vous en tant qu'entreprise afin d'aider les parents à vous localiser. Devenez partenaire et profitez de notre bracelet connecté</p>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% else %}
                 <a href="{{ path('becomepro') }}" class="btn btn-outline-dark btn-lg button mt-3  mb-5 col-md-6 offset-md-3"> Nous contacter</a>

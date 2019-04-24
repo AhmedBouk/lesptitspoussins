@@ -79,25 +79,25 @@ class EnfantProfil
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes = {"image/jpeg"})
+     * @Assert\File(mimeTypes = {"image/jpeg", "application/pdf"})
      */
     private $acte_de_naissance;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes = {"image/jpeg"})
+     * @Assert\File(mimeTypes = {"image/jpeg", "application/pdf"})
      */
     private $certificat_de_grossesse;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes = {"image/jpeg"})
+     * @Assert\File(mimeTypes = {"image/jpeg", "application/pdf"})
      */
     private $carnet_de_sante;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes = {"image/jpeg"})
+     * @Assert\File(mimeTypes = {"image/jpeg", "application/pdf"})
      */
     private $livret_de_famille_enfant;
 

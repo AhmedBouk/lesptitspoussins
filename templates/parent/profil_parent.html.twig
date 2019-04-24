@@ -14,7 +14,10 @@
                         {{ form_start(form) }}
                             <h1 class="text-center">Renseigner votre profil</h1>
                             <hr class="colorgraph">
-                            <div class="row">
+                        <div class="form-group">
+                            {{ form_row(form.mail, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+                        </div>
+                        <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         {{ form_row(form.nom, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
@@ -47,7 +50,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_label(form.revenu, 'Veuillez mettre vos trois derniers bulletins de salaire', {
+                                        {{ form_label(form.revenu, 'Veuillez mettre vos trois derniers bulletins de salaire (JPEG/PDF)', {
                                             'label_attr': {'class': 'lab'}
                                         }) }}
                                         {{ form_widget(form.revenu, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
@@ -55,7 +58,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_label(form.impots, 'Veuillez mettre une photo de votre déclaration d\'impôts', {
+                                        {{ form_label(form.impots, 'Veuillez mettre une photo de votre déclaration d\'impôts (JPEG/PDF)', {
                                             'label_attr': {'class': 'lab'}
                                         }) }}
                                         {{ form_widget(form.impots, {'attr' : { 'class' : 'form-control input-lg'}}) }}
@@ -63,7 +66,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_label(form.justificatifdomicile, 'Veuillez mettre une photo de votre justificatif de domicile', {
+                                        {{ form_label(form.justificatifdomicile, 'Veuillez mettre une photo de votre justificatif de domicile (JPEG/PDF)', {
                                             'label_attr': {'class': 'lab'}
                                         }) }}
                                         {{ form_widget(form.justificatifdomicile, {'attr' : { 'class' : 'form-control input-lg'}}) }}
@@ -71,7 +74,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_label(form.attestationcaf, 'Veuillez mettre une photo de votre attestation de caf', {
+                                        {{ form_label(form.attestationcaf, 'Veuillez mettre une photo de votre attestation de caf (JPEG/PDF)', {
                                             'label_attr': {'class': 'lab'}
                                         }) }}
                                         {{ form_widget(form.attestationcaf, {'attr' : { 'class' : 'form-control input-lg'}}) }}
@@ -79,16 +82,12 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_label(form.livretdefamille, 'Veuillez mettre une photo de la page concernant l\'enfant sur le livret de famille', {
+                                        {{ form_label(form.livretdefamille, 'Veuillez mettre une photo de la page concernant l\'enfant sur le livret de famille (JPEG/PDF)', {
                                             'label_attr': {'class': 'lab'}
                                         }) }}
                                         {{ form_widget(form.livretdefamille, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                {{ form_row(form.mail, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                             </div>
 
 
