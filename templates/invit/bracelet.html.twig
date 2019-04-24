@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ parent() }}
+    //container
+    <div class="container ner">
+    </div>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid mt-4 " src={{ asset('build/images/bracelet.jpg') }} alt="image_creche"/>
+            </div>
+            <div class="col" >
+                <h1 class="h1 text-center  mb-3 titl">Des bracelets connecté haut de gamme</h1>
+                <br>
+                <br>
+                <p class="text-center m2-5 des"> Des bracelets connecté fournis lors de votre abonnement sur notre <br>plate-forme<br><br>Il vous permettra de renseigner les informations importante de votre enfant pour les crèches inscrite chez nous.
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% else %}
+
+                    <div class="button">
+                    <a href="{{ path('indexsite') }}" class="btn btn btn-outline-secondary btn-lg button mt-3 mb-5 pare ">Accueil</a>
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            {#end container#}
+
+            {#    container#}
+
+        </div>
+    </div>
+    {#end container#}
+
+{% endblock body %}

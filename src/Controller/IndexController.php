@@ -73,6 +73,12 @@ class IndexController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
+    /**
+     * @Route("/becomepro", name="becomepro")
+     */
+    public function becomepro()
+    {
+        return $this->render('invit/become_pro.html.twig');
+    }
 }
 

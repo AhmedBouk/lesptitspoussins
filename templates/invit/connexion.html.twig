@@ -27,13 +27,16 @@
                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'mot de passe' doit être renseigné."/>
                 <div class="validation"></div>
             </div>
+
+        <div class="form-group">
+            <a href="{{ path('app_oublipassword') }}">Mot de passe oublié?</a>
+        </div>
+
+
     </div>
-    <div>
-        <a href="{{ path('app_oublipassword') }}">Mot de passe oublié?</a>
-    </div>
+
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+           value="{{ csrf_token('authenticate') }}">
     <input type="submit" value="Se Connecter" class="bouton-contact">
 </form>
 
