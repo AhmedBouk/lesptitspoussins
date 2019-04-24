@@ -28,6 +28,7 @@ security:
                     - App\Security\LoginFormAuthenticator
                     - App\Security\ProLoginFormAuthenticator
                 entry_point: App\Security\LoginFormAuthenticator
+            access_denied_url: /error403
             logout:
                 path: /logout
                 target: /
