@@ -15,6 +15,11 @@ require('bootstrap/dist/css/bootstrap.min.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
+// create global $ and jQuery variables
+global.$ = global.jQuery = $;
+
+
+
 
 import 'fullcalendar';
 import 'moment';

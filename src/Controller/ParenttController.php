@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
+use App\Repository\ProProfilRepository;
 use App\Services\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class ParenttController extends AbstractController
     /**
      * @Route("/parent/{id}/dashboard", name="dashboardparent")
      */
-    public function dashboardparentt(ParenttRepository $parenttRepository, $id, Parentt $parentt)
+    public function dashboardparentt(ProProfilRepository $profilRepository, ParenttRepository $parenttRepository, $id, Parentt $parentt)
     {
         $enfants = $parenttRepository->findByEnfant($id);
 

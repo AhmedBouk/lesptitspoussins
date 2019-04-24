@@ -6,14 +6,9 @@
     <div class="container mt-5 mb-5 text-center" style="padding-top: 100px;">
         <div class="row">
             <div class="col">
-
-                {% if not parent.codepostal %}
-                    <button class="btn  btn-md  hmed" href="">Veuillez rentrer votre adresse complète</button>
-                {% else %}
-                    <a href="{{ path('map', {'cp': parent.codepostal}) }}">
-                        <button class="btn  btn-md  hmed">Chercher un Professionnel</button>
-                    </a>
-                {% endif %}
+                <label for="">Rechercher par code postale</label>
+                <input id='test' type="text" value="">
+                <input type="submit" id="envoie" value="Envoyer">
             </div>
         </div>
 
@@ -243,4 +238,36 @@
         </div>
     </div>
 
+
+
 {% endblock body %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+
+       var t = $('#envoie').click(function ()
+       {
+           let y = $('#test').val();
+
+
+           window.location.href = 'http://127.0.0.1:8000/map/' + y;
+
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/map/' + y,
+                type: 'POST',
+                dataType: 'html',
+                success: function (y) {
+                    window.location.replace('http://127.0.0.1:8000/map/' + y)
+                }
+            })
+
+       });
+
+
+    </script>
+
+{% endblock javascripts %}
