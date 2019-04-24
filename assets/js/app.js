@@ -19,10 +19,31 @@ const $ = require('jquery');
 global.$ = global.jQuery = $;
 
 
-
-
 import 'fullcalendar';
 import 'moment';
+
+
+
+
+    // actuellement BOUCLE INFINI !
+    // while ( typeof test != null) {
+
+    var url = 'http://127.0.0.1:8000/indexpro/calendar/1';
+
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.responseType = 'json';
+
+
+    request.send();
+
+    var test;
+
+    request.onload = function() {
+        test = request.response;
+    }
+
+
 
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

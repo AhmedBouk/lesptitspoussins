@@ -71,17 +71,21 @@
                     </thead>
 
                     {% if data is defined %}
-                        {% for enfant in data %}
-                        <tbody>
-                        <tr class="table-primary">
-                            <th>{{ enfant.prenom }}</th>
-                            <th>{{ enfant.nom }}</th>
-                            <th><a href="{{ path('editsenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Modifier</a></th>
-                        </tr>
-                        </tbody>
-                        {% endfor %}
-
+                    {% for enfant in data %}
+                    <tbody>
+                    <tr class="table-primary">
+                        <th>{{ enfant.prenom }}</th>
+                        <th>{{ enfant.nom }}</th>
+                        <th>
+                            <a href="{{ path('editsenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Modifier</a>
+                            <a href="{{ path('showenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Voir</a>
+                        </th>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
                     {% endif %}
+
+
 
                 </table>
                 <div class="text-center">

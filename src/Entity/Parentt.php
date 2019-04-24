@@ -586,6 +586,14 @@ class Parentt implements UserInterface
         return $this->mail;
     }
 
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles): void
+    {
+        $this->roles = $roles;
+    }
+
     public function getRoles(): array
     {
         $roles = $this->roles;

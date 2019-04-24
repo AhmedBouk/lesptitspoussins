@@ -25,10 +25,10 @@ class ParenttController extends AbstractController
     {
         $enfants = $parenttRepository->findByEnfant($id);
 
-        if ($enfants[0]['nom'] != null)
-        {
+
+        if ($enfants[0]['nom'] != null) {
             $data = array();
-            foreach ($enfants as $row){
+            foreach ($enfants as $row) {
 
 
                 $data[] = array(
@@ -42,11 +42,11 @@ class ParenttController extends AbstractController
                 'parent' => $parentt,
                 'data' => $data,
             ]);
-        }else{
-          
+
+        } else{
             return $this->render('parent/dashboard.html.twig', [
                 'parent' => $parentt
-            ]);
+                ]);
         }
 
     }

@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -60,6 +61,14 @@ class ParenttAdmin extends AbstractAdmin
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Password confirmation')
             ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_PARENT' => 'ROLE_PARENT',
+                    'ROLE_PRO' => 'ROLE_PRO'
+                ],
+                'multiple' => true
+            ])
             ->add('is_enabled', null, [
                 'label' => 'Actif'
             ])
@@ -89,6 +98,12 @@ class ParenttAdmin extends AbstractAdmin
 
     public function preUpdate($object)
     {
+        $password = $object->getPassword();
+        $container = $this->getConfigurationPool()->getContainer();
+        $encoder = $container->get('security.password_encoder');
+        $encoded = $encoder->encodePassword($object, $password);
+
+        $object->setPassword($encoded);
         foreach ($object->getEnfant() as $reponse){
             $reponse->setParentt($object);
         }
