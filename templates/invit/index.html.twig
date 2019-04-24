@@ -22,7 +22,7 @@
         {% else %}
         <div class="button">
             <a href="{{ path('login') }}" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis parents</a>
-            <a href="{{ path('becomepro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis un pro</a>
+            <a href="{{ path('loginpro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis un pro</a>
         </div>
         {% endif %}
 
@@ -47,7 +47,10 @@
                 <h5 class="h2 text-center">Cher professionnel</h5>
                 <br>
                 <p class="text-center des">Inscrivez vous en tant qu'entreprise afin d'aider les parents à vous localiser.Devenez partenaire et profitez de notre bracelet connecté</p>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% else %}
                 <a href="{{ path('becomepro') }}" class="btn btn-outline-dark btn-lg button mt-3  mb-5 col-md-6 offset-md-3"> Nous contacter</a>
+                {% endif %}
             </div>
         </div>
     </div>
