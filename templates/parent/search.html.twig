@@ -3,44 +3,63 @@
 {% block body %}
 
     {{ parent() }}
+    {% if data is defined %}
+
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6 mt-xl-5">
+                    <p class="mt-xl-3">a</p>
+                    <h2 class="mt-xl-5 text-center">Tous les proffessionels du {{ cp }}</h2>
+                    <div id="mapid" class="mt-xl-5 mx-auto mb-5"></div>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
 
 
-    {#   HERE#}
 
-<<<<<<< Updated upstream
-=======
-    <div id="mapid"></div>
-
-
-<p>{{ dump() }}</p>
 
 
     <script>
 
 
-        var infrastructure = {
-            "type": "FeatureCollection",
-            "features": [
+        var tab = [];
+
+        {% for request in data %}
+
+        tab.push( {
+                "features":
+
+                    [
                 {
                     "geometry": {
                         "type": "Point",
                         "coordinates": [
-                            {{ lon }},
-                            {{ lat }}
+                               {{ request.long }},
+                               {{ request.lat }}
                         ]
                     },
                     "type": "Feature",
                     "properties": {
-                        "popupContent": "{{ infra }}"
-                    },
-                    "id": 51
+                        "popupContent": "{{ request.infra }}",
+                        "id" : {{ request.id }}
+                    }
+
 
                 }
-            ]
-        };
+                    ]
+
+        });
+        {% endfor %}
 
 
-        var map = L.map('mapid').setView([{{ lat }}, {{ lon }}], 16);
+        console.log(tab);
+
+
+        var map = L.map('mapid').setView([{{ lat }}, {{ lon }}], 13);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
@@ -52,9 +71,15 @@
 
 
 
-        function onEachFeature(feature, layer) {
-            var popupContent = "<p> {{ description }} </p>";
+        tab.forEach(function (element) {
 
+        function onEachFeature(feature, layer) {
+
+            var test = feature.properties.id;
+            console.log(test);
+            var popupContent = "<a href='http://127.0.0.1:8000/detail_pro/";
+            popupContent += test;
+            popupContent += "'>Detail </a>";
             if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
             }
@@ -62,29 +87,37 @@
             layer.bindPopup(popupContent);
         }
 
-        L.geoJSON([infrastructure], {
 
-            style: function (feature) {
-                return feature.properties && feature.properties.style;
-            },
 
-            onEachFeature: onEachFeature,
+            L.geoJSON([element], {
 
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, {
-                    radius: 8,
-                    fillColor: "#ff7800",
-                    color: "#000",
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 0.8
-                });
-            }
-        }).addTo(map);
+                style: function (feature) {
+                    return feature.properties && feature.properties.style;
+                },
 
+                onEachFeature: onEachFeature,
+
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, {
+                        radius: 8,
+                        fillColor: "#ff7800",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    });
+                }
+            }).addTo(map);
+
+        })
 
     </script>
->>>>>>> Stashed changes
+{% else %}
+
+        <h2 style="margin-top: 100px">COUCOU</h2>
+
+
+    {% endif %}
 
 
 {% endblock body %}

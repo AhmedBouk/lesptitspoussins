@@ -55,33 +55,64 @@ class ProController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            if($proProfil->getAdresse() != $form->get("adresse") || $proProfil->getCodepostal() != $form->get("codepostal") || $proProfil->getVille() != $form->get("ville"))
+            {
+                $street = $form->get("adresse")->getViewData();
+                $ville = $form->get("ville")->getViewData();
+                $codepostal = $form->get("codepostal")->getViewData();
+                $adress = array(
+                    'street'    => $street,
+                    'city'      => $ville,
+                    'postalcode'=>  $codepostal,
+                    'country'   =>  'France',
+                    'format'    =>  'json'
+                );
+                // Création d'une nouvelle ressource cURL
+                $ch = curl_init("https://nominatim.openstreetmap.org/?". http_build_query($adress));
+                // Configuration de l'URL et d'autres options
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_USERAGENT, 'Mettre ici un user-agent adéquat');
+                // Récupération de l'URL et affichage sur le navigateur
+                $g = curl_exec($ch);
+                // Fermeture de la session cURL
+                curl_close($ch);
+                $json_data = json_decode($g,true);
+                $proProfil->setLatitude($json_data[0]['lat']);
+                $proProfil->setLongitude($json_data[0]['lon']);
+                dump($adress);
+            }
 
             //On créer notre variable file pour utiliser les propriétes
             /** @var UploadedFile $file */
             $file = $form->get('avatar')->getData();
+            if (isset($file)){
 
-            //On créer notre chaîne de caractère pour notre image upload
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+                //On créer notre chaîne de caractère pour notre image upload
+                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
-            //On effectue le déplacement si c'est bon
-            try{
-                $file->move(
-                    $this->getParameter('avatar_directory'),
-                    $fileName
-                );
-            } catch (FileException $exception){
+                //On effectue le déplacement si c'est bon
+                try{
+                    $file->move(
+                        $this->getParameter('avatar_directory'),
+                        $fileName
+                    );
+                } catch (FileException $exception){
 
+                }
+                //On enregistre la chaîne de caractère dans notre bdd avec l'entité
+                $proProfil->setAvatar($fileName);
             }
-            //On enregistre la chaîne de caractère dans notre bdd avec l'entité
-            $proProfil->setAvatar($fileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($proProfil);
             $em->flush();
 
-            return $this->redirectToRoute('prodashboard', [
-                'id' => $proProfil->getId()
-            ]);
+            dump($form);
+
+
+//            return $this->redirectToRoute('prodashboard', [
+//                'id' => $proProfil->getId()
+//            ]);
         }
 
         return $this->render('pro/pro_profil.html.twig', [

@@ -5,6 +5,10 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
 }
+ #mapid{
+     width: auto;
+     height: auto;
+ }
 /*titre des liste couleur*/
 .hmed{
     background-color: #1D4851;
@@ -18,6 +22,11 @@ body {
     background-color: #083D77;
     color: white;
 }
+#mapid{
+    width: 400px;
+    height: 400px;
+}
+
 /*liste des avis*/
 
 .emp-profile{

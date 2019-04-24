@@ -31,7 +31,7 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\Length(max=150)
+     *
      */
     private $nom_entreprise;
 
@@ -50,7 +50,7 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Regex("\^[0-9]{5}$/")
+     *
      */
     private $codepostal;
 
