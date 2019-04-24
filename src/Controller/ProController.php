@@ -110,9 +110,9 @@ class ProController extends AbstractController
             dump($form);
 
 
-//            return $this->redirectToRoute('prodashboard', [
-//                'id' => $proProfil->getId()
-//            ]);
+            return $this->redirectToRoute('prodashboard', [
+                'id' => $proProfil->getId()
+            ]);
         }
 
         return $this->render('pro/pro_profil.html.twig', [

@@ -1,5 +1,14 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_PARENT:
+            - ROLE_PARENT
+        ROLE_PRO:
+            - ROLE_PRO
+        ROLE_ADMIN:
+            - ROLE_PARENT
+            - ROLE_PRO
+            - ROLE_ADMIN
     encoders:
         App\Entity\Parentt:
             algorithm: bcrypt
