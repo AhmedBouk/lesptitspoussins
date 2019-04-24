@@ -44,7 +44,8 @@
                     },
                     "type": "Feature",
                     "properties": {
-                        "popupContent": "{{ request.infra }}"
+                        "popupContent": "{{ request.infra }}",
+                        "id" : {{ request.id }}
                     }
 
 
@@ -70,9 +71,15 @@
 
 
 
-        function onEachFeature(feature, layer) {
-            var popupContent = "<a href= '{{ path('') }}'> lien </a>";
+        tab.forEach(function (element) {
 
+        function onEachFeature(feature, layer) {
+
+            var test = feature.properties.id;
+            console.log(test);
+            var popupContent = "<a href='http://127.0.0.1:8000/detail_pro/";
+            popupContent += test;
+            popupContent += "'>Detail </a>";
             if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
             }
@@ -81,8 +88,6 @@
         }
 
 
-
-        tab.forEach(function (element) {
 
             L.geoJSON([element], {
 

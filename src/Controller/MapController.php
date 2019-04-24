@@ -22,7 +22,8 @@ class MapController extends AbstractController
                 $data[] = [
                     'lat' => $row['latitude'],
                     'long' => $row['longitude'],
-                    'infra' => $row['nom_entreprise']
+                    'infra' => $row['nom_entreprise'],
+                    'id' => $row['id']
                 ];
             }
 
@@ -48,14 +49,13 @@ class MapController extends AbstractController
             $center = json_decode($g,true);
 
 
-dump($center);
-
             return $this->render('parent/search.html.twig', [
                 'controller_name' => 'MapController',
                 'data' => $data,
                 'lat' => $center[0]['lat'],
                 'lon' => $center[0]['lon'],
-                'cp' => $cp
+                'cp' => $cp,
+
             ]);
 
 
