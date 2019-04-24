@@ -6,6 +6,7 @@ namespace App\Admin;
 
 use App\Entity\ProProfil;
 use App\Entity\Tuteur;
+use phpDocumentor\Reflection\Types\String_;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -40,7 +41,7 @@ class ProProfilAdmin extends AbstractAdmin
                 'label' => 'Votre Adresse Postal'
             ])
             ->add('ville')
-            ->add('codepostal', null, [
+            ->add('codepostal', TextType::class,[
                 'label' => 'Votre Code Postal'
             ])
             ->add('nombredeplace', null, [

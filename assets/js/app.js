@@ -15,19 +15,13 @@ require('bootstrap/dist/css/bootstrap.min.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
+// create global $ and jQuery variables
+global.$ = global.jQuery = $;
+
 
 import 'fullcalendar';
 import 'moment';
 
-
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
-
-
-var CheminComplet = document.location.href;
-var CheminRepertoire  = CheminComplet.substring( 0 ,CheminComplet.lastIndexOf( "/" ) );
-
-
-if (CheminRepertoire == 'http://127.0.0.1:8000/pro/dashboard'){
 
 
 
@@ -51,25 +45,25 @@ if (CheminRepertoire == 'http://127.0.0.1:8000/pro/dashboard'){
 
 
 
-    console.log(test);
 
-    // }
+console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
-    $('#calendar').fullCalendar({
 
-        firstDay: 1,
-        formatDate: 'd/m/Y',
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month, agendaWeek, agendaDay'
-        },
-        height: 350,
-        events: '/indexpro/calendar/4',
-        timeFormat: 'H:mm',
-        eventBackgroundColor: '#121959',
-        eventTextColor: 'white'
-    })
-}
+$('#calendar').fullCalendar({
+
+    firstDay: 1,
+    formatDate: 'd/m/Y',
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month, agendaWeek, agendaDay'
+    },
+    height: 350,
+    events: '/indexpro/calendar/4',
+    timeFormat: 'H:mm',
+    eventBackgroundColor: '#121959',
+    eventTextColor: 'white'
+})
+
 
 

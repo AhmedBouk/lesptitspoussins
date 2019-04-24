@@ -23,12 +23,8 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            Super nany
+                            {{ name }}
                         </h5>
-                        <h6>
-                            Auxiliaire de puériculture
-                        </h6>
-                        <p class="proile-rating">Note: <span>8/10</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">A propos</a>
@@ -41,20 +37,7 @@
 
 {#            profil#}
             <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-work">
-                        <p>Informations</p>
-                        <a href="">www.lesptispoussins.fr</a><br/>
-                        <span>creche@creche.fr</span>
-                      <span>0606060606</span>
-                        <p>Compétences</p>
-                        <span>Réactivité</span>
-                        <span>Empathie </span>
-                        <span>Respect et tolerance</span>
-                        <span>Patience et maîtrise de soi</span>
-                        <span>Disponibilité et ecoute</span>
-                    </div>
-                </div>
+
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -64,7 +47,7 @@
                                     <label>Nom</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Super nany</p>
+                                    <p>{{ name }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -72,7 +55,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>creche@creche.fr</p>
+                                    <p>{{ mail }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -80,50 +63,41 @@
                                     <label>Téléphone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>0606060606</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Profession</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Auxiliaire de puériculture</p>
+                                    <p>{{ telephone }}</p>
                                 </div>
                             </div>
                         </div>
 
-{#                        experience#}
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Experience</label>
+                                    <label>Tarif a l'heure</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Expert</p>
+                                    <p>{{ tarif }}</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Tarif horaire</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>15€/ht</p>
-                                </div>
+
+                      {#  <div class="row">
+                            <div class="col-md-6">
+                                <label>Horaire</label>
                             </div>
+                            <div class="col-md-6">
+                                <p>{{ horaire }}</p>
+                            </div>
+                        </div>#}
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Disponibilité</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Contact</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Description</label><br/>
-                                    <p>On aime les enfants avec une epincé d'oignon et du ketchup sa passe crème</p>
+                                    {% if dispo == true %}
+                                        <p>Oui</p>
+                                    {% else %}
+                                        <p>Non</p>
+                                    {% endif %}
+
                                 </div>
                             </div>
 

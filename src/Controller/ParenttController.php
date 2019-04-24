@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Parentt;
 use App\Form\ParenttFormType;
 use App\Repository\ParenttRepository;
+use App\Repository\ProProfilRepository;
 use App\Services\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,13 +21,15 @@ class ParenttController extends AbstractController
     /**
      * @Route("/parent/{id}/dashboard", name="dashboardparent")
      */
-    public function dashboardparentt(ParenttRepository $parenttRepository, $id, Parentt $parentt)
+    public function dashboardparentt(ProProfilRepository $profilRepository, ParenttRepository $parenttRepository, $id, Parentt $parentt)
     {
         $enfants = $parenttRepository->findByEnfant($id);
+
 
         if ($enfants[0]['nom'] != null) {
             $data = array();
             foreach ($enfants as $row) {
+
 
                 $data[] = array(
                     'prenom' => $row['prenom'],
@@ -34,15 +37,18 @@ class ParenttController extends AbstractController
                     'id' => $row['id']
                 );
             }
+
             return $this->render('parent/dashboard.html.twig', [
                 'parent' => $parentt,
                 'data' => $data,
             ]);
+
         } else{
             return $this->render('parent/dashboard.html.twig', [
                 'parent' => $parentt
                 ]);
         }
+
     }
 
     /**
