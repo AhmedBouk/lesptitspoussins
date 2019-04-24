@@ -6,78 +6,89 @@
     <div class="clear"></div>
 
     {#   HERE#}
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <!------ Include the above in your HEAD tag ---------->
-
-    <div class="container mt-5 " style="padding-top: 100px;">
-        <div class="row" id="main">
-            <div class="col-md-12 mb-5 well" id="rightPanel">
-                <div class="row">
+        <form>
+                <div class="contentform">
                     <div class="col-md-12">
                         {{ form_start(form) }}
-                            <h2>Renseigner votre profil</h2>
+                            <h1 text-center mt-5>Renseigner votre profil</h1>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.nom, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.nom, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.prenom, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.prenom, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.codepostal, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.codepostal, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.adresse, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.adresse, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.ville, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.ville, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.telephone, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_row(form.telephone, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.revenu, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_label(form.revenu, 'Veuillez mettre vos trois derniers bulletins de salaire', {
+                                            'label_attr': {'class': 'lab'}
+                                        }) }}
+                                        {{ form_widget(form.revenu, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.impots, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_label(form.impots, 'Veuillez mettre une photo de votre déclaration d\'impôts', {
+                                            'label_attr': {'class': 'lab'}
+                                        }) }}
+                                        {{ form_widget(form.impots, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.justificatifdomicile, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_label(form.justificatifdomicile, 'Veuillez mettre une photo de votre justificatif de domicile', {
+                                            'label_attr': {'class': 'lab'}
+                                        }) }}
+                                        {{ form_widget(form.justificatifdomicile, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.attestationcaf, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_label(form.attestationcaf, 'Veuillez mettre une photo de votre attestation de caf', {
+                                            'label_attr': {'class': 'lab'}
+                                        }) }}
+                                        {{ form_widget(form.attestationcaf, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        {{ form_row(form.livretdefamille, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                        {{ form_label(form.livretdefamille, 'Veuillez mettre une photo de la page concernant l\'enfant sur le livret de famille', {
+                                            'label_attr': {'class': 'lab'}
+                                        }) }}
+                                        {{ form_widget(form.livretdefamille, {'attr' : { 'class' : 'form-control input-lg'}}) }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ form_row(form.mail, {'attr' : { 'class' : 'form-control input-lg'}}) }}
+                                {{ form_row(form.mail, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
                             </div>
 
 
@@ -85,10 +96,10 @@
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <a href="{{ path('dashboardparent', { 'id' : app.user.id}) }}" class="btn btn-success btn-block btn-lg">Retour</a>
+                                    <input class="btn btn-success btn-block pb-lg-4" type="button" onclick="location.href='{{ path('dashboardparent', {'id' : app.user.id}) }}';" value="Retour" />
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <input type="submit" class="btn btn-success btn-block btn-lg" value="Enregistrer">
+                                    <input type="submit" class="btn btn-success btn-block pb-lg-4" value="Enregistrer">
                                 </div>
 
                             </div>
@@ -96,10 +107,8 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-    </div>
+
+</form>
 
 
 {% endblock body %}
