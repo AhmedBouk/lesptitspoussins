@@ -152,7 +152,6 @@ class ProProfilAdmin extends AbstractAdmin
             ->add('nombredeplace', null, [
                 'label' => 'Le nombre de places total dans votre établissement'
             ])
-            ->add('tuteur', null, ['associated_property' => 'nom'])
             ->add('status', null, [
                 'label' => 'Actif'
             ])

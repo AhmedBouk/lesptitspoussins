@@ -25,13 +25,11 @@ class ParenttController extends AbstractController
     {
         $enfants = $parenttRepository->findByEnfant($id);
 
-
-
-
         if ($enfants[0]['nom'] != null)
         {
             $data = array();
             foreach ($enfants as $row){
+
 
                 $data[] = array(
                     'prenom' => $row['prenom'],
@@ -45,12 +43,11 @@ class ParenttController extends AbstractController
                 'data' => $data,
             ]);
         }else{
-
+          
             return $this->render('parent/dashboard.html.twig', [
                 'parent' => $parentt
             ]);
         }
-
 
     }
 
@@ -87,7 +84,7 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $livret */
             $livret = $form->get('livretdefamille')->getData();
             if (isset($livret)){
-                $pathlivret = '/fichiers/parents/impots';
+                $pathlivret = '/fichiers/parents/livretdefamille';
                 $livretName = $fileUploader->upload($livret, $pathlivret);
                 $parentt->setLivretdefamille($livretName);
             }
@@ -96,7 +93,7 @@ class ParenttController extends AbstractController
             /** @var UploadedFile $domicile */
             $domicile = $form->get('justificatifdomicile')->getData();
             if (isset($domicile)){
-                $pathdomicile = '/fichiers/parents/jutificatifdomicile';
+                $pathdomicile = '/fichiers/parents/justificatifdomicile';
                 $domicileName = $fileUploader->upload($domicile, $pathdomicile);
                 $parentt->setJustificatifdomicile($domicileName);
             }

@@ -25,17 +25,14 @@ class EnfantFormType extends AbstractType
             ->add('maladies')
             ->add('traitement')
             ->add('acteDeNaissance', FileType::class, [
-                'label' => 'Acte de naissance (PDF)',
                 'required' => false,
                 'data_class' => null
                 ])
             ->add('certificatDeGrossesse', FileType::class, [
-                'label' => 'Certificat de grossesse (PDF)',
                 'required' => false,
                 'data_class' => null
             ])
             ->add('livretDeFamilleEnfant', FileType::class, [
-                'label' => 'Livret de famille de l\'enfant (PDF)',
                 'required' => false,
                 'data_class' => null
             ])
