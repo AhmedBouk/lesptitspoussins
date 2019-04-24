@@ -20,7 +20,9 @@ class EnfantFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('dateNaissance', DateType::class)
+            ->add('dateNaissance', DateType::class, [
+                'label' => 'Veuillez renseigner la date de naissance ( il doit avoir entre 6 mois et 6 ans )'
+            ])
             ->add('allergie')
             ->add('maladies')
             ->add('traitement')
