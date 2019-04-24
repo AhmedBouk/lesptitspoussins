@@ -23,9 +23,15 @@ class EnfantFormType extends AbstractType
             ->add('dateNaissance', DateType::class, [
                 'label' => 'Veuillez renseigner la date de naissance ( il doit avoir entre 6 mois et 6 ans )'
             ])
-            ->add('allergie')
-            ->add('maladies')
-            ->add('traitement')
+            ->add('allergie', null, [
+                'label' => 'Si votre enfant a des allergies, veuillez renseigner ce champs'
+            ])
+            ->add('maladies', null, [
+                'label' => 'Si votre enfant est malade, veuillez renseigner ce champs'
+            ])
+            ->add('traitement', null, [
+                'label' => 'Si votre enfant prend un traitement pour cause de maladies ou allergies, veuillez renseigner ce champs'
+            ])
             ->add('acteDeNaissance', FileType::class, [
                 'label' => 'Acte de naissance (JPEG)',
                 'required' => false,
@@ -46,7 +52,9 @@ class EnfantFormType extends AbstractType
                 'required' => false,
                 'data_class' => null
             ])
-            ->add('autres')
+            ->add('autres', null, [
+                'label' => 'Si vous souhaitez spécifier des choses qui ne sont pas demandés, n\'hésitez pas à écrire dans ce contenu'
+            ])
             ;
     }
 
