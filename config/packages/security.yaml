@@ -28,7 +28,6 @@ security:
                     - App\Security\LoginFormAuthenticator
                     - App\Security\ProLoginFormAuthenticator
                 entry_point: App\Security\LoginFormAuthenticator
-            access_denied_url: /
             logout:
                 path: /logout
                 target: /
