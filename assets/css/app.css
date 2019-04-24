@@ -461,7 +461,7 @@ i {
      height: 500px;
  }
 .imgirl{
-    width: 80%;
+    width: 100%;
     height: 250px;
 
 }
@@ -526,4 +526,8 @@ i {
 .des
 {
     font-family: 'Merienda', cursive;
+}
+.brasko
+{
+    font-size: 2em;
 }
