@@ -129,7 +129,7 @@ class ProController extends AbstractController
     /**
      * @Route("/pro/{id}/modifmotdepasse", name="modifpasswordpro")
      */
-    public function modifpassword(Request $request, $id, UserPasswordEncoderInterface $encoder)
+    public function modifpassword(Request $request, $id, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer)
     {
 
         if ($request->isMethod("POST"))
@@ -149,6 +149,7 @@ class ProController extends AbstractController
 
                     $em->flush();
 
+                    
                     $test = $this->addFlash("success", "Votre mot de passe à bien été modifier !");
 
                     return $this->redirectToRoute("prodashboard",[
