@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock title %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+    {{ form_start(form) }}
+    <h1 class="text-center mt-5">Insription</h1>
+    <div class="contentform">
+        <div class="form-group">
+            {{ form_label(form.mail, 'Mail', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.mail)}}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.password.first, 'Mot de passe ( minimum 6 caratères et maximum 34 caractères )', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.password.first)}}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.password.second, 'Confirmez votre mot de passe', {
+                'label_attr': {'class': 'lab'}
+            }) }}
+            {{form_widget(form.password.second)}}
+        </div>
+
+        <div class="form-group">
+
+            {{ form_widget(form.Conditionsdutilisations,{'attr':{'class':'box'}, 'label' : 'Pour lire les conditions d\'utilisations c\'est ' }) }}<a href="{{ path('conditions') }}" class="condi" target="_blank">ici</a>
+
+
+        </div>
+
+    </div>
+
+    <input type="hidden" name="token"  value="{{ csrf_token('create-parentt') }}">
+
+
+    <input type="submit"  value="Valider" class="bouton-contact text-center">
+    {{ form_end(form) }}
+
+
+
+{% endblock body %}
+

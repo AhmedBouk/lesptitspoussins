@@ -1,24 +1,59 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_PARENT:
+            - ROLE_PARENT
+        ROLE_PRO:
+            - ROLE_PRO
+        ROLE_ADMIN:
+            - ROLE_PARENT
+            - ROLE_PRO
+            - ROLE_ADMIN
+    encoders:
+        App\Entity\Parentt:
+            algorithm: bcrypt
+            cost: 13
+        App\Entity\ProProfil:
+            algorithm: bcrypt
+            cost: 13
+
     providers:
-        in_memory: { memory: ~ }
+        chain_provider:
+            chain:
+                providers: [ parents_db, professionnels_db ]
+        parents_db:
+            entity: { class: App\Entity\Parentt, property: mail }
+        professionnels_db:
+            entity: { class: App\Entity\ProProfil, property: mail }
+
+
+
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
+        parentt:
             anonymous: true
+            provider: chain_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+                    - App\Security\ProLoginFormAuthenticator
+                entry_point: App\Security\LoginFormAuthenticator
+            access_denied_url: /error403
+            logout:
+                path: /logout
+                target: /
+
 
             # activate different ways to authenticate
 
             # http_basic: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
-            # form_login: true
+#             form_login: true
             # https://symfony.com/doc/current/security/form_login_setup.html
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/pro, roles: ROLE_PRO }
+         - { path: ^/parent, roles: ROLE_PARENT }

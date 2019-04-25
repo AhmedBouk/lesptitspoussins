@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail Enfant{% endblock title %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="clear"></div>
+    <div class="container mt-5 mb-5" style="padding-top: 100px">
+                <ul class="text-center">
+                    <li class="text-uppercase m-1 font-weight-bold">Prénom : </li><span class="text-capitalize">{{ enfants.prenom }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Nom : </li><span class="text-capitalize">{{ enfants.nom }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Date de Naissance : </li><span>{{ enfants.datenaissance|date('d/m/Y') }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Allergies : </li><span>{{ enfants.allergie }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Traitements : </li><span>{{ enfants.traitement }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Maladies : </li><span>{{ enfants.maladies }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Autres : </li><span>{{ enfants.autres }}</span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Acte de Naissance : </li><span><a href="{{ asset('fichiers/enfants/acte_de_naissance/') }}{{ enfants.actedenaissance }}">Acte</a></span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Certificat de grossess : </li><span><a href="{{ asset('fichiers/enfants/certificat_de_grossesse/') }}{{ enfants.certificatdegrossesse }}">Certificat</a></span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Carnet de Santé : </li><span><a href="{{ asset('fichiers/enfants/carnet_de_sante') }}{{ enfants.carnetdesante }}">Carnet</a></span>
+                    <li class="text-uppercase m-1 mt-3 font-weight-bold">Livret de Famille : </li><span><a href="{{ asset('fichiers/enfants/livret_de_famille/') }}{{ enfants.livretdefamilleenfant }}">Livret</a></span>
+                </ul>
+    </div>
+    <a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">
+        <button type="button" class="btn btn-success btn-block btn-lg">Retour</button>
+    </a>
+
+{% endblock body %}

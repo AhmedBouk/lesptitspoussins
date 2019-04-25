@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'enfants{% endblock title %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+        <div class="contentform">
+            <div class="row">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled mb-0">
+                            <li><span class="initialism badge-danger badge">Error</span>
+                                <span class="error">{{ error.messageKey| trans(error.messageData, 'security') }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="col-md-12">
+                    {{ form_start(form) }}
+                        <h1 class="text-center">Renseigner le profil de votre enfant</h1>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.nom,{'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.prenom, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.dateNaissance, { 'attr': { 'class' : 'col-xs-12 col-sm-6 col-md-6'}}) }}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.maladies, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.traitement, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.allergie) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.autres) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.acteDeNaissance, 'Acte de naissance (PDF/JPEG)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.acteDeNaissance, {'attr' : { 'class' : 'form-control input-lg mt-3'}}) }}
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.certificatDeGrossesse, 'Certificat de grossesse (PDF/JPEG)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.certificatDeGrossesse) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.carnetDeSante, 'Carnet de santé (PDF/JPEG)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.carnetDeSante) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.livretDeFamilleEnfant, 'Livret de famille de l\'enfant (PDF/JPEG)', {
+                                        'label_attr': {'class': 'lab'}
+                                    }) }}
+                                    {{ form_widget(form.livretDeFamilleEnfant) }}
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input class="btn btn-success btn-block pb-lg-4" type="button" onclick="location.href='{{ path('dashboardparent', {'id' : app.user.id}) }}';" value="Retour" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-success btn-block pb-lg-4" value="Enregistrer">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+{% endblock body %}

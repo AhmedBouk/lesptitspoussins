@@ -1,0 +1,33 @@
+<header class="header ">
+    <a href="{{ path('indexsite') }}">
+    <img class="logo" src={{ asset('build/images/logosite.png') }} alt="logo"/>
+    </a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        {% if is_granted('ROLE_PARENT') %}
+            <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+            <li><a href="{{ path('dashboardparent', { 'id' : app.user.id }) }}">Profil Parent</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('sonata_admin_dashboard') }}">Gestion du site</a></li>
+            {% endif %}
+        {% elseif is_granted('ROLE_PRO') %}
+            <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+            <li><a href="{{ path('prodashboard', { 'id' : app.user.id}) }}">Profil Professionnel</a></li>
+            <li><a href="/logout">Se déconnecter</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('sonata_admin_dashboard') }}">Gestion du site</a></li>
+            {% endif %}
+        {% else %}
+                <li><a href="{{ path('indexsite') }}">Accueil</a></li>
+                <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                <li><a href="{{ path('loginpro') }}">Je suis une crèche</a></li>
+                <li><a href="{{ path('login') }}">Je suis un parent</a></li>
+        {% endif %}
+    </ul>
+</header>
+
+
+
+

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre profil{% endblock title %}
+
+{% block body %}
+
+    {{ parent() }}
+<div class="clear"></div>
+    {#   HERE#}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!------ Include the above in your HEAD tag ---------->
+    <div class="container mt-5 " style="padding-top: 100px;">
+        <div class="row" id="main">
+            <div class="col-md-12 well" id="rightPanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_start(form) }}
+                            <h2 class="text-center">Renseigner votre profil</h2>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.nomEntreprise, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.mail, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.adresse, {'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.ville, {'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.codepostal, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.telephone, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.nombrePersonnel, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.nombredeplace, { 'attr' : { 'class' : 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.disponibilite, { 'attr': { 'class': 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.avatar, { 'attr': { 'class': 'form-control input-lg' }}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <a href="{{ path('prodashboard', {'id': app.user.id }) }}" class="btn btn-success btn-block btn-lg">Retour</a>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <input type="submit" value="Enregistrer" class="btn btn-success btn-block btn-lg">
+                                </div>
+
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            </div>
+            </div>
+
+
+{% endblock body %}

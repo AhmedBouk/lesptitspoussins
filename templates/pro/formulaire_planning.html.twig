@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout de planning{% endblock title %}
+
+{% block body %}
+    <div class="clear"></div>
+    {{ parent() }}
+    {{ form_start(form) }}
+    <h1 class="text-center mt-5">Planning</h1>
+    <div class="contentform">
+        <div class="form-group">
+            {{form_row(form.enfantProfil)}}
+        </div>
+
+        <div class="form-group">
+            {{form_row(form.heuredebut)}}
+        </div>
+
+        <div class="form-group">
+            {{form_row(form.heuredefin)}}
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <button type="submit" class="bouton-contact">Enregistrer</button>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <a href="{{ path('prodashboard', { 'id' : app.user.id }) }}">
+                    <button type="button" class="bouton-contact">Retour</button>
+                </a>
+            </div>
+        </div>
+                {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock body %}
+

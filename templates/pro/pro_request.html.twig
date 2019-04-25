@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ parent() }}
+
+        <div class="container ">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3"style="margin-top: 100px;">
+                        <h1 class="h1">Liste des demandes</h1>
+                    </div>
+                </div>
+        </div><!-- row -->
+
+
+    <div class="container mt-3 mb-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table class="table">
+                    <thead class="hmed font-weight-bold">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom </th>
+                        <th scope="col">date de demande</th>
+                        <th scope="col">statut</th>
+                        <th scope="col">Documents</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Barpapa</td>
+                        <td>10/08/1989</td>
+                        <td>Refusé</td>
+                        <td class="text-center"><a href=""><button class="btn btn-primary">Voir</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>chakal</td>
+                        <td>10/08/1989</td>
+                        <td>Refusé</td>
+                        <td class="text-center"><a href=""><button class="btn btn-primary">Voir</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>zidane</td>
+                        <td>10/08/1989</td>
+                        <td>Accepté</td>
+                        <td class="text-center"><a href=""><button class="btn btn-primary">Voir</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>ronaldo</td>
+
+                        <td>10/08/1989</td>
+                        <td>Accepté</td>
+                        <td class="text-center"><a href=""><button class="btn btn-primary">Voir</button></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}

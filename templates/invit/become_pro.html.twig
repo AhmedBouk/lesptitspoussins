@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre Pro{% endblock title %}
+
+{% block body %}
+
+    {{ parent() }}
+<div class="clear"></div>
+    <div class="container" style="padding-top: 100px;">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid imgpro mt-4 " src={{ asset('build/images/photo.png') }} alt="image_creche"/>
+            </div>
+            <div class="col">
+                <h1 class="h1 text-center mt-2 ">Les petis poussins</h1>
+                <p class="text-center mt-5">Devenez partenaire avec Les petits poussins et bénéficiez d'un référencement sur notre application</p>
+                <br>
+                <p class="text-center">Souscrivez à notre abonnement et recevez un bracelet connecté</p>
+                <br>
+                <p class="text-center">Les parents pourront donner leurs avis sur la qualité de vos services</p>
+                <br>
+                <p class="text-center">Faîtes vous une réputation et laissez le bouche à oreille opérer</p>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <h1>N'hésitez pas à nous contacter :</h1>
+
+                    <div class="contentform">
+                        <div class="leftcontact">
+
+
+                            <div class="form-group">
+                                <p>Nom <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-user"></i></span>
+                                <input type="text" name="prenom" id="prenom" data-rule="required"
+                                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>E-mail <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-envelope"></i></span>
+                                <input type="email" name="email" id="email" data-rule="email"
+                                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Nom de l'infrastructure <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-home"></i></span>
+                                <input type="text" name="society" id="society" data-rule="required"
+                                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+                                <div class="validation"></div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="rightcontact">
+
+                            <div class="form-group">
+                                <p>Numéro de téléphone <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-phone"></i></span>
+                                <input type="text" name="phone" id="phone" data-rule="maxlen:10"
+                                       data-msg="Vérifiez votre saisie sur les champs : Le champ 'Téléphone' doit être renseigné. Minimum 10 chiffres"/>
+                                <div class="validation"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <p>Message <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-comments"></i></span>
+                                <textarea name="message" rows="14" data-rule="required"
+                                          data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="bouton-contact">Nous contacter</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+{% endblock body %}

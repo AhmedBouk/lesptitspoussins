@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock title %}
+
+{% block body %}
+
+    {{ parent() }}
+    //container
+    <div class="container ner">
+    </div>
+
+    <div class="container ">
+    <div class="row">
+    <div class="col">
+        <img  style="border-radius: 15px;" class="img-fluid mt-4 " src={{ asset('build/images/babe.jpg') }} alt="image_creche"/>
+    </div>
+    <div class="col">
+        <h1 class="h1 text-center mt-2 mb-3 titl ">Les p'tits poussins</h1>
+        <br>
+        <br>
+        <p class="text-center m2-5 des"> C'est une plateforme dédiée aux parents ainsi qu'aux professionnels pour gérer plus efficacement les inscriptions des enfants en crèche.<br><br>Trouver les crèches près de chez vous en toute<br>simplicité et en un temps record.<br><br>Profitez de notre bracelet connecté en vous abonnant<br> à notre application.</p>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% else %}
+        <div class="button">
+            <a href="{{ path('login') }}" class="btn  btn btn-outline-secondary  btn-lg button mt-3  pare ">Je suis un parent</a>
+            <a href="{{ path('loginpro') }}" class="btn  btn btn-outline-secondary btn-lg button mt-3  pro">Je suis une crèche</a>
+        </div>
+        {% endif %}
+
+    </div>
+
+    {#end container#}
+
+    {#    container#}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5">
+                <h2 class="h2 text-center">Chers parents</h2>
+                <p class="text-center des"> Rechercher des crèches et, ou une nounou en un clic</p>
+                <p class="text-center des">Gagné du temps pour l'inscription de vos enfants en crèche</p>
+                <p class="text-center des">Inscrivez vous et profitez de notre application qui vous fera gagner du temps en vous indiquant toutes les crèches ou particuliers près de vous.</p>
+                <p class="text-center des">Abonnez vous et recevez un bracelet connecté qui assurera une meilleure sécurité pendant la garde de votre enfant.</p>
+                <p class="text-center des" style="font-weight: bold">Cliquez sur ce lien si vous désirez plus d'information sur notre bracelet connecté:<br><a class="brasko" href="{{ path('bracelet') }}">Informations sur le bracelet</a></p>
+
+            </div>
+            <div class="col">
+                <img style="border-radius: 15px;" class="mt-3 imgirl " src={{ asset('build/images/crechh.jpg') }} alt="image_creche"/>
+                <h5 class="h2 text-center">Chers professionnels</h5>
+                <br>
+                <p class="text-center des">Inscrivez vous en tant qu'entreprise afin d'aider les parents à vous localiser. Devenez partenaire et profitez de notre bracelet connecté</p>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% else %}
+                <a href="{{ path('becomepro') }}" class="btn btn-outline-dark btn-lg button mt-3  mb-5 col-md-6 offset-md-3"> Nous contacter</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    {#end container#}
+
+{% endblock body %}
