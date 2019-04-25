@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Inscription{% endblock title %}
+
 {% block body %}
     <div class="clear"></div>
     {{ parent() }}
@@ -14,7 +16,7 @@
         </div>
 
         <div class="form-group">
-            {{ form_label(form.password.first, 'Mot de passe', {
+            {{ form_label(form.password.first, 'Mot de passe ( minimum 6 caratères et maximum 34 caractères )', {
                 'label_attr': {'class': 'lab'}
             }) }}
             {{form_widget(form.password.first)}}
@@ -39,7 +41,7 @@
     <input type="hidden" name="token"  value="{{ csrf_token('create-parentt') }}">
 
 
-    <input type="submit"  value="S'inscrire" class="bouton-contact text-center">
+    <input type="submit"  value="Valider" class="bouton-contact text-center">
     {{ form_end(form) }}
 
 

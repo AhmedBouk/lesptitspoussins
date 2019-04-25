@@ -1,5 +1,7 @@
 <header class="header ">
+    <a href="{{ path('indexsite') }}">
     <img class="logo" src={{ asset('build/images/logosite.png') }} alt="logo"/>
+    </a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
@@ -20,7 +22,7 @@
         {% else %}
                 <li><a href="{{ path('indexsite') }}">Accueil</a></li>
                 <li><a href="{{ path('inscription') }}">Inscription</a></li>
-                <li><a href="{{ path('loginpro') }}">Je suis un pro</a></li>
+                <li><a href="{{ path('loginpro') }}">Je suis une crèche</a></li>
                 <li><a href="{{ path('login') }}">Je suis un parent</a></li>
         {% endif %}
     </ul>

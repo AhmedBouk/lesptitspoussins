@@ -70,6 +70,8 @@ class Parentt implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=150)
+     *
+     * @Assert\Length(min="6", max="34")
      */
     private $password;
 
@@ -91,35 +93,35 @@ class Parentt implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={"image/jpeg"})
+     * @Assert\File(mimeTypes={"image/jpeg", "application/pdf"})
      */
     private $revenu;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={"image/jpeg"})
+     * @Assert\File(mimeTypes={"image/jpeg", "application/pdf"})
      */
     private $attestationcaf;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={"image/jpeg"})
+     * @Assert\File(mimeTypes={"image/jpeg", "application/pdf"})
      */
     private $justificatifdomicile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={"image/jpeg"})
+     * @Assert\File(mimeTypes={"image/jpeg", "application/pdf"})
      */
     private $impots;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={"image/jpeg"})
+     * @Assert\File(mimeTypes={"image/jpeg", "application/pdf"})
      */
     private $livretdefamille;
 

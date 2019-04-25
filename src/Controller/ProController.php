@@ -149,6 +149,7 @@ class ProController extends AbstractController
 
                     $em->flush();
 
+
                     $test = $this->addFlash("success", "Votre mot de passe à bien été modifier !");
 
                     return $this->redirectToRoute("prodashboard",[

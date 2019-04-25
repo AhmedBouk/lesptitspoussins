@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Profil Parent{% endblock title %}
+
 {% block body %}
     <div class="clear"></div>
     {{ parent() }}
     <div class="container mt-5 mb-5 text-center" style="padding-top: 100px;">
         <div class="row">
             <div class="col">
-                <label for="">Rechercher par code postale</label>
+                <label for="" class="mb-2">Rechercher nos différents professionnels par code postale</label>
                 <input id='test' type="text" value="">
                 <input type="submit" id="envoie" value="Envoyer">
             </div>
@@ -34,6 +36,7 @@
                 <div class="container text-center  mb-2">
                     <div class="row ">
                         <div class="col-md h1" style="border-radius: 30px; padding: 5%;">Profil</div>
+                        <p>Si vous souhaitez communiquer avec nos différents professionnels, il est fortement conseillé de remplir votre profil</p>
                     </div>
                 </div>
                 <ul class="list-group mb-3">
@@ -66,7 +69,8 @@
                     <tr>
                         <th scope="col">Prénom</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Editer</th>
+                        <th scope="col">Details</th>
                     </tr>
                     </thead>
 
@@ -78,6 +82,8 @@
                         <th>{{ enfant.nom }}</th>
                         <th>
                             <a href="{{ path('editsenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Modifier</a>
+                        </th>
+                        <th>
                             <a href="{{ path('showenfant', { 'id' : app.user.id, 'enfant_id' : enfant.id }) }}">Voir</a>
                         </th>
                     </tr>
@@ -92,7 +98,7 @@
                     <a href="">
                         <a href="{{ path('créerenfant', { 'id' : app.user.id }) }}"><button type="button" class="btn  text-right hmed  ">Ajouter</button></a>
                     </a>
-86                </div>
+                </div>
             </div>
         </div>
 

@@ -66,6 +66,8 @@ class ProProfil implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\Length(min="6", max="34")
      */
     private $password;
 

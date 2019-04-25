@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Les entreprises{% endblock title %}
+
 {% block body %}
 
     {{ parent() }}
@@ -11,7 +13,7 @@
                 </div>
                 <div class="col-md-6 mt-xl-5">
                     <p class="mt-xl-3">a</p>
-                    <h2 class="mt-xl-5 text-center">Tous les proffessionels du {{ cp }}</h2>
+                    <h2 class="mt-xl-5 text-center">Tous les professionnels du {{ cp }}</h2>
                     <div id="mapid" class="mt-xl-5 mx-auto mb-5"></div>
                 </div>
                 <div class="col-md-3">
