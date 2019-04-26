@@ -27,7 +27,6 @@ class MapController extends AbstractController
                 ];
             }
 
-            dump($data);
 
 
 
