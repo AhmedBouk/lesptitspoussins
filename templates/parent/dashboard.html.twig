@@ -48,11 +48,11 @@
                     <li class="list-group-item"><span class="text-info font-weight-bold">Adresse : </span>{{ parent.adresse }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Téléphone : </span>{{ parent.telephone }}</li>
                     <li class="list-group-item"><span class="text-info font-weight-bold">Email : </span>{{ parent.mail }}</li>
-                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a></li>
-                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.impots }}">Fiche d'impôts</a></li>
-                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.attestationcaf }}">CAF</a></li>
-                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a></li>
-                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/') }}{{ parent.livretdefamille }}">Livret de Famille</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/revenus/') }}{{ parent.revenu }}" target="_blank">Les Derniers Revenus</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/impots/') }}{{ parent.impots }}">Fiche d'impôts</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/caf/') }}{{ parent.attestationcaf }}">CAF</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/justificatifdomicile/') }}{{ parent.justificatifdomicile }}">Justification de domicile</a></li>
+                    <li class="list-group-item"><a href="{{ asset('fichiers/parents/livretdefamille/') }}{{ parent.livretdefamille }}">Livret de Famille</a></li>
                 </ul>
                 <br><a href="{{ path('editparent', { 'id' : app.user.id }) }}">
                     <button type="button" class="btn hmed ">Modifier</button>
