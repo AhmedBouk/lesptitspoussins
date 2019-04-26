@@ -10,6 +10,7 @@ require('../css/reset.css');
 require('../css/app.css');
 require('../css/fullcalendar.css');
 require('fullcalendar');
+require('leaflet/dist/leaflet.css');
 require('bootstrap/dist/css/bootstrap.min.css');
 
 
@@ -21,6 +22,7 @@ global.$ = global.jQuery = $;
 
 import 'fullcalendar';
 import 'moment';
+import 'leaflet';
 
 
 

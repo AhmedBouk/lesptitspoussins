@@ -24,7 +24,18 @@
 
 
 
+{% else %}
 
+        <h2 style="margin-top: 100px">COUCOU</h2>
+
+
+    {% endif %}
+
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
     <script>
 
 
@@ -33,26 +44,26 @@
         {% for request in data %}
 
         tab.push( {
-                "features":
+            "features":
 
-                    [
-                {
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                               {{ request.long }},
-                               {{ request.lat }}
-                        ]
-                    },
-                    "type": "Feature",
-                    "properties": {
-                        "popupContent": "{{ request.infra }}",
-                        "id" : {{ request.id }}
+                [
+                    {
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [
+                                {{ request.long }},
+                                {{ request.lat }}
+                            ]
+                        },
+                        "type": "Feature",
+                        "properties": {
+                            "popupContent": "{{ request.infra }}",
+                            "id" : {{ request.id }}
+                        }
+
+
                     }
-
-
-                }
-                    ]
+                ]
 
         });
         {% endfor %}
@@ -75,19 +86,19 @@
 
         tab.forEach(function (element) {
 
-        function onEachFeature(feature, layer) {
+            function onEachFeature(feature, layer) {
 
-            var test = feature.properties.id;
-            console.log(test);
-            var popupContent = "<a href='http://127.0.0.1:8000/detail_pro/";
-            popupContent += test;
-            popupContent += "'>Detail </a>";
-            if (feature.properties && feature.properties.popupContent) {
-                popupContent += feature.properties.popupContent;
+                var test = feature.properties.id;
+                console.log(test);
+                var popupContent = "<a href='http://127.0.0.1:8000/detail_pro/";
+                popupContent += test;
+                popupContent += "'>Detail </a>";
+                if (feature.properties && feature.properties.popupContent) {
+                    popupContent += feature.properties.popupContent;
+                }
+
+                layer.bindPopup(popupContent);
             }
-
-            layer.bindPopup(popupContent);
-        }
 
 
 
@@ -114,12 +125,4 @@
         })
 
     </script>
-{% else %}
-
-        <h2 style="margin-top: 100px">COUCOU</h2>
-
-
-    {% endif %}
-
-
-{% endblock body %}
+{% endblock javascripts %}
